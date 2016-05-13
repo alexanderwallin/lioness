@@ -84,6 +84,15 @@ let MyThing = ({ t, message }) =>
 
 MyThing = withLocalization(MyThing);
 
+// Singular/plural
+const Diff = withLocalization(({ tn, num }) => (
+  <div>
+    {tn('One thing', '{{ num }} things', num, {
+      num: <strong>{num}</strong>,
+    })}
+  </div>
+));
+
 // A clickable number
 const ClickableNumber = () =>
   <em onClick={() => console.log('click')}>131</em>;
@@ -96,6 +105,8 @@ const App = () =>
     <div className="App">
       <T message="Clap {{ num }} times" num={<ClickableNumber />} />
       <MyThing message="Close" />
+      <Diff num={1} />
+      <Diff num={2} />
     </div>
   </LionessProvider>;
 
