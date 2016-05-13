@@ -1,0 +1,1979 @@
+{
+  "en": {
+    "charset": "utf-8",
+    "headers": {
+      "project-id-version": "club-admin",
+      "pot-creation-date": "Fri Apr 22 2016 12:01:59 GMT+0200 (CEST)",
+      "po-revision-date": "2016-04-22 10:01+0000",
+      "last-translator": "lagetse.teamcity <micke@miklar.se>",
+      "language-team": "English (http://www.transifex.com/lagetse/club-admin/language/en/)",
+      "content-type": "text/plain; charset=UTF-8",
+      "content-transfer-encoding": "8bit",
+      "language": "en",
+      "plural-forms": "nplurals=2; plural=(n != 1);"
+    },
+    "translations": {
+      "": {
+        "": {
+          "msgid": "",
+          "comments": {
+            "translator": "\nTranslators:"
+          },
+          "msgstr": [
+            "Project-Id-Version: club-admin\nPOT-Creation-Date: Fri Apr 22 2016 12:01:59 GMT+0200 (CEST)\nPO-Revision-Date: 2016-04-22 10:01+0000\nLast-Translator: lagetse.teamcity <micke@miklar.se>\nLanguage-Team: English (http://www.transifex.com/lagetse/club-admin/language/en/)\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nLanguage: en\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+          ]
+        },
+        "Close": {
+          "msgid": "Close",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:29"
+          },
+          "msgstr": [
+            "Close"
+          ]
+        },
+        "Birth years": {
+          "msgid": "Birth years",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:24"
+          },
+          "msgstr": [
+            "Birth years"
+          ]
+        },
+        "Email": {
+          "msgid": "Email",
+          "comments": {
+            "reference": "./src/auth/components/SignInForm.jsx:17\n./src/member-applications/components/ApplicationItem.jsx:12\n./src/member-directory/components/MembersTable.jsx:40\n./src/member/components/MemberForm.jsx:74\n./src/member/components/MemberInfo.jsx:56\n./src/member/components/MemberForm.jsx:73"
+          },
+          "msgstr": [
+            "Email"
+          ]
+        },
+        "Medical information": {
+          "msgid": "Medical information",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:92\n./src/member/components/MemberInfo.jsx:58\n./src/member/components/MemberForm.jsx:91"
+          },
+          "msgstr": [
+            "Medical information"
+          ]
+        },
+        "Date of birth": {
+          "msgid": "Date of birth",
+          "comments": {
+            "reference": "./src/member-applications/components/ApplicationItem.jsx:17\n./src/member/components/MemberForm.jsx:51\n./src/member/components/MemberInfo.jsx:52\n./src/member/components/MemberForm.jsx:50"
+          },
+          "msgstr": [
+            "Date of birth"
+          ]
+        },
+        "Listing": {
+          "msgid": "Listing",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:16"
+          },
+          "msgstr": [
+            "Listing"
+          ]
+        },
+        "Male:": {
+          "msgid": "Male:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:51"
+          },
+          "msgstr": [
+            "Male:"
+          ]
+        },
+        "Other": {
+          "msgid": "Other",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:18\n./src/member/components/MemberForm.jsx:85"
+          },
+          "msgstr": [
+            "Other"
+          ]
+        },
+        "Gender": {
+          "msgid": "Gender",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:39\n./src/member/components/MemberForm.jsx:80\n./src/member/components/MemberInfo.jsx:57\n./src/member/components/MemberForm.jsx:79"
+          },
+          "msgstr": [
+            "Gender"
+          ]
+        },
+        "Roles": {
+          "msgid": "Roles",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:20"
+          },
+          "msgstr": [
+            "Roles"
+          ]
+        },
+        "Payments": {
+          "msgid": "Payments",
+          "comments": {
+            "reference": "./src/components/views/PaymentsView.jsx:12\n./src/navigation/components/Navigation.jsx:32"
+          },
+          "msgstr": [
+            "Payments"
+          ]
+        },
+        "Teams": {
+          "msgid": "Teams",
+          "comments": {
+            "reference": "./src/components/views/TeamsView.jsx:11\n./src/filtering/components/FilterBox.jsx:18\n./src/member-directory/components/MembersTable.jsx:41\n./src/member/components/MemberInfo.jsx:78\n./src/navigation/components/Navigation.jsx:38"
+          },
+          "msgstr": [
+            "Teams"
+          ]
+        },
+        "{{ count }} teams": {
+          "msgid": "{{ count }} teams",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:33"
+          },
+          "msgstr": [
+            "{{ count }} teams"
+          ]
+        },
+        "Save changes": {
+          "msgid": "Save changes",
+          "comments": {
+            "reference": "./src/member/components/EditMemberForm.jsx:40"
+          },
+          "msgstr": [
+            "Save changes"
+          ]
+        },
+        "Genders": {
+          "msgid": "Genders",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:22"
+          },
+          "msgstr": [
+            "Genders"
+          ]
+        },
+        "Created": {
+          "msgid": "Created",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:39"
+          },
+          "msgstr": [
+            "Created"
+          ]
+        },
+        "Last updated": {
+          "msgid": "Last updated",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:44"
+          },
+          "msgstr": [
+            "Last updated"
+          ]
+        },
+        "City": {
+          "msgid": "City",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:69"
+          },
+          "msgstr": [
+            "City"
+          ]
+        },
+        "Club": {
+          "msgid": "Club",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:15"
+          },
+          "msgstr": [
+            "Club"
+          ]
+        },
+        "Edit": {
+          "msgid": "Edit",
+          "comments": {
+            "reference": "./src/member/components/Member.jsx:17"
+          },
+          "msgstr": [
+            "Edit"
+          ]
+        },
+        "Male": {
+          "msgid": "Male",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:16\n./src/member/components/MemberForm.jsx:84"
+          },
+          "msgstr": [
+            "Male"
+          ]
+        },
+        "Name": {
+          "msgid": "Name",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:37\n./src/member/components/MemberForm.jsx:43\n./src/member/components/MemberForm.jsx:42\n./src/member/components/MemberForm.jsx:46"
+          },
+          "msgstr": [
+            "Name"
+          ]
+        },
+        "XXXX": {
+          "msgid": "XXXX",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:56"
+          },
+          "msgstr": [
+            "XXXX"
+          ]
+        },
+        "YYYY": {
+          "msgid": "YYYY",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:52"
+          },
+          "msgstr": [
+            "YYYY"
+          ]
+        },
+        "Cancel": {
+          "msgid": "Cancel",
+          "comments": {
+            "reference": "./src/member/components/Member.jsx:16\n./src/member/components/MemberForm.jsx:102\n./src/member/components/MemberForm.jsx:101"
+          },
+          "msgstr": [
+            "Cancel"
+          ]
+        },
+        "Clear Filters": {
+          "msgid": "Clear Filters",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:28"
+          },
+          "msgstr": [
+            "Clear Filters"
+          ]
+        },
+        "DD": {
+          "msgid": "DD",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:54"
+          },
+          "msgstr": [
+            "DD"
+          ]
+        },
+        "MM": {
+          "msgid": "MM",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:53"
+          },
+          "msgstr": [
+            "MM"
+          ]
+        },
+        "No": {
+          "msgid": "No",
+          "comments": {
+            "reference": "./src/member/components/MembershipStatus.jsx:30"
+          },
+          "msgstr": [
+            "No"
+          ]
+        },
+        "email@example.com": {
+          "msgid": "email@example.com",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:75"
+          },
+          "msgstr": [
+            "email@example.com"
+          ]
+        },
+        "Duplicates": {
+          "msgid": "Duplicates",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:27\n./src/member-duplicates/components/DuplicatesView.jsx:16"
+          },
+          "msgstr": [
+            "Duplicates"
+          ]
+        },
+        "Sign out": {
+          "msgid": "Sign out",
+          "comments": {
+            "reference": "./src/auth/components/SignOutButton.jsx:13"
+          },
+          "msgstr": [
+            "Sign out"
+          ]
+        },
+        "Last  Name": {
+          "msgid": "Last  Name",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:46"
+          },
+          "msgstr": [
+            "Last  Name"
+          ]
+        },
+        "History": {
+          "msgid": "History",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:79"
+          },
+          "msgstr": [
+            "History"
+          ]
+        },
+        "Add member": {
+          "msgid": "Add member",
+          "comments": {
+            "reference": "./src/member-directory/components/MemberDirectory.jsx:25\n./src/member/components/AddMemberForm.jsx:38"
+          },
+          "msgstr": [
+            "Add member"
+          ]
+        },
+        "Address": {
+          "msgid": "Address",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:44\n./src/member/components/MemberForm.jsx:64\n./src/member/components/MemberInfo.jsx:55\n./src/member/components/MemberForm.jsx:63"
+          },
+          "msgstr": [
+            "Address"
+          ]
+        },
+        "Showing {{ count }} applications": {
+          "msgid": "Showing {{ count }} applications",
+          "comments": {
+            "reference": "./src/member-applications/components/ApplicationsListing.jsx:16"
+          },
+          "msgstr": [
+            "Showing {{ count }} applications"
+          ]
+        },
+        "My Teamlr": {
+          "msgid": "My Teamlr",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:14"
+          },
+          "msgstr": [
+            "My Teamlr"
+          ]
+        },
+        "Settings": {
+          "msgid": "Settings",
+          "comments": {
+            "reference": "./src/components/views/SettingsView.jsx:11\n./src/navigation/components/Navigation.jsx:44"
+          },
+          "msgstr": [
+            "Settings"
+          ]
+        },
+        "{{ current }} of {{ total }}": {
+          "msgid": "{{ current }} of {{ total }}",
+          "comments": {
+            "reference": "./src/pagination/components/PageInfo.jsx:8"
+          },
+          "msgstr": [
+            "{{ current }} of {{ total }}"
+          ]
+        },
+        "Search by name, address, birthday, team etc.": {
+          "msgid": "Search by name, address, birthday, team etc.",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:16"
+          },
+          "msgstr": [
+            "Search by name, address, birthday, team etc."
+          ]
+        },
+        "Showing {{ count }} members with possible duplicates": {
+          "msgid": "Showing {{ count }} members with possible duplicates",
+          "comments": {
+            "reference": "./src/member-duplicates/components/DuplicatesSummary.jsx:9"
+          },
+          "msgstr": [
+            "Showing {{ count }} members with possible duplicates"
+          ]
+        },
+        "Search": {
+          "msgid": "Search",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:23"
+          },
+          "msgstr": [
+            "Search"
+          ]
+        },
+        "Members": {
+          "msgid": "Members",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:23\n./src/navigation/components/Navigation.jsx:27"
+          },
+          "msgstr": [
+            "Members"
+          ]
+        },
+        "Birthdate": {
+          "msgid": "Birthdate",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:38"
+          },
+          "msgstr": [
+            "Birthdate"
+          ]
+        },
+        "Homepage": {
+          "msgid": "Homepage",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:16"
+          },
+          "msgstr": [
+            "Homepage"
+          ]
+        },
+        "Reports": {
+          "msgid": "Reports",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:31\n./src/member-stats/components/MemberStatsView.jsx:15"
+          },
+          "msgstr": [
+            "Reports"
+          ]
+        },
+        "Sports": {
+          "msgid": "Sports",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:16"
+          },
+          "msgstr": [
+            "Sports"
+          ]
+        },
+        "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members": {
+          "msgid": "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members",
+          "comments": {
+            "reference": "./src/filtering/components/FilterInfo.jsx:8"
+          },
+          "msgstr": [
+            "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members"
+          ]
+        },
+        "Street": {
+          "msgid": "Street",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:65"
+          },
+          "msgstr": [
+            "Street"
+          ]
+        },
+        "Audit log": {
+          "msgid": "Audit log",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:17"
+          },
+          "msgstr": [
+            "Audit log"
+          ]
+        },
+        "Age groups": {
+          "msgid": "Age groups",
+          "comments": {
+            "reference": "./src/member-stats/components/AgeDistributionChart.jsx:18"
+          },
+          "msgstr": [
+            "Age groups"
+          ]
+        },
+        "Female:": {
+          "msgid": "Female:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:50"
+          },
+          "msgstr": [
+            "Female:"
+          ]
+        },
+        "Zip Code": {
+          "msgid": "Zip Code",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:67"
+          },
+          "msgstr": [
+            "Zip Code"
+          ]
+        },
+        "Sign in": {
+          "msgid": "Sign in",
+          "comments": {
+            "reference": "./src/auth/components/SignInButton.jsx:10\n./src/auth/components/SignInForm.jsx:28"
+          },
+          "msgstr": [
+            "Sign in"
+          ]
+        },
+        "Membership": {
+          "msgid": "Membership",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:43"
+          },
+          "msgstr": [
+            "Membership"
+          ]
+        },
+        "Other:": {
+          "msgid": "Other:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:52"
+          },
+          "msgstr": [
+            "Other:"
+          ]
+        },
+        "Female": {
+          "msgid": "Female",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:14\n./src/member/components/MemberForm.jsx:83"
+          },
+          "msgstr": [
+            "Female"
+          ]
+        },
+        "First Name": {
+          "msgid": "First Name",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:44\n./src/member/components/MemberForm.jsx:43\n./src/member/components/MemberForm.jsx:47"
+          },
+          "msgstr": [
+            "First Name"
+          ]
+        },
+        "Filter": {
+          "msgid": "Filter",
+          "comments": {
+            "reference": "./src/filtering/components/FilterToggle.jsx:21"
+          },
+          "msgstr": [
+            "Filter"
+          ]
+        },
+        "Password": {
+          "msgid": "Password",
+          "comments": {
+            "reference": "./src/auth/components/SignInForm.jsx:21"
+          },
+          "msgstr": [
+            "Password"
+          ]
+        },
+        "Gender distribution": {
+          "msgid": "Gender distribution",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:12"
+          },
+          "msgstr": [
+            "Gender distribution"
+          ]
+        },
+        "Club admin": {
+          "msgid": "Club admin",
+          "comments": {
+            "reference": "./src/auth/components/SignInView.jsx:13"
+          },
+          "msgstr": [
+            "Club admin"
+          ]
+        },
+        "{{ count }} members": {
+          "msgid": "{{ count }} members",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:26"
+          },
+          "msgstr": [
+            "{{ count }} members"
+          ]
+        },
+        "Applications": {
+          "msgid": "Applications",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:21\n./src/member-applications/components/ApplicationsView.jsx:13"
+          },
+          "msgstr": [
+            "Applications"
+          ]
+        },
+        "Guardians": {
+          "msgid": "Guardians",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:42"
+          },
+          "msgstr": [
+            "Guardians"
+          ]
+        },
+        "Last": {
+          "msgid": "Last",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:44"
+          },
+          "msgstr": [
+            "Last"
+          ]
+        },
+        "Test": {
+          "msgid": "Test",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:35\n./src/member/components/MemberForm.jsx:36\n./src/member/components/MemberForm.jsx:37"
+          },
+          "msgid_plural": "Tests",
+          "msgstr": [
+            "Test",
+            "Tests"
+          ]
+        },
+        "undefined": {
+          "msgid": "undefined",
+          "comments": {
+            "reference": "./src/i18n/lib/i18n-hoc-helpers.js:11"
+          },
+          "msgstr": [
+            "undefined"
+          ]
+        },
+        "Search by name, adress, birthday, team etc.": {
+          "msgid": "Search by name, adress, birthday, team etc.",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:16"
+          },
+          "msgstr": [
+            "Search by name, adress, birthday, team etc."
+          ]
+        }
+      }
+    }
+  },
+  "de": {
+    "charset": "utf-8",
+    "headers": {
+      "project-id-version": "club-admin",
+      "pot-creation-date": "Fri Apr 22 2016 12:01:59 GMT+0200 (CEST)",
+      "po-revision-date": "2016-04-22 10:01+0000",
+      "last-translator": "lagetse.teamcity <micke@miklar.se>",
+      "language-team": "German (http://www.transifex.com/lagetse/club-admin/language/de/)",
+      "content-type": "text/plain; charset=UTF-8",
+      "content-transfer-encoding": "8bit",
+      "language": "de",
+      "plural-forms": "nplurals=2; plural=(n != 1);"
+    },
+    "translations": {
+      "": {
+        "": {
+          "msgid": "",
+          "comments": {
+            "translator": "\nTranslators:\nBenny Webb <benny.webb@teamlr.de>, 2016"
+          },
+          "msgstr": [
+            "Project-Id-Version: club-admin\nPOT-Creation-Date: Fri Apr 22 2016 12:01:59 GMT+0200 (CEST)\nPO-Revision-Date: 2016-04-22 10:01+0000\nLast-Translator: lagetse.teamcity <micke@miklar.se>\nLanguage-Team: German (http://www.transifex.com/lagetse/club-admin/language/de/)\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nLanguage: de\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+          ]
+        },
+        "Close": {
+          "msgid": "Close",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:29"
+          },
+          "msgstr": [
+            "Schließen"
+          ]
+        },
+        "Birth years": {
+          "msgid": "Birth years",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:24"
+          },
+          "msgstr": [
+            "Geburtsjahre"
+          ]
+        },
+        "Email": {
+          "msgid": "Email",
+          "comments": {
+            "reference": "./src/auth/components/SignInForm.jsx:17\n./src/member-applications/components/ApplicationItem.jsx:12\n./src/member-directory/components/MembersTable.jsx:40\n./src/member/components/MemberForm.jsx:74\n./src/member/components/MemberInfo.jsx:56\n./src/member/components/MemberForm.jsx:73"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Medical information": {
+          "msgid": "Medical information",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:92\n./src/member/components/MemberInfo.jsx:58\n./src/member/components/MemberForm.jsx:91"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Date of birth": {
+          "msgid": "Date of birth",
+          "comments": {
+            "reference": "./src/member-applications/components/ApplicationItem.jsx:17\n./src/member/components/MemberForm.jsx:51\n./src/member/components/MemberInfo.jsx:52\n./src/member/components/MemberForm.jsx:50"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Listing": {
+          "msgid": "Listing",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:16"
+          },
+          "msgstr": [
+            "Liste"
+          ]
+        },
+        "Male:": {
+          "msgid": "Male:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:51"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Other": {
+          "msgid": "Other",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:18\n./src/member/components/MemberForm.jsx:85"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Gender": {
+          "msgid": "Gender",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:39\n./src/member/components/MemberForm.jsx:80\n./src/member/components/MemberInfo.jsx:57\n./src/member/components/MemberForm.jsx:79"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Roles": {
+          "msgid": "Roles",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:20"
+          },
+          "msgstr": [
+            "Rollen"
+          ]
+        },
+        "Payments": {
+          "msgid": "Payments",
+          "comments": {
+            "reference": "./src/components/views/PaymentsView.jsx:12\n./src/navigation/components/Navigation.jsx:32"
+          },
+          "msgstr": [
+            "Zahlungen"
+          ]
+        },
+        "Teams": {
+          "msgid": "Teams",
+          "comments": {
+            "reference": "./src/components/views/TeamsView.jsx:11\n./src/filtering/components/FilterBox.jsx:18\n./src/member-directory/components/MembersTable.jsx:41\n./src/member/components/MemberInfo.jsx:78\n./src/navigation/components/Navigation.jsx:38"
+          },
+          "msgstr": [
+            "Teams"
+          ]
+        },
+        "{{ count }} teams": {
+          "msgid": "{{ count }} teams",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:33"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Save changes": {
+          "msgid": "Save changes",
+          "comments": {
+            "reference": "./src/member/components/EditMemberForm.jsx:40"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Genders": {
+          "msgid": "Genders",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:22"
+          },
+          "msgstr": [
+            "Geschlechter"
+          ]
+        },
+        "Created": {
+          "msgid": "Created",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:39"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Last updated": {
+          "msgid": "Last updated",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:44"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "City": {
+          "msgid": "City",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:69"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Club": {
+          "msgid": "Club",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:15"
+          },
+          "msgstr": [
+            "Verein"
+          ]
+        },
+        "Edit": {
+          "msgid": "Edit",
+          "comments": {
+            "reference": "./src/member/components/Member.jsx:17"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Male": {
+          "msgid": "Male",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:16\n./src/member/components/MemberForm.jsx:84"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Name": {
+          "msgid": "Name",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:37\n./src/member/components/MemberForm.jsx:43\n./src/member/components/MemberForm.jsx:42\n./src/member/components/MemberForm.jsx:46"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "XXXX": {
+          "msgid": "XXXX",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:56"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "YYYY": {
+          "msgid": "YYYY",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:52"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Cancel": {
+          "msgid": "Cancel",
+          "comments": {
+            "reference": "./src/member/components/Member.jsx:16\n./src/member/components/MemberForm.jsx:102\n./src/member/components/MemberForm.jsx:101"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Clear Filters": {
+          "msgid": "Clear Filters",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:28"
+          },
+          "msgstr": [
+            "Filter zurück setzen"
+          ]
+        },
+        "DD": {
+          "msgid": "DD",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:54"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "MM": {
+          "msgid": "MM",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:53"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "No": {
+          "msgid": "No",
+          "comments": {
+            "reference": "./src/member/components/MembershipStatus.jsx:30"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "email@example.com": {
+          "msgid": "email@example.com",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:75"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Duplicates": {
+          "msgid": "Duplicates",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:27\n./src/member-duplicates/components/DuplicatesView.jsx:16"
+          },
+          "msgstr": [
+            "Doppelte"
+          ]
+        },
+        "Sign out": {
+          "msgid": "Sign out",
+          "comments": {
+            "reference": "./src/auth/components/SignOutButton.jsx:13"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Last  Name": {
+          "msgid": "Last  Name",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:46"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "History": {
+          "msgid": "History",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:79"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Add member": {
+          "msgid": "Add member",
+          "comments": {
+            "reference": "./src/member-directory/components/MemberDirectory.jsx:25\n./src/member/components/AddMemberForm.jsx:38"
+          },
+          "msgstr": [
+            "Mitglied hinzufügen"
+          ]
+        },
+        "Address": {
+          "msgid": "Address",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:44\n./src/member/components/MemberForm.jsx:64\n./src/member/components/MemberInfo.jsx:55\n./src/member/components/MemberForm.jsx:63"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Showing {{ count }} applications": {
+          "msgid": "Showing {{ count }} applications",
+          "comments": {
+            "reference": "./src/member-applications/components/ApplicationsListing.jsx:16"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "My Teamlr": {
+          "msgid": "My Teamlr",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:14"
+          },
+          "msgstr": [
+            "My Teamlr"
+          ]
+        },
+        "Settings": {
+          "msgid": "Settings",
+          "comments": {
+            "reference": "./src/components/views/SettingsView.jsx:11\n./src/navigation/components/Navigation.jsx:44"
+          },
+          "msgstr": [
+            "Einstellungen"
+          ]
+        },
+        "{{ current }} of {{ total }}": {
+          "msgid": "{{ current }} of {{ total }}",
+          "comments": {
+            "reference": "./src/pagination/components/PageInfo.jsx:8"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Search by name, address, birthday, team etc.": {
+          "msgid": "Search by name, address, birthday, team etc.",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:16"
+          },
+          "msgstr": [
+            "Suche nach Namen, Adresse, Geburtsdatum, Team, etc."
+          ]
+        },
+        "Showing {{ count }} members with possible duplicates": {
+          "msgid": "Showing {{ count }} members with possible duplicates",
+          "comments": {
+            "reference": "./src/member-duplicates/components/DuplicatesSummary.jsx:9"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Search": {
+          "msgid": "Search",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:23"
+          },
+          "msgstr": [
+            "Suche"
+          ]
+        },
+        "Members": {
+          "msgid": "Members",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:23\n./src/navigation/components/Navigation.jsx:27"
+          },
+          "msgstr": [
+            "Mitglieder"
+          ]
+        },
+        "Birthdate": {
+          "msgid": "Birthdate",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:38"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Homepage": {
+          "msgid": "Homepage",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:16"
+          },
+          "msgstr": [
+            "Homepage"
+          ]
+        },
+        "Reports": {
+          "msgid": "Reports",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:31\n./src/member-stats/components/MemberStatsView.jsx:15"
+          },
+          "msgstr": [
+            "Berichte"
+          ]
+        },
+        "Sports": {
+          "msgid": "Sports",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:16"
+          },
+          "msgstr": [
+            "Sportarten"
+          ]
+        },
+        "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members": {
+          "msgid": "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members",
+          "comments": {
+            "reference": "./src/filtering/components/FilterInfo.jsx:8"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Street": {
+          "msgid": "Street",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:65"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Audit log": {
+          "msgid": "Audit log",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:17"
+          },
+          "msgstr": [
+            "Audit Log"
+          ]
+        },
+        "Age groups": {
+          "msgid": "Age groups",
+          "comments": {
+            "reference": "./src/member-stats/components/AgeDistributionChart.jsx:18"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Female:": {
+          "msgid": "Female:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:50"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Zip Code": {
+          "msgid": "Zip Code",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:67"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Sign in": {
+          "msgid": "Sign in",
+          "comments": {
+            "reference": "./src/auth/components/SignInButton.jsx:10\n./src/auth/components/SignInForm.jsx:28"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Membership": {
+          "msgid": "Membership",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:43"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Other:": {
+          "msgid": "Other:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:52"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Female": {
+          "msgid": "Female",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:14\n./src/member/components/MemberForm.jsx:83"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "First Name": {
+          "msgid": "First Name",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:44\n./src/member/components/MemberForm.jsx:43\n./src/member/components/MemberForm.jsx:47"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Filter": {
+          "msgid": "Filter",
+          "comments": {
+            "reference": "./src/filtering/components/FilterToggle.jsx:21"
+          },
+          "msgstr": [
+            "Filter"
+          ]
+        },
+        "Password": {
+          "msgid": "Password",
+          "comments": {
+            "reference": "./src/auth/components/SignInForm.jsx:21"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Gender distribution": {
+          "msgid": "Gender distribution",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:12"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Club admin": {
+          "msgid": "Club admin",
+          "comments": {
+            "reference": "./src/auth/components/SignInView.jsx:13"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "{{ count }} members": {
+          "msgid": "{{ count }} members",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:26"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Applications": {
+          "msgid": "Applications",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:21\n./src/member-applications/components/ApplicationsView.jsx:13"
+          },
+          "msgstr": [
+            "Anträge"
+          ]
+        },
+        "Guardians": {
+          "msgid": "Guardians",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:42"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Last": {
+          "msgid": "Last",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:44"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Test": {
+          "msgid": "Test",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:35\n./src/member/components/MemberForm.jsx:36\n./src/member/components/MemberForm.jsx:37"
+          },
+          "msgid_plural": "Tests",
+          "msgstr": [
+            "",
+            ""
+          ]
+        },
+        "undefined": {
+          "msgid": "undefined",
+          "comments": {
+            "reference": "./src/i18n/lib/i18n-hoc-helpers.js:11"
+          },
+          "msgstr": [
+            "nicht definiert"
+          ]
+        },
+        "Search by name, adress, birthday, team etc.": {
+          "msgid": "Search by name, adress, birthday, team etc.",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:16"
+          },
+          "msgstr": [
+            "Suche nach Namen, Adresse, Geburtsdatum, Team, etc."
+          ]
+        }
+      }
+    }
+  },
+  "sv": {
+    "charset": "utf-8",
+    "headers": {
+      "project-id-version": "club-admin",
+      "pot-creation-date": "Fri Apr 22 2016 12:01:59 GMT+0200 (CEST)",
+      "po-revision-date": "2016-04-22 10:02+0000",
+      "last-translator": "Alexander Wallin <alexander.wallin@laget.se>",
+      "language-team": "Swedish (http://www.transifex.com/lagetse/club-admin/language/sv/)",
+      "content-type": "text/plain; charset=UTF-8",
+      "content-transfer-encoding": "8bit",
+      "language": "sv",
+      "plural-forms": "nplurals=2; plural=(n != 1);"
+    },
+    "translations": {
+      "": {
+        "": {
+          "msgid": "",
+          "comments": {
+            "translator": "\nTranslators:\nAlexander Wallin <alexander.wallin@laget.se>, 2016"
+          },
+          "msgstr": [
+            "Project-Id-Version: club-admin\nPOT-Creation-Date: Fri Apr 22 2016 12:01:59 GMT+0200 (CEST)\nPO-Revision-Date: 2016-04-22 10:02+0000\nLast-Translator: Alexander Wallin <alexander.wallin@laget.se>\nLanguage-Team: Swedish (http://www.transifex.com/lagetse/club-admin/language/sv/)\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nLanguage: sv\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+          ]
+        },
+        "Close": {
+          "msgid": "Close",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:29"
+          },
+          "msgstr": [
+            "Stäng"
+          ]
+        },
+        "Birth years": {
+          "msgid": "Birth years",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:24"
+          },
+          "msgstr": [
+            "Födelseår"
+          ]
+        },
+        "Email": {
+          "msgid": "Email",
+          "comments": {
+            "reference": "./src/auth/components/SignInForm.jsx:17\n./src/member-applications/components/ApplicationItem.jsx:12\n./src/member-directory/components/MembersTable.jsx:40\n./src/member/components/MemberForm.jsx:74\n./src/member/components/MemberInfo.jsx:56\n./src/member/components/MemberForm.jsx:73"
+          },
+          "msgstr": [
+            "E-post"
+          ]
+        },
+        "Medical information": {
+          "msgid": "Medical information",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:92\n./src/member/components/MemberInfo.jsx:58\n./src/member/components/MemberForm.jsx:91"
+          },
+          "msgstr": [
+            "Medicinsk info"
+          ]
+        },
+        "Date of birth": {
+          "msgid": "Date of birth",
+          "comments": {
+            "reference": "./src/member-applications/components/ApplicationItem.jsx:17\n./src/member/components/MemberForm.jsx:51\n./src/member/components/MemberInfo.jsx:52\n./src/member/components/MemberForm.jsx:50"
+          },
+          "msgstr": [
+            "Födelsedatum"
+          ]
+        },
+        "Listing": {
+          "msgid": "Listing",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:16"
+          },
+          "msgstr": [
+            "Listning"
+          ]
+        },
+        "Male:": {
+          "msgid": "Male:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:51"
+          },
+          "msgstr": [
+            "Män:"
+          ]
+        },
+        "Other": {
+          "msgid": "Other",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:18\n./src/member/components/MemberForm.jsx:85"
+          },
+          "msgstr": [
+            "Övriga"
+          ]
+        },
+        "Gender": {
+          "msgid": "Gender",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:39\n./src/member/components/MemberForm.jsx:80\n./src/member/components/MemberInfo.jsx:57\n./src/member/components/MemberForm.jsx:79"
+          },
+          "msgstr": [
+            "Kön"
+          ]
+        },
+        "Roles": {
+          "msgid": "Roles",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:20"
+          },
+          "msgstr": [
+            "Roller"
+          ]
+        },
+        "Payments": {
+          "msgid": "Payments",
+          "comments": {
+            "reference": "./src/components/views/PaymentsView.jsx:12\n./src/navigation/components/Navigation.jsx:32"
+          },
+          "msgstr": [
+            "Betalningar"
+          ]
+        },
+        "Teams": {
+          "msgid": "Teams",
+          "comments": {
+            "reference": "./src/components/views/TeamsView.jsx:11\n./src/filtering/components/FilterBox.jsx:18\n./src/member-directory/components/MembersTable.jsx:41\n./src/member/components/MemberInfo.jsx:78\n./src/navigation/components/Navigation.jsx:38"
+          },
+          "msgstr": [
+            "Lag"
+          ]
+        },
+        "{{ count }} teams": {
+          "msgid": "{{ count }} teams",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:33"
+          },
+          "msgstr": [
+            "{{ count }} lag"
+          ]
+        },
+        "Save changes": {
+          "msgid": "Save changes",
+          "comments": {
+            "reference": "./src/member/components/EditMemberForm.jsx:40"
+          },
+          "msgstr": [
+            "Spara ändringar"
+          ]
+        },
+        "Genders": {
+          "msgid": "Genders",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:22"
+          },
+          "msgstr": [
+            "Kön"
+          ]
+        },
+        "Created": {
+          "msgid": "Created",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:39"
+          },
+          "msgstr": [
+            "Tillagd"
+          ]
+        },
+        "Last updated": {
+          "msgid": "Last updated",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:44"
+          },
+          "msgstr": [
+            "Senast ändrad"
+          ]
+        },
+        "City": {
+          "msgid": "City",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:69"
+          },
+          "msgstr": [
+            "Postort"
+          ]
+        },
+        "Club": {
+          "msgid": "Club",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:15"
+          },
+          "msgstr": [
+            "Klubb"
+          ]
+        },
+        "Edit": {
+          "msgid": "Edit",
+          "comments": {
+            "reference": "./src/member/components/Member.jsx:17"
+          },
+          "msgstr": [
+            "Ändra"
+          ]
+        },
+        "Male": {
+          "msgid": "Male",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:16\n./src/member/components/MemberForm.jsx:84"
+          },
+          "msgstr": [
+            "Man"
+          ]
+        },
+        "Name": {
+          "msgid": "Name",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:37\n./src/member/components/MemberForm.jsx:43\n./src/member/components/MemberForm.jsx:42\n./src/member/components/MemberForm.jsx:46"
+          },
+          "msgstr": [
+            "Namn"
+          ]
+        },
+        "XXXX": {
+          "msgid": "XXXX",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:56"
+          },
+          "msgstr": [
+            "XXXX"
+          ]
+        },
+        "YYYY": {
+          "msgid": "YYYY",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:52"
+          },
+          "msgstr": [
+            "ÅÅÅÅ"
+          ]
+        },
+        "Cancel": {
+          "msgid": "Cancel",
+          "comments": {
+            "reference": "./src/member/components/Member.jsx:16\n./src/member/components/MemberForm.jsx:102\n./src/member/components/MemberForm.jsx:101"
+          },
+          "msgstr": [
+            "Avbryt"
+          ]
+        },
+        "Clear Filters": {
+          "msgid": "Clear Filters",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:28"
+          },
+          "msgstr": [
+            "Rensa filter"
+          ]
+        },
+        "DD": {
+          "msgid": "DD",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:54"
+          },
+          "msgstr": [
+            "DD"
+          ]
+        },
+        "MM": {
+          "msgid": "MM",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:53"
+          },
+          "msgstr": [
+            "MM"
+          ]
+        },
+        "No": {
+          "msgid": "No",
+          "comments": {
+            "reference": "./src/member/components/MembershipStatus.jsx:30"
+          },
+          "msgstr": [
+            "Nej"
+          ]
+        },
+        "email@example.com": {
+          "msgid": "email@example.com",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:75"
+          },
+          "msgstr": [
+            "epost@example.com"
+          ]
+        },
+        "Duplicates": {
+          "msgid": "Duplicates",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:27\n./src/member-duplicates/components/DuplicatesView.jsx:16"
+          },
+          "msgstr": [
+            "Dubletter"
+          ]
+        },
+        "Sign out": {
+          "msgid": "Sign out",
+          "comments": {
+            "reference": "./src/auth/components/SignOutButton.jsx:13"
+          },
+          "msgstr": [
+            "Logga ut"
+          ]
+        },
+        "Last  Name": {
+          "msgid": "Last  Name",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:46"
+          },
+          "msgstr": [
+            "Efternamn"
+          ]
+        },
+        "History": {
+          "msgid": "History",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:79"
+          },
+          "msgstr": [
+            "Historik"
+          ]
+        },
+        "Add member": {
+          "msgid": "Add member",
+          "comments": {
+            "reference": "./src/member-directory/components/MemberDirectory.jsx:25\n./src/member/components/AddMemberForm.jsx:38"
+          },
+          "msgstr": [
+            "Lägg till medlem"
+          ]
+        },
+        "Address": {
+          "msgid": "Address",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:44\n./src/member/components/MemberForm.jsx:64\n./src/member/components/MemberInfo.jsx:55\n./src/member/components/MemberForm.jsx:63"
+          },
+          "msgstr": [
+            "Adress"
+          ]
+        },
+        "Showing {{ count }} applications": {
+          "msgid": "Showing {{ count }} applications",
+          "comments": {
+            "reference": "./src/member-applications/components/ApplicationsListing.jsx:16"
+          },
+          "msgstr": [
+            "Visar {{ count }} ansökningar"
+          ]
+        },
+        "My Teamlr": {
+          "msgid": "My Teamlr",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:14"
+          },
+          "msgstr": [
+            "Mitt laget.se"
+          ]
+        },
+        "Settings": {
+          "msgid": "Settings",
+          "comments": {
+            "reference": "./src/components/views/SettingsView.jsx:11\n./src/navigation/components/Navigation.jsx:44"
+          },
+          "msgstr": [
+            "Inställningar"
+          ]
+        },
+        "{{ current }} of {{ total }}": {
+          "msgid": "{{ current }} of {{ total }}",
+          "comments": {
+            "reference": "./src/pagination/components/PageInfo.jsx:8"
+          },
+          "msgstr": [
+            "{{ current }} av {{ total }}"
+          ]
+        },
+        "Search by name, address, birthday, team etc.": {
+          "msgid": "Search by name, address, birthday, team etc.",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:16"
+          },
+          "msgstr": [
+            "Sök på namn, adress, födelsedatum, lag etc."
+          ]
+        },
+        "Showing {{ count }} members with possible duplicates": {
+          "msgid": "Showing {{ count }} members with possible duplicates",
+          "comments": {
+            "reference": "./src/member-duplicates/components/DuplicatesSummary.jsx:9"
+          },
+          "msgstr": [
+            "Visar {{ count }} möjliga medlemsdubletter"
+          ]
+        },
+        "Search": {
+          "msgid": "Search",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:23"
+          },
+          "msgstr": [
+            "Sök"
+          ]
+        },
+        "Members": {
+          "msgid": "Members",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:23\n./src/navigation/components/Navigation.jsx:27"
+          },
+          "msgstr": [
+            "Medlemmar"
+          ]
+        },
+        "Birthdate": {
+          "msgid": "Birthdate",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:38"
+          },
+          "msgstr": [
+            "Födelsedatum"
+          ]
+        },
+        "Homepage": {
+          "msgid": "Homepage",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:16"
+          },
+          "msgstr": [
+            "Hemsida"
+          ]
+        },
+        "Reports": {
+          "msgid": "Reports",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:31\n./src/member-stats/components/MemberStatsView.jsx:15"
+          },
+          "msgstr": [
+            "Rapporter"
+          ]
+        },
+        "Sports": {
+          "msgid": "Sports",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:16"
+          },
+          "msgstr": [
+            "Sporter"
+          ]
+        },
+        "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members": {
+          "msgid": "Matching {{ < }}{{ numFiltered }} of {{ numTotal }}{{ > }} members",
+          "comments": {
+            "reference": "./src/filtering/components/FilterInfo.jsx:8"
+          },
+          "msgstr": [
+            "Matchar {{ < }}{{ numFiltered }} av {{ numTotal }}{{ > }} medlemmar"
+          ]
+        },
+        "Street": {
+          "msgid": "Street",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:65"
+          },
+          "msgstr": [
+            "Adress"
+          ]
+        },
+        "Audit log": {
+          "msgid": "Audit log",
+          "comments": {
+            "reference": "./src/navigation/components/GlobalNavigation.jsx:17"
+          },
+          "msgstr": [
+            "Granskningslogg"
+          ]
+        },
+        "Age groups": {
+          "msgid": "Age groups",
+          "comments": {
+            "reference": "./src/member-stats/components/AgeDistributionChart.jsx:18"
+          },
+          "msgstr": [
+            "Åldersgrupper"
+          ]
+        },
+        "Female:": {
+          "msgid": "Female:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:50"
+          },
+          "msgstr": [
+            "Kvinnor:"
+          ]
+        },
+        "Zip Code": {
+          "msgid": "Zip Code",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:67"
+          },
+          "msgstr": [
+            "Postnummer"
+          ]
+        },
+        "Sign in": {
+          "msgid": "Sign in",
+          "comments": {
+            "reference": "./src/auth/components/SignInButton.jsx:10\n./src/auth/components/SignInForm.jsx:28"
+          },
+          "msgstr": [
+            "Logga in"
+          ]
+        },
+        "Membership": {
+          "msgid": "Membership",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:43"
+          },
+          "msgstr": [
+            "Medlemskap"
+          ]
+        },
+        "Other:": {
+          "msgid": "Other:",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:52"
+          },
+          "msgstr": [
+            "Övriga:"
+          ]
+        },
+        "Female": {
+          "msgid": "Female",
+          "comments": {
+            "reference": "./src/components/GenderLabel.jsx:14\n./src/member/components/MemberForm.jsx:83"
+          },
+          "msgstr": [
+            "Kvinna"
+          ]
+        },
+        "First Name": {
+          "msgid": "First Name",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:44\n./src/member/components/MemberForm.jsx:43\n./src/member/components/MemberForm.jsx:47"
+          },
+          "msgstr": [
+            "Förnamn"
+          ]
+        },
+        "Filter": {
+          "msgid": "Filter",
+          "comments": {
+            "reference": "./src/filtering/components/FilterToggle.jsx:21"
+          },
+          "msgstr": [
+            "Filtrera"
+          ]
+        },
+        "Password": {
+          "msgid": "Password",
+          "comments": {
+            "reference": "./src/auth/components/SignInForm.jsx:21"
+          },
+          "msgstr": [
+            "Lösenord"
+          ]
+        },
+        "Gender distribution": {
+          "msgid": "Gender distribution",
+          "comments": {
+            "reference": "./src/member-stats/components/GenderDistributionChart.jsx:12"
+          },
+          "msgstr": [
+            "Könsfördelning"
+          ]
+        },
+        "Club admin": {
+          "msgid": "Club admin",
+          "comments": {
+            "reference": "./src/auth/components/SignInView.jsx:13"
+          },
+          "msgstr": [
+            "Klubbadmin"
+          ]
+        },
+        "{{ count }} members": {
+          "msgid": "{{ count }} members",
+          "comments": {
+            "reference": "./src/member-stats/components/MembersSummaryChart.jsx:26"
+          },
+          "msgstr": [
+            "{{ count }} medlemmar"
+          ]
+        },
+        "Applications": {
+          "msgid": "Applications",
+          "comments": {
+            "reference": "./src/components/views/MembersNavigation.jsx:21\n./src/member-applications/components/ApplicationsView.jsx:13"
+          },
+          "msgstr": [
+            "Ansökningar"
+          ]
+        },
+        "Guardians": {
+          "msgid": "Guardians",
+          "comments": {
+            "reference": "./src/member-directory/components/MembersTable.jsx:42"
+          },
+          "msgstr": [
+            "Förmyndare"
+          ]
+        },
+        "Last": {
+          "msgid": "Last",
+          "comments": {
+            "reference": "./src/member/components/MemberInfo.jsx:44"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Test": {
+          "msgid": "Test",
+          "comments": {
+            "reference": "./src/member/components/MemberForm.jsx:35\n./src/member/components/MemberForm.jsx:36\n./src/member/components/MemberForm.jsx:37"
+          },
+          "msgid_plural": "Tests",
+          "msgstr": [
+            "Test",
+            "Tester"
+          ]
+        },
+        "undefined": {
+          "msgid": "undefined",
+          "comments": {
+            "reference": "./src/i18n/lib/i18n-hoc-helpers.js:11"
+          },
+          "msgstr": [
+            ""
+          ]
+        },
+        "Search by name, adress, birthday, team etc.": {
+          "msgid": "Search by name, adress, birthday, team etc.",
+          "comments": {
+            "reference": "./src/member-directory/components/Search.jsx:16"
+          },
+          "msgstr": [
+            "Sök på namn, adress, födelsedatum, lag etc."
+          ]
+        }
+      }
+    }
+  }
+}
