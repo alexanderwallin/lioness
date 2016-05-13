@@ -1,3 +1,8 @@
 {
-  "extend": "lagetse"
+  "parser": "babel-eslint",
+  "extends": "lagetse",
+  "plugins": ["class-property"],
+  "rules": {
+    "no-undef": [2, { "ignoreVars": "(describe|it)"}]
+  }
 }
