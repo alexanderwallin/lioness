@@ -46,6 +46,7 @@
   "dependencies": {
     "interpolate": "^0.1.0",
     "lodash.curry": "^4.0.1",
-    "node-gettext": "^1.1.0"
+    "node-gettext": "^1.1.0",
+    "recompose": "^0.18.0"
   }
 }

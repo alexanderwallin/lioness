@@ -1,22 +1,16 @@
 import React from 'react';
+import { getContext } from 'recompose';
 
 import * as contextTypes from './contextTypes';
 
 /**
  * Provides translation context to a component
  */
-export const withLocalization = Component => {
-  return {
-    ...Component,
-    contextTypes: {
-      ...Component.contextTypes,
-      ...contextTypes,
-    },
-  };
-};
+export const withLocalization = Component =>
+  getContext(contextTypes)(Component);
 
 /*
-const MyComponent = ({ numItems }, { tn }) =>
+const MyComponent = ({ numItems, tn }) =>
   <div className="MyComponent">
     {tn('One item {{ link }}', '{{ count }} items {{ link }}', numItems, {
       count: numItems,

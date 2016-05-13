@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { LionessProvider, T } from '../../src/index.js';
+import { LionessProvider, T, withLocalization } from '../../src/index.js';
 
 const messages = {
   "en": {
@@ -78,10 +78,16 @@ const messages = {
   }
 };
 
+let MyThing = ({ t, message }) =>
+  <p>{t(message)}</p>;
+
+MyThing = withLocalization(MyThing);
+
 const App = () =>
   <LionessProvider locale="sv" messages={messages}>
     <div className="App">
-      <T message="Close" />
+      <T message="Close {{ var }}" var="now" />
+      <MyThing message="Close" />
     </div>
   </LionessProvider>;
 
