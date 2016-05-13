@@ -91,8 +91,8 @@ export const t = curry((translate, message, scope = {}) => {
   return interpolateComponents(translate(message), scope);
 });
 
-export const tn = curry((translate, one, other, scope = {}) => {
-  return interpolateComponents(translate(one, other), scope);
+export const tn = curry((translate, one, other, count, scope = {}) => {
+  return interpolateComponents(translate(one, other, count), scope);
 });
 
 export const tp = curry((translate, context, message, scope = {}) => {
