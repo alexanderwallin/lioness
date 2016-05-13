@@ -78,15 +78,23 @@ const messages = {
   }
 };
 
+//
 let MyThing = ({ t, message }) =>
   <p>{t(message)}</p>;
 
 MyThing = withLocalization(MyThing);
 
+// A clickable number
+const ClickableNumber = () =>
+  <em onClick={() => console.log('click')}>131</em>;
+
+/**
+ * Example app
+ */
 const App = () =>
-  <LionessProvider locale="sv" messages={messages}>
+  <LionessProvider locale="en" messages={messages}>
     <div className="App">
-      <T message="Close {{ var }}" var="now" />
+      <T message="Clap {{ num }} times" num={<ClickableNumber />} />
       <MyThing message="Close" />
     </div>
   </LionessProvider>;
