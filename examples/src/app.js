@@ -106,6 +106,7 @@ const App = () =>
   <LionessProvider locale="sv" messages={messages}>
     <div className="App">
       <T message="Clap {{ num }} times" num={<ClickableNumber />} />
+      <p><T>Hello</T></p>
       <MyThing message="Close" />
       <Diff num={2} />
       <Diff num={1} />
