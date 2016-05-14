@@ -103,12 +103,12 @@ const ClickableNumber = () =>
  * Example app
  */
 const App = () =>
-  <LionessProvider locale="en" messages={messages}>
+  <LionessProvider locale="sv" messages={messages}>
     <div className="App">
       <T message="Clap {{ num }} times" num={<ClickableNumber />} />
       <MyThing message="Close" />
-      <Diff num={1} />
       <Diff num={2} />
+      <Diff num={1} />
     </div>
   </LionessProvider>;
 
