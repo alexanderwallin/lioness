@@ -12,6 +12,8 @@ import curry from 'lodash.curry';
 
 */
 
+const variableRegex = /\{\{\s[a-zA-Z0-9,.-;:_\s]+\s\}\}/g;
+
 const splitStr = (index, str) =>
   [str.substring(0, index), str.substr(index)];
 
@@ -39,25 +41,35 @@ const chopStr = (chops, str) => {
   });
   parts.push(str.substr(lastChopIndex));
 
-  return parts;
+  return parts.filter(x => x);
 };
 
 /**
  * Returns an array of regex matches on a strings
  */
-const getMatches = (regex, str) => {
+const getMatches = (regExpr, str) => {
   let arr;
   const matches = [];
 
-  while ((arr = regex.exec(str)) !== null) {
+  while ((arr = regExpr.exec(str)) !== null) {
     matches.push(arr[0]);
   }
 
   return matches;
 }
 
-const variableRegex = /\{\{ \w+ \}\}/g;
+/**
+ * Returns whether a string is a template variable
+ */
+const isTemplateVariable = str =>
+  variableRegex.test(str);
 
+/**
+ * Interpolates a string, replacing template variables with values
+ * provided in the scope.
+ *
+ * Besides replacing variables with
+ */
 export const interpolateComponents = (str, scope = {}) => {
 
   // ['{{ author }}']
@@ -70,18 +82,36 @@ export const interpolateComponents = (str, scope = {}) => {
   // ['Check the', '{{ author }}', 'for more articles']
   const parts = chopStr(variableMatches, str);
 
-  console.log({ str, scope, variableMatches, parts });
-
   return (
     <span>
-      {parts.map((key, i) => {
-        const scopeKey = key.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '');
+      {parts.map((part, i) => {
+        const key = `${part}_${i}`;
 
-        if (Object.keys(scope).indexOf(scopeKey) !== -1) {
-          return React.createElement('span', { key: scopeKey, }, scope[scopeKey]);
+        // Not a template variable, return simple <span> with a string
+        if (isTemplateVariable(part) === false) {
+          return React.createElement('span', { key }, parts[i]);
         }
 
-        return React.createElement('span', { key }, parts[i]);
+        let keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '');
+        let [scopeKey, scopeChildren] = keyName.split(':');
+
+        // No matching scope replacement, return raw string
+        if (!scope[scopeKey]) {
+          return React.createElement('span', { key }, parts[i]);
+        }
+
+        const replacement = scope[scopeKey];
+
+        if (scopeChildren) {
+          if (typeof replacement === 'string') {
+            return React.createElement('span', { key }, replacement);
+          }
+          else {
+            return React.cloneElement(replacement, { key }, scopeChildren);
+          }
+        }
+
+        return React.createElement('span', { key }, replacement);
       })}
     </span>
   );

@@ -87,8 +87,10 @@ MyThing = withLocalization(MyThing);
 // Singular/plural
 const Diff = withLocalization(({ tn, num }) => (
   <div>
-    {tn('One thing', '{{ num }} things', num, {
-      num: <strong>{num}</strong>,
+    {tn('{{ one:One }} thing ({{ link:Add more }})', '{{ count }} things', num, {
+      one: <em />,
+      count: <strong>{num}</strong>,
+      link: <a href="#add-more" />,
     })}
   </div>
 ));
