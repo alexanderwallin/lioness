@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { LionessProvider, T, withLocalization } from '../../src/index.js';
+import { LionessProvider, T, withTranslators } from '../../src/index.js';
 
 const messages = {
   "en": {
@@ -82,10 +82,10 @@ const messages = {
 let MyThing = ({ t, message }) =>
   <p>{t(message)}</p>;
 
-MyThing = withLocalization(MyThing);
+MyThing = withTranslators(MyThing);
 
 // Singular/plural
-const Diff = withLocalization(({ tn, num }) => (
+const Diff = withTranslators(({ tn, num }) => (
   <div>
     {tn('{{ one:One }} thing ({{ link:Add more }})', '{{ count }} things', num, {
       one: <em />,

@@ -4,31 +4,8 @@ import { getContext } from 'recompose';
 import * as contextTypes from './contextTypes';
 
 /**
- * Provides translation context to a component
+ * Provides the given component with translator functions
+ * as props.
  */
-export const withLocalization = Component =>
+export const withTranslators = Component =>
   getContext(contextTypes)(Component);
-
-/*
-const MyComponent = ({ numItems, tn }) =>
-  <div className="MyComponent">
-    {tn('One item {{ link }}', '{{ count }} items {{ link }}', numItems, {
-      count: numItems,
-      link: <Link to="/items">Check them</Link>,
-    })}
-  </div>;
-
-  <div className="MyComponent">
-    {tn(
-      '[link to:"/items"]One item[/link]',
-      '[link to:"/items"]{{ numItems }} items[/link]',
-      numItems,
-      {
-        numItems,
-        link: Link,
-      },
-    )}
-  </div>
-
-export default withLocalization(MyComponent);
- */
