@@ -19,6 +19,8 @@ Makes your gettext life in the React world a breeze.
 
 ### Examples
 
+The magical `t`/`tn`/`tp`/`tpn` props in the following examples comes from [`withTranslators()`](#composers).
+
 #### 1. Translates messages with singular, plural and context parameters
 
 ```js
