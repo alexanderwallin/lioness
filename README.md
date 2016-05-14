@@ -5,11 +5,14 @@ Makes your gettext life in the React world a breeze.
 ### Table of contents
 
 * [Features](#features)
+* [Examples](#examples)
+* [Installation](#installation)
+* [API](#api)
 
 ### Features
 
 1. Translates messages with singular, plural and context parameters
-2. Handles template variables, populated using equally named props
+2. Supports template variables
 3. Supports React components as template variable values
 4. Provides a component template variable syntax for controlling component elements and its translated inner content separately
 5. Localization context provider (`LionessProvider`) plus compose helper (`withTranslators()`) for hooking up a component with the translation functions
@@ -39,7 +42,7 @@ const CartSummary = ({ numItems, tpn }) =>
   <span>{tpn('cart', 'One item', 'Multiple items', numItems)}</span>;
 ```
 
-#### 2. Handles template variables, populated using equally named props
+#### 2. Supports template variables
 
 ```js
 // Inserting the count into a pluralized translation
@@ -105,7 +108,75 @@ let Thing = ({ t }) =>
   <span>{t('Translate me')}</span>;
   
 // Provide translators to Thing
-Thing = withTranslators(Things);
+Thing = withTranslators(Thing);
 
 export default Things;
+```
+
+### Installation
+
+```sh
+npm i -S lioness-react
+```
+
+### API
+
+#### Translation functions
+
+```js
+t(message, scope = {})
+
+tn(one, other, count, scope = {})
+
+tp(context, message, scope = {})
+
+tpn(context, one, other, count, scope = {})
+```
+
+##### `scope` variables
+
+Anything expressed with `... {{ varName }} ...` in a string can be populated from corresponding key/value pairs in the `scope` object, for example:
+
+```js
+t('Song: {{ song }}', { song: 'Christina Aguilera - Beautiful' });
+```
+
+##### React elements as template variable values
+
+You can insert any React element as value for an template variable.
+
+```js
+t('Song: {{ songLink }}', {
+  songLink: <a href="...">Christina Aguilera - Beautiful</a>
+});
+```
+
+##### React elements with translated inner content as template variable values
+
+Inserting React elements into template string is good an all, but sometimes you need to translate the contents of the element itself. This is what the **component template syntax** is for:
+
+```js
+{{ scopeKey:Element child contents }}
+```
+
+This is implemented like:
+
+```js
+t('Go ahead and {{ songLink:listen now }}', {
+  songLink: <a href={songurl} />
+});
+```
+
+where `"listen now"` will be inserted into the `<a>` element.
+
+
+
+#### Composers
+
+```js
+/**
+ * Provides the given component with all translator functions
+ * as props
+ */
+withTranslators(Component);
 ```
