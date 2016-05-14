@@ -1,3 +1,3 @@
-# lioness-react
+![docs/lioness-react.png](lioness-react)
 
-Awesome gettext React components
+Makes your gettext life in the React world a breeze.
