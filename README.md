@@ -2,6 +2,14 @@
 
 Makes your gettext life in the React world a breeze.
 
+The purpose of `lioness-react` is to provide your React application with gettext localization that:
+
+* uses actual messages as keys, i.e. `t("Welcome!")` instead of `t(messages.home.welcome)`;
+* makes it easy to insert React elements into translated strings; and
+* is easy to implement.
+
+As of now, `lioness-react` utilises `node-gettext` for translations, which makes it a great fit inside the [`narp` workflow](https://github.com/laget-se/narp)]. This might/should be modularized in the future. 
+
 ### Table of contents
 
 * [Features](#features)
@@ -170,8 +178,6 @@ t('Go ahead and {{ songLink:listen now }}', {
 ```
 
 where `"listen now"` will be inserted into the `<a>` element.
-
-
 
 #### Composers
 
