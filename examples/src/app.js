@@ -97,7 +97,7 @@ const Diff = withTranslators(({ tn, num }) => (
 
 // A clickable number
 const ClickableNumber = () =>
-  <em onClick={() => console.log('click')}>131</em>;
+  <em onClick={() => alert('click')} style={{ cursor: 'pointer' }}>131</em>;
 
 /**
  * Example app
@@ -105,11 +105,34 @@ const ClickableNumber = () =>
 const App = () =>
   <LionessProvider locale="sv" messages={messages}>
     <div className="App">
+      <pre>{'<T message="Clap {{ num }} times" num={<ClickableNumber />} />'}</pre>
       <T message="Clap {{ num }} times" num={<ClickableNumber />} />
+
+      <hr />
+      <pre>{'<p><T>Hello</T></p>'}</pre>
       <p><T>Hello</T></p>
+
+      <hr />
+      <pre>{'<MyThing message="Close" />'}</pre>
       <MyThing message="Close" />
-      <Diff num={2} />
+
+      <hr />
+      <pre>{`const Diff = withTranslators(({ tn, num }) => (
+  <div>
+    {tn('{{ one:One }} thing ({{ link:Add more }})', '{{ count }} things', num, {
+      one: <em />,
+      count: <strong>{num}</strong>,
+      link: <a href="#add-more" />,
+    })}
+  </div>
+));
+
+/* ... */
+
+<Diff num={1} />
+<Diff num={2} />`}</pre>
       <Diff num={1} />
+      <Diff num={2} />
     </div>
   </LionessProvider>;
 
