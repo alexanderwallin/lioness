@@ -14,50 +14,6 @@ import curry from 'lodash.curry';
 
 const variableRegex = /\{\{\s[a-zA-Z0-9,.-;:_\s]+\s\}\}/g;
 
-const splitStr = (index, str) =>
-  [str.substring(0, index), str.substr(index)];
-
-/**
- * const str = 'Check the {{ author }} for more articles';
- * const chops = ['{{ author }}'];
- *
- * chopStr(chops, str);
- * // -> ['Check the ', '{{ author }}', ' for more articles']
- */
-const chopStr = (chops, str) => {
-  const indices = chops.reduce((aggr, x) => {
-    const i = str.indexOf(x);
-    return i >= 0
-      ? aggr.concat([i, i + x.length])
-      : aggr;
-  }, []);
-
-  const parts = [];
-  let lastChopIndex = 0;
-  indices.forEach(i => {
-    const part = str.substring(lastChopIndex, i);
-    parts.push(part);
-    lastChopIndex = i;
-  });
-  parts.push(str.substr(lastChopIndex));
-
-  return parts.filter(x => x);
-};
-
-/**
- * Returns an array of regex matches on a strings
- */
-const getMatches = (regExpr, str) => {
-  let arr;
-  const matches = [];
-
-  while ((arr = regExpr.exec(str)) !== null) {
-    matches.push(arr[0]);
-  }
-
-  return matches;
-}
-
 /**
  * Returns whether a string is a template variable
  */
@@ -71,16 +27,13 @@ const isTemplateVariable = str =>
  * Besides replacing variables with
  */
 export const interpolateComponents = (str, scope = {}) => {
-
-  // ['{{ author }}']
-  const variableMatches = getMatches(variableRegex, str);
-
-  if (!variableMatches) {
+  if (!str) {
     return str;
   }
 
-  // ['Check the', '{{ author }}', 'for more articles']
-  const parts = chopStr(variableMatches, str);
+  // Split string into array with regular text and variables split
+  // into separate segments, like ['This is a ', '{{ thing }}', '!']
+  const parts = str.split(variableRegex).filter(x => x);
 
   return (
     <span>
