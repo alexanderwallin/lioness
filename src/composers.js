@@ -1,4 +1,3 @@
-import React from 'react'
 import { getContext } from 'recompose'
 
 import * as contextTypes from './contextTypes'

@@ -5,9 +5,9 @@ import Gettext from 'node-gettext'
 export const getGettextInstance = (messages, locale) => {
   const gt = new Gettext()
 
-  for (const lang in messages) {
+  Object.keys(messages).forEach(lang => {
     gt.addTranslations(lang, 'messages', messages[lang])
-  }
+  })
 
   gt.setLocale(locale)
 
