@@ -1,10 +1,25 @@
-import React, { Component, PropTypes } from 'react'
-import { withProps } from 'recompose'
+import { PropTypes } from 'react'
 
 import { withTranslators } from '../composers.js'
-import * as contextTypes from '../contextTypes.js'
 
 const T = ({ message, messagePlural, context, count, children, tpn, ...scope }) =>
   tpn(context, message || children.toString(), messagePlural, count, { ...scope, count })
+
+T.propTypes = {
+  message: PropTypes.string,
+  messagePlural: PropTypes.string,
+  context: PropTypes.string,
+  count: PropTypes.number,
+  children: PropTypes.node,
+  tpn: PropTypes.func.isRequired,
+}
+
+T.defaultProps = {
+  message: null,
+  messagePlural: null,
+  context: '',
+  count: 1,
+  children: null,
+}
 
 export default withTranslators(T)
