@@ -11,7 +11,7 @@ import curry from 'lodash.curry'
 
 */
 
-const variableRegex = /(\{\{\s[a-zA-Z0-9,.-;:_\s]+\s\}\})/g
+const variableRegex = /(\{\{\s.+?(?=\s\}\})\s\}\})/g
 
 /**
  * Returns whether a string is a template variable
