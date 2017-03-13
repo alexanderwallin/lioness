@@ -1,6 +1,6 @@
 {
   "name": "lioness",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Makes your gettext life in the React world a breeze",
   "main": "dist/index.js",
   "files": [
