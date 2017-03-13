@@ -1,20 +1,20 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import { getGettextInstance } from '../gettext';
-import * as contextTypes from '../contextTypes';
-import { t, tn, tp, tpn } from '../translators';
+import { getGettextInstance } from '../gettext'
+import * as contextTypes from '../contextTypes'
+import { t, tn, tp, tpn } from '../translators'
 
 // Prop types
 const propTypes = {
   messages: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   children: PropTypes.node,
-};
+}
 
 // Child context types
 const childContextTypes = {
   ...contextTypes,
-};
+}
 
 /**
  * Localization context provider
@@ -22,9 +22,9 @@ const childContextTypes = {
 class LionessProvider extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.gt = getGettextInstance(props.messages, props.locale);
+    this.gt = getGettextInstance(props.messages, props.locale)
   }
 
   /**
@@ -38,22 +38,22 @@ class LionessProvider extends Component {
       tn: tn(this.gt.ngettext.bind(this.gt)),
       tp: tp(this.gt.pgettext.bind(this.gt)),
       tpn: tpn(this.gt.npgettext.bind(this.gt)),
-    };
+    }
   }
 
   /**
    * Set the locale when receiving new props
    */
   componentWillReceiveProps(nextProps) {
-    this.gt.setLocale(nextProps.locale);
+    this.gt.setLocale(nextProps.locale)
   }
 
   render() {
-    return React.Children.only(this.props.children);
+    return React.Children.only(this.props.children)
   }
 }
 
-LionessProvider.propTypes = propTypes;
-LionessProvider.childContextTypes = childContextTypes;
+LionessProvider.propTypes = propTypes
+LionessProvider.childContextTypes = childContextTypes
 
-export default LionessProvider;
+export default LionessProvider
