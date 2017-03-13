@@ -1,5 +1,4 @@
 import React from 'react'
-import interpolate from 'interpolate'
 import curry from 'lodash.curry'
 
 /*

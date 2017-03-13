@@ -45,7 +45,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "interpolate": "^0.1.0",
     "lodash.curry": "^4.0.1",
     "node-gettext": "^2.0.0-rc.1",
     "recompose": "^0.18.0"
