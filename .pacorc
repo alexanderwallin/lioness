@@ -9,7 +9,7 @@
     "message": "Updates to version %s"
   },
   "release": {
-    "push": false,
-    "pushTags": false
+    "push": true,
+    "pushTags": true
   }
 }
