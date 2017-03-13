@@ -33,6 +33,7 @@ class LionessProvider extends Component {
    */
   getChildContext() {
     return {
+      locale: this.props.locale,
       t: t(this.gt.gettext.bind(this.gt)),
       tn: tn(this.gt.ngettext.bind(this.gt)),
       tp: tp(this.gt.pgettext.bind(this.gt)),
@@ -44,7 +45,7 @@ class LionessProvider extends Component {
    * Set the locale when receiving new props
    */
   componentWillReceiveProps(nextProps) {
-    this.gt.textdomain(nextProps.locale);
+    this.gt.setLocale(nextProps.locale);
   }
 
   render() {

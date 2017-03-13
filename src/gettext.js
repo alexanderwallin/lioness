@@ -6,10 +6,10 @@ export const getGettextInstance = (messages, locale) => {
   const gt = new Gettext();
 
   for (const lang in messages) {
-    gt.addTextdomain(lang, messages[lang]);
+    gt.addTranslations(lang, 'messages', messages[lang]);
   }
 
-  gt.textdomain(locale);
+  gt.setLocale(locale);
 
   return gt;
 };
