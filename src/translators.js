@@ -45,7 +45,7 @@ export const interpolateComponents = (str, scope = {}) => {
         }
 
         let keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
-        let [scopeKey, scopeChildren] = keyName.split(':')
+        let [scopeKey, scopeChildren] = keyName.split(':', 1)
 
         // No matching scope replacement, return raw string
         if (!scope[scopeKey]) {
