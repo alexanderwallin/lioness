@@ -1,4 +1,4 @@
-![lioness](docs/lioness.png)
+![lioness](docs/lioness-react.png)
 
 Makes your gettext life in the React world a breeze.
 
