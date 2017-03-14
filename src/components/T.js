@@ -2,8 +2,16 @@ import { PropTypes } from 'react'
 
 import { withTranslators } from '../composers.js'
 
-const T = ({ message, messagePlural, context, count, children, tpn, ...scope }) =>
-  tpn(context, message || children.toString(), messagePlural, count, { ...scope, count })
+function ensureReactElement(toBeRendered) {
+  return typeof toBeRendered === 'string'
+    ? <span>{toBeRendered}</span>
+    : toBeRendered
+}
+
+const T = ({ message, messagePlural, context, count, children, tpn, ...scope }) => {
+  const translatedContent = tpn(context, message || children.toString(), messagePlural, count, { ...scope, count })
+  return ensureReactElement(translatedContent)
+}
 
 T.propTypes = {
   message: PropTypes.string,
