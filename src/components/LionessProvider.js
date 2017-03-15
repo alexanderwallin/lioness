@@ -14,7 +14,7 @@ class LionessProvider extends Component {
   static propTypes = {
     messages: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
-    children: PropTypes.node,
+    children: PropTypes.node.isRequired,
   }
 
   // Child context types
