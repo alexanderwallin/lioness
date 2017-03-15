@@ -1,6 +1,6 @@
 import { PropTypes } from 'react'
 
-import { withTranslators } from '../composers.js'
+import withTranslators from '../withTranslators.js'
 
 function ensureReactElement(toBeRendered) {
   return typeof toBeRendered === 'string'
