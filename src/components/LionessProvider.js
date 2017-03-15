@@ -5,22 +5,22 @@ import * as contextTypes from '../contextTypes.js'
 import { t, tn, tp, tpn, tc, tcn, tcp, tcpn } from '../translators.js'
 import interpolateComponents from '../interpolateComponents.js'
 
-// Prop types
-const propTypes = {
-  messages: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
-  children: PropTypes.node,
-}
-
-// Child context types
-const childContextTypes = {
-  ...contextTypes,
-}
-
 /**
  * Localization context provider
  */
 class LionessProvider extends Component {
+
+  // Prop types
+  static propTypes = {
+    messages: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
+    children: PropTypes.node,
+  }
+
+  // Child context types
+  static childContextTypes = {
+    ...contextTypes,
+  }
 
   constructor(props) {
     super(props)
@@ -57,8 +57,5 @@ class LionessProvider extends Component {
     return React.Children.only(this.props.children)
   }
 }
-
-LionessProvider.propTypes = propTypes
-LionessProvider.childContextTypes = childContextTypes
 
 export default LionessProvider
