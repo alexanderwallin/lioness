@@ -1,6 +1,6 @@
 import { getContext } from 'recompose'
 
-import * as contextTypes from './contextTypes'
+import * as contextTypes from './contextTypes.js'
 
 /**
  * Provides the given component with translator functions

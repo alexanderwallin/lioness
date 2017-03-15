@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 
-import { getGettextInstance } from '../gettext'
-import * as contextTypes from '../contextTypes'
-import { t, tn, tp, tpn, tc, tcn, tcp, tcpn } from '../translators'
+import { getGettextInstance } from '../gettext.js'
+import * as contextTypes from '../contextTypes.js'
+import { t, tn, tp, tpn, tc, tcn, tcp, tcpn } from '../translators.js'
 import interpolateComponents from '../interpolateComponents.js'
 
 // Prop types
