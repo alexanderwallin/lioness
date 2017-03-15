@@ -8,8 +8,16 @@ function ensureReactElement(toBeRendered) {
     : toBeRendered
 }
 
-const T = ({ message, messagePlural, context, count, children, tpn, ...scope }) => {
-  const translatedContent = tpn(context, message || children.toString(), messagePlural, count, { ...scope, count })
+const T = ({ message, messagePlural, context, count, children, tcpn, ...scope }) => {
+  delete scope.t
+  delete scope.tp
+  delete scope.tn
+  delete scope.tpn
+  delete scope.tc
+  delete scope.tcp
+  delete scope.tcn
+
+  const translatedContent = tcpn(context, message || children.toString(), messagePlural, count, { ...scope, count })
   return ensureReactElement(translatedContent)
 }
 
@@ -19,7 +27,7 @@ T.propTypes = {
   context: PropTypes.string,
   count: PropTypes.number,
   children: PropTypes.node,
-  tpn: PropTypes.func.isRequired,
+  tcpn: PropTypes.func.isRequired,
 }
 
 T.defaultProps = {

@@ -3,7 +3,7 @@
 import { expect } from 'chai'
 import { spy, stub } from 'sinon'
 
-import { t, tp, tn, tpn } from '../src/translators.js'
+import { t, tp, tn, tpn, tc, tcp, tcn, tcpn } from '../src/translators.js'
 
 describe('translators', () => {
   let interpolate
@@ -17,48 +17,56 @@ describe('translators', () => {
 
   describe('t()', () => {
     it('translates the message using the provided translate function', () => {
-      t(interpolate, translate, 'wow')
+      t(translate, 'wow')
       expect(translate.calledWithMatch('wow')).to.equal(true)
     })
+  })
 
+  describe('tc()', () => {
     it('interpolates the translated string with the provided scope', () => {
-      t(interpolate, translate, 'wow', scope)
+      tc(interpolate, translate, 'wow', scope)
       expect(interpolate.calledWithMatch('groundhog day', scope)).to.equal(true)
     })
   })
 
   describe('tn()', () => {
     it('translates the message using the provided translate function', () => {
-      tn(interpolate, translate, 'wow', 'wows', 12)
+      tn(translate, 'wow', 'wows', 12)
       expect(translate.calledWithMatch('wow', 'wows', 12)).to.equal(true)
     })
+  })
 
+  describe('tcn()', () => {
     it('interpolates the translated string with the provided scope', () => {
-      tn(interpolate, translate, 'wow', 'wows', 12, scope)
+      tcn(interpolate, translate, 'wow', 'wows', 12, scope)
       expect(interpolate.calledWithMatch('groundhog day', scope)).to.equal(true)
     })
   })
 
   describe('tp()', () => {
     it('translates the message using the provided translate function', () => {
-      tp(interpolate, translate, 'context', 'wow')
+      tp(translate, 'context', 'wow')
       expect(translate.calledWithMatch('context', 'wow')).to.equal(true)
     })
+  })
 
+  describe('tcp()', () => {
     it('interpolates the translated string with the provided scope', () => {
-      tp(interpolate, translate, 'context', 'wow', scope)
+      tcp(interpolate, translate, 'context', 'wow', scope)
       expect(interpolate.calledWithMatch('groundhog day', scope)).to.equal(true)
     })
   })
 
   describe('tpn()', () => {
     it('translates the message using the provided translate function', () => {
-      tpn(interpolate, translate, 'context', 'wow', 'wows', 1)
+      tpn(translate, 'context', 'wow', 'wows', 1)
       expect(translate.calledWithMatch('context', 'wow', 'wows', 1)).to.equal(true)
     })
+  })
 
+  describe('tcpn()', () => {
     it('interpolates the translated string with the provided scope', () => {
-      tpn(interpolate, translate, 'context', 'wow', 'wows', 1, scope)
+      tcpn(interpolate, translate, 'context', 'wow', 'wows', 1, scope)
       expect(interpolate.calledWithMatch('groundhog day', scope)).to.equal(true)
     })
   })

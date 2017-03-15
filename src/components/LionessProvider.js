@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import { getGettextInstance } from '../gettext'
 import * as contextTypes from '../contextTypes'
-import { t, tn, tp, tpn } from '../translators'
+import { t, tn, tp, tpn, tc, tcn, tcp, tcpn } from '../translators'
 import interpolateComponents from '../interpolateComponents.js'
 
 // Prop types
@@ -35,10 +35,14 @@ class LionessProvider extends Component {
   getChildContext() {
     return {
       locale: this.props.locale,
-      t: t(interpolateComponents, this.gt.gettext.bind(this.gt)),
-      tn: tn(interpolateComponents, this.gt.ngettext.bind(this.gt)),
-      tp: tp(interpolateComponents, this.gt.pgettext.bind(this.gt)),
-      tpn: tpn(interpolateComponents, this.gt.npgettext.bind(this.gt)),
+      t: t(this.gt.gettext.bind(this.gt)),
+      tn: tn(this.gt.ngettext.bind(this.gt)),
+      tp: tp(this.gt.pgettext.bind(this.gt)),
+      tpn: tpn(this.gt.npgettext.bind(this.gt)),
+      tc: tc(interpolateComponents, this.gt.gettext.bind(this.gt)),
+      tcn: tcn(interpolateComponents, this.gt.ngettext.bind(this.gt)),
+      tcp: tcp(interpolateComponents, this.gt.pgettext.bind(this.gt)),
+      tcpn: tcpn(interpolateComponents, this.gt.npgettext.bind(this.gt)),
     }
   }
 
