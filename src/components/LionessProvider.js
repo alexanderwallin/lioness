@@ -50,7 +50,9 @@ class LionessProvider extends Component {
    * Set the locale when receiving new props
    */
   componentWillReceiveProps(nextProps) {
-    this.gt.setLocale(nextProps.locale)
+    if (nextProps.locale !== this.props.locale) {
+      this.gt.setLocale(nextProps.locale)
+    }
   }
 
   render() {
