@@ -36,6 +36,11 @@ export function interpolateComponents(str, scope = {}) {
   // into separate segments, like ['This is a ', '{{ thing }}', '!']
   const parts = str.split(new RegExp(variableRegex)).filter(x => x)
 
+  // If the only thing we have is a single regular string, just return it as is
+  if (parts.length === 1 && isTemplateVariable(parts[0]) === false) {
+    return str
+  }
+
   const interpolatedParts = parts.map((part, i) => {
     const key = `${part}_${i}`
 

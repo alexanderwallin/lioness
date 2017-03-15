@@ -6,9 +6,9 @@ import { expect } from 'chai'
 import { interpolateComponents, isTemplateVariable } from '../src/interpolateComponents.js'
 
 describe('interpolateComponents()', () => {
-  it('returns a single element with the input string as is if it has no variables', () => {
+  it('returns the input string as is if it does not contain any variables', () => {
     const elem = interpolateComponents('wow')
-    expect(elem.props.children).to.equal('wow')
+    expect(elem).to.equal('wow')
   })
 
   it('returns a single element if the input string is only a variable', () => {
