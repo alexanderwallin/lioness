@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "lint": "eslint src",
-    "test": "mocha --compilers js:babel-core/register tests/helpers/browser.js tests/**/*.js",
+    "test": "mocha --compilers js:babel-core/register tests/helpers/browser.js tests/{.,components}/*.js",
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist src",
     "example": "cd examples && webpack-dev-server --port 8111"
@@ -54,6 +54,7 @@
   "dependencies": {
     "lodash.curry": "^4.0.1",
     "node-gettext": "^2.0.0-rc.1",
+    "react-proptype-conditional-require": "^1.0.4",
     "recompose": "^0.18.0"
   }
 }

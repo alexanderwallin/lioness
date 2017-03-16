@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import isRequiredIf from 'react-proptype-conditional-require'
 
 import withTranslators from '../withTranslators.js'
 
@@ -17,25 +18,35 @@ const T = ({ message, messagePlural, context, count, children, tcpn, ...scope })
   delete scope.tcp
   delete scope.tcn
 
-  const translatedContent = tcpn(context, message || children.toString(), messagePlural, count, { ...scope, count })
+  const msgid = message || children || ''
+
+  const translatedContent = tcpn(context, msgid, messagePlural, count, { ...scope, count })
   return ensureReactElement(translatedContent)
 }
 
+const messagePropType = (otherPropName) => {
+  return isRequiredIf(
+    PropTypes.string,
+    (props) => !props[otherPropName],
+    `T requires either a message prop or a child node in the form of a pure string`
+  )
+}
+
 T.propTypes = {
-  message: PropTypes.string,
+  message: messagePropType('children'),
+  children: messagePropType('messages'),
   messagePlural: PropTypes.string,
   context: PropTypes.string,
   count: PropTypes.number,
-  children: PropTypes.node,
   tcpn: PropTypes.func.isRequired,
 }
 
 T.defaultProps = {
   message: null,
+  children: null,
   messagePlural: null,
   context: '',
   count: 1,
-  children: null,
 }
 
 export default withTranslators(T)
