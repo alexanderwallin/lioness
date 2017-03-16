@@ -1,5 +1,9 @@
 ![lioness](docs/lioness-react.png)
 
+# lioness
+
+[![Build Status](https://travis-ci.org/alexanderwallin/lioness.svg?branch=master)](https://travis-ci.org/alexanderwallin/lioness)
+
 Makes your gettext life in the React world a breeze.
 
 The purpose of `lioness` is to provide your React application with gettext localization that:
