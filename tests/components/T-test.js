@@ -5,7 +5,7 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { shallow, mount } from 'enzyme'
-import { spy, stub } from 'sinon'
+// import { spy, stub } from 'sinon'
 
 import LionessProvider from '../../src/components/LionessProvider.js'
 import T from '../../src/components/T.js'
@@ -43,7 +43,7 @@ describe('<T />', () => {
     const app = mount(
       <LionessProvider messages={MESSAGES} locale={'en'}>
         <div>
-          <T message="wow" />
+          <T message="wow" tcpn={identity} />
         </div>
       </LionessProvider>
     )
