@@ -116,17 +116,17 @@ export default withTranslators(PotatoNotification)
 ```
 
 
-### API
+## API
 
 Working on it! ⚒
 
 
-### Contributing
+## Contributing
 
 All PRs that passes the tests are very much appreciated! 🎂
 
 
-### See also
+## See also
 
 * [node-gettext](https://github.com/alexanderwallin/node-gettext) - A JavaScript implementation of Gettext.
 * [gettext-parser](https://github.com/smhg/gettext-parser) – A parser between JSON and .po/.mo files. The JSON has the format required by this library.
