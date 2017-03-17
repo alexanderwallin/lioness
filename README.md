@@ -1,6 +1,7 @@
 <h1 align="center">
   <img src="docs/lioness-logo-2.png" />
   <br />
+  <br />
   Lioness
   <br />
   <img src="https://badge.fury.io/js/lioness.svg" alt="npm version" class="badge"> <img src="https://travis-ci.org/alexanderwallin/lioness.svg?branch=master" />
