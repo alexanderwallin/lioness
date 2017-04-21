@@ -43,7 +43,7 @@ describe('<T />', () => {
     const app = mount(
       <LionessProvider messages={MESSAGES} locale={'en'}>
         <div>
-          <T message="wow" tcpn={identity} />
+          <T message="wow" />
         </div>
       </LionessProvider>
     )

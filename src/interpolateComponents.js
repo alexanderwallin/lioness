@@ -53,16 +53,19 @@ export function interpolateComponents(str, scope = {}) {
     let [scopeKey, scopeChildren] = keyName.split(/:(.+)/)
 
     // No matching scope replacement, return raw string
-    if (!scope[scopeKey]) {
+    if (scope[scopeKey] === undefined) {
       return React.createElement('span', { key }, parts[i])
     }
 
     const replacement = scope[scopeKey]
 
-    if (typeof replacement === 'string') {
-      return React.createElement('span', { key }, replacement)
+    // If the interpolated scope variable is not a React element, render
+    // it as a string inside a <span>
+    if (React.isValidElement(replacement) === false) {
+      return React.createElement('span', { key }, String(replacement))
     }
 
+    // Clone React elements right off
     return React.cloneElement(replacement, { key }, scopeChildren || null)
   })
 
