@@ -38,32 +38,29 @@ const MESSAGES = {
   },
 }
 
+function App({ children }) {
+  return (
+    <LionessProvider messages={MESSAGES} locale={'en'}>
+      <div>
+        {children}
+      </div>
+    </LionessProvider>
+  )
+}
+
 describe('<T />', () => {
   it('receives locale and translators via context', () => {
-    const app = mount(
-      <LionessProvider messages={MESSAGES} locale={'en'}>
-        <div>
-          <T message="wow" />
-        </div>
-      </LionessProvider>
-    )
-    const t = app.find(T)
-    expect(t.node.context).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
+    const app = mount(<App><T message="wow" /></App>)
+    expect(app.find(T).node.context).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
   })
 
   it('accepts children as input message', () => {
-    const t = shallow(<T tcpn={identity}>wow</T>)
-    expect(t.props().children).to.equal('wow')
+    const app = shallow(<App><T>wow</T></App>)
+    expect(app.find(T).props().children).to.equal('wow')
   })
 
   it('proritises the message prop before children', () => {
-    const app = mount(
-      <LionessProvider messages={MESSAGES} locale={'en'}>
-        <div>
-          <T message="i am prop" tcpn={identity}>i am child</T>
-        </div>
-      </LionessProvider>
-    )
+    const app = mount(<App><T message="i am prop">i am child</T></App>)
     expect(app.find(T).text()).to.equal('i am prop')
   })
 
