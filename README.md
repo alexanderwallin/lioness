@@ -11,6 +11,15 @@
 
 It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as translations tool, but this ought to be modularized in the future.
 
+```js
+<T
+  message="You have {{ numMessages }} messages. Read them {{ link:here }}."
+  numMessage={13}
+  link={<a href="/inbox" />}
+/>
+// -> Du har 13 meddelanden. Läs dem <a href="/inbox">här<a/>.
+```
+
 
 ## Table of contents
 
