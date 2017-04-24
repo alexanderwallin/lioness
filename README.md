@@ -13,11 +13,14 @@ It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as
 
 ```js
 <T
-  message="You have {{ numMessages }} messages. Read them {{ link:here }}."
-  numMessage={13}
-  link={<a href="/inbox" />}
+  message="You have one thingy, {{ itemLink:check it out }}"
+  messagePlural="You have {{ count }} thingies, {{ listLink:check them out }}"
+  count={items.length}
+  itemLink={<a href={`/thingies/${items[0].id}`} />}
+  listLink={<a href="/thingies" />}
 />
-// -> Du har 13 meddelanden. Läs dem <a href="/inbox">här<a/>.
+// items.length === 1 => Du har en grej, <a href="/thingies/281">kolla in den här<a/>.
+// items.length === 7 => Du har 7 grejer, <a href="/thingies">kolla in dem här<a/>.
 ```
 
 
