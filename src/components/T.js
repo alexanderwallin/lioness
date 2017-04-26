@@ -17,6 +17,7 @@ class T extends Component {
     children: messagePropType('messages'),
     messagePlural: PropTypes.string,
     context: PropTypes.string,
+    textDomain: PropTypes.string,
     count: PropTypes.number,
     tcpn: PropTypes.func.isRequired,
   }
@@ -26,23 +27,32 @@ class T extends Component {
     children: null,
     messagePlural: null,
     context: '',
+    textDomain: '',
     count: 1,
   }
 
   render() {
-    const { message, messagePlural, context, count, children, tcpn, ...scope } = this.props
+    const { message, messagePlural, context, textDomain, count, children, tcdnp, ...scope } = this.props
 
     delete scope.t
-    delete scope.tp
     delete scope.tn
+    delete scope.tp
+    delete scope.td
     delete scope.tpn
+    delete scope.tdp
+    delete scope.tdn
+    delete scope.tdnp
     delete scope.tc
-    delete scope.tcp
     delete scope.tcn
+    delete scope.tcp
+    delete scope.tcd
+    delete scope.tcpn
+    delete scope.tcdp
+    delete scope.tcdn
 
     const msgid = message || children || ''
 
-    const translatedContent = tcpn(context, msgid, messagePlural, count, { ...scope, count })
+    const translatedContent = tcdnp(textDomain, context, msgid, messagePlural, count, { ...scope, count })
 
     return typeof translatedContent === 'string'
       ? <span>{translatedContent}</span>

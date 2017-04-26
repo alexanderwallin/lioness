@@ -38,6 +38,29 @@ const MESSAGES = {
   },
 }
 
+const CODES = {
+  'en': {
+    'translations': {
+      '': {
+        'HI_THERE': {
+          'msgid': 'HI_THERE',
+          'msgstr': 'HI_THERE',
+        },
+      },
+    },
+  },
+  'sv-SE': {
+    'translations': {
+      '': {
+        'HI_THERE': {
+          'msgid': 'HI_THERE',
+          'msgstr': 'HALLÅ_DÄR',
+        },
+      },
+    },
+  },
+}
+
 function App({ children }) {
   return (
     <LionessProvider messages={MESSAGES} locale={'en'}>
@@ -49,9 +72,11 @@ function App({ children }) {
 }
 
 describe('<T />', () => {
-  it('receives locale and translators via context', () => {
+  it('receives locale, textDomain and translators via context', () => {
     const app = mount(<App><T message="wow" /></App>)
-    expect(app.find(T).node.context).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
+    expect(app.find(T).node.context).to.contain.all.keys(
+      ['locale', 'textDomain', 't', 'tn', 'tp', 'td', 'tpn', 'tdn', 'tdp', 'tdnp', 'tc', 'tcn', 'tcp', 'tcd', 'tcpn', 'tcdp', 'tcdn', 'tcdnp']
+    )
   })
 
   it('accepts children as input message', () => {
@@ -73,13 +98,13 @@ describe('<T />', () => {
   //   console.error.restore()
   // })
 
-  // NOTE: withTranslations(Component) overrides the tcpn passed as a prop here,
+  // NOTE: withTranslations(Component) overrides the tcdnp passed as a prop here,
   //       so how we test this?
-  it('gets translations from tcpn')
-  // it('gets translations from tcpn', () => {
-  //   const tcpn = spy()
-  //   mount(<T tcpn={tcpn} content="web" message="one" messagePlural="many" count={3} />)
-  //   expect(tcpn.args[0]).to.equal(['web', 'one', 'many', 3])
+  it('gets translations from tcdnp')
+  // it('gets translations from tcdnp', () => {
+  //   const tcdnp = spy()
+  //   mount(<T tcdnp={tcdnp} textDomain="messages" context="web" message="one" messagePlural="many" count={3} />)
+  //   expect(tcdnp.args[0]).to.equal(['messages', 'web', 'one', 'many', 3])
   // })
 
   // Same problem here as the above...

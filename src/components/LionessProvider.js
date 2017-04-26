@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import getGettextInstance from '../getGettextInstance.js'
 import * as contextTypes from '../contextTypes.js'
-import { t, tn, tp, tpn, tc, tcn, tcp, tcpn } from '../translators.js'
+import { t, tn, tp, td, tpn, tdn, tdp, tdnp, tc, tcn, tcp, tcd, tcpn, tcdp, tcdn, tcdnp } from '../translators.js'
 import interpolateComponents from '../interpolateComponents.js'
 
 /**
@@ -14,7 +14,12 @@ class LionessProvider extends Component {
   static propTypes = {
     messages: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
+    textDomain: PropTypes.string,
     children: PropTypes.node.isRequired,
+  }
+
+  static defaultProps = {
+    textDomain: 'messages',
   }
 
   // Child context types
@@ -35,14 +40,23 @@ class LionessProvider extends Component {
   getChildContext() {
     return {
       locale: this.props.locale,
+      textDomain: this.props.textDomain,
       t: t(this.gt.gettext.bind(this.gt)),
       tn: tn(this.gt.ngettext.bind(this.gt)),
       tp: tp(this.gt.pgettext.bind(this.gt)),
+      td: td(this.gt.dgettext.bind(this.gt)),
       tpn: tpn(this.gt.npgettext.bind(this.gt)),
+      tdp: tdp(this.gt.dpgettext.bind(this.gt)),
+      tdn: tdn(this.gt.dngettext.bind(this.gt)),
+      tdnp: tdnp(this.gt.dnpgettext.bind(this.gt)),
       tc: tc(interpolateComponents, this.gt.gettext.bind(this.gt)),
       tcn: tcn(interpolateComponents, this.gt.ngettext.bind(this.gt)),
       tcp: tcp(interpolateComponents, this.gt.pgettext.bind(this.gt)),
+      tcd: tcd(interpolateComponents, this.gt.dgettext.bind(this.gt)),
       tcpn: tcpn(interpolateComponents, this.gt.npgettext.bind(this.gt)),
+      tcdp: tcdp(interpolateComponents, this.gt.dpgettext.bind(this.gt)),
+      tcdn: tcdn(interpolateComponents, this.gt.dngettext.bind(this.gt)),
+      tcdnp: tcdnp(interpolateComponents, this.gt.dnpgettext.bind(this.gt)),
     }
   }
 
@@ -52,6 +66,10 @@ class LionessProvider extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.locale !== this.props.locale) {
       this.gt.setLocale(nextProps.locale)
+    }
+
+    if (nextProps.textDomain !== this.props.textDomain) {
+      this.gt.setTextDomain(nextProps.textDomain)
     }
   }
 
