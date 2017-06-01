@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import isRequiredIf from 'react-proptype-conditional-require'
 
 import withTranslators from '../withTranslators.js'
