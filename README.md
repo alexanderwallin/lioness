@@ -128,6 +128,40 @@ function PotatoNotification({ notificationCode, t }) {
 export default withTranslators(PotatoNotification)
 ```
 
+## Via [`babel-plugin-react-gettext-parser`](http://github.com/alexanderwallin/babel-plugin-react-gettext-parser)
+
+```js
+// .babelrc
+{
+  ...
+  "plugins": [
+    ["react-gettext-parser", {
+      "output": "gettext.pot",
+      "funcArgumentsMap": {
+        "tc": ["msgid", null],
+        "tcn": ["msgid", "msgid_plural", null, null],
+        "tcp": ["msgctxt", "msgid", null],
+        "tcpn": ["msgctxt", "msgid", "msgid_plural", null, null],
+
+        "t": ["msgid"],
+        "tn": ["msgid", "msgid_plural", null],
+        "tp": ["msgctxt", "msgid"],
+        "tpn": ["msgctxt", "msgid", "msgid_plural", null]
+      },
+      "componentPropsMap": {
+        "T": {
+          "message": "msgid",
+          "messagePlural": "msgid_plural",
+          "context": "msgctxt",
+          "comment": "comment"
+        }
+      }
+    }]
+  ]
+  ...
+}
+```
+
 
 ## API
 
