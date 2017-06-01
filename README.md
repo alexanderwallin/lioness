@@ -165,7 +165,39 @@ export default withTranslators(PotatoNotification)
 
 ## API
 
-Working on it! ⚒
+### t(message)
+
+Translate a message
+
+### tn(one, other, count)
+
+Translate a plural message
+
+### tp(context, message)
+
+Translate a message and context
+
+### tnp(context, one, other, count)
+
+Translate a plural message with context and variable interpolate
+
+
+### tc(message, scope = {})
+
+Translate a message with variable interpolate
+
+### tcn(one, other, count, scope)
+
+Translate a plural message with variable interpolate
+
+### tcp(context, message, scope)
+
+Translate a message with context and variable interpolate
+
+### tcnp(context, one, other, count, scope)
+
+Translate a plural message with context and variable interpolate
+
 
 
 ## Contributing
