@@ -51,7 +51,7 @@ function App({ children }) {
 describe('<T />', () => {
   it('receives locale and translators via context', () => {
     const app = mount(<App><T message="wow" /></App>)
-    expect(app.find(T).node.context).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
+    expect(app.find(T).node.context).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
   })
 
   it('accepts children as input message', () => {
@@ -68,18 +68,18 @@ describe('<T />', () => {
   it('throws an error when neither message nor string-only children are provided')
   // it('throws an error when neither message nor string-only children are provided', () => {
   //   const consoleError = stub(console, 'error')
-  //   const t = <T tcpn={identity} />
+  //   const t = <T tcnp={identity} />
   //   expect(consoleError.calledOnce).to.equal(true)
   //   console.error.restore()
   // })
 
-  // NOTE: withTranslations(Component) overrides the tcpn passed as a prop here,
+  // NOTE: withTranslations(Component) overrides the tcnp passed as a prop here,
   //       so how we test this?
-  it('gets translations from tcpn')
-  // it('gets translations from tcpn', () => {
-  //   const tcpn = spy()
-  //   mount(<T tcpn={tcpn} content="web" message="one" messagePlural="many" count={3} />)
-  //   expect(tcpn.args[0]).to.equal(['web', 'one', 'many', 3])
+  it('gets translations from tcnp')
+  // it('gets translations from tcnp', () => {
+  //   const tcnp = spy()
+  //   mount(<T tcnp={tcnp} content="web" message="one" messagePlural="many" count={3} />)
+  //   expect(tcnp.args[0]).to.equal(['web', 'one', 'many', 3])
   // })
 
   // Same problem here as the above...

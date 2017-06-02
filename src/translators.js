@@ -12,7 +12,7 @@ export const tcp = curry((interpolate, translate, context, message, scope = {}) 
   return interpolate(translate(context, message), scope)
 })
 
-export const tcpn = curry((interpolate, translate, context, one, other, count, scope = {}) => {
+export const tcnp = curry((interpolate, translate, context, one, other, count, scope = {}) => {
   return interpolate(translate(context, one, other, count), scope)
 })
 
@@ -21,4 +21,4 @@ const identity = x => x
 export const t = tc(identity)
 export const tn = tcn(identity)
 export const tp = tcp(identity)
-export const tpn = tcpn(identity)
+export const tnp = tcnp(identity)

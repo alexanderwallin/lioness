@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import getGettextInstance from '../getGettextInstance.js'
 import * as contextTypes from '../contextTypes.js'
-import { t, tn, tp, tpn, tc, tcn, tcp, tcpn } from '../translators.js'
+import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
 import interpolateComponents from '../interpolateComponents.js'
 
 /**
@@ -39,11 +39,11 @@ class LionessProvider extends Component {
       t: t(this.gt.gettext.bind(this.gt)),
       tn: tn(this.gt.ngettext.bind(this.gt)),
       tp: tp(this.gt.pgettext.bind(this.gt)),
-      tpn: tpn(this.gt.npgettext.bind(this.gt)),
+      tnp: tnp(this.gt.npgettext.bind(this.gt)),
       tc: tc(interpolateComponents, this.gt.gettext.bind(this.gt)),
       tcn: tcn(interpolateComponents, this.gt.ngettext.bind(this.gt)),
       tcp: tcp(interpolateComponents, this.gt.pgettext.bind(this.gt)),
-      tcpn: tcpn(interpolateComponents, this.gt.npgettext.bind(this.gt)),
+      tcnp: tcnp(interpolateComponents, this.gt.npgettext.bind(this.gt)),
     }
   }
 

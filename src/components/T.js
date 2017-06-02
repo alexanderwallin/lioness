@@ -19,7 +19,7 @@ class T extends Component {
     messagePlural: PropTypes.string,
     context: PropTypes.string,
     count: PropTypes.number,
-    tcpn: PropTypes.func.isRequired,
+    tcnp: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -31,19 +31,19 @@ class T extends Component {
   }
 
   render() {
-    const { message, messagePlural, context, count, children, tcpn, ...scope } = this.props
+    const { message, messagePlural, context, count, children, tcnp, ...scope } = this.props
 
     delete scope.t
     delete scope.tp
     delete scope.tn
-    delete scope.tpn
+    delete scope.tnp
     delete scope.tc
     delete scope.tcp
     delete scope.tcn
 
     const msgid = message || children || ''
 
-    const translatedContent = tcpn(context, msgid, messagePlural, count, { ...scope, count })
+    const translatedContent = tcnp(context, msgid, messagePlural, count, { ...scope, count })
 
     return typeof translatedContent === 'string'
       ? <span>{translatedContent}</span>
