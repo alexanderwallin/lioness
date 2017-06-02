@@ -22,4 +22,11 @@ describe('withTranslators()', () => {
     )
     expect(app.find('span').props()['0']).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
   })
+
+  it('sets displayName', () => {
+    const MyComponent = (...props) => <span {...props} />
+    MyComponent.displayName = 'MyComponent'
+
+    expect(withTranslators(MyComponent).displayName).to.equal('withTranslators(MyComponent)')
+  })
 })
