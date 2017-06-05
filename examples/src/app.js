@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { LionessProvider, T, withTranslators } from '../../src/index.js';
+import { LionessProvider, T, withTranslators } from '../../dist/index.js';
 
 const messages = {
   "en": {

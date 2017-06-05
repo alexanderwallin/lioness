@@ -12,11 +12,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-          plugins: ['transform-object-rest-spread']
-        }
+        loader: 'babel'
       },
       {
         test: /\.json$/,
@@ -27,5 +23,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
+  },
+  resolveLoader: {
+    root: path.resolve(__dirname, 'node_modules')
   }
 };
