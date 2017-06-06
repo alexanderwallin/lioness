@@ -20,7 +20,7 @@ describe('withTranslators()', () => {
         </div>
       </LionessProvider>
     )
-    expect(app.find('span').props()['0']).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
+    expect(app.find('span').props()['0']).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
   })
 
   it('sets displayName', () => {

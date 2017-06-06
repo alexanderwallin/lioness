@@ -3,7 +3,7 @@
 import { expect } from 'chai'
 import { spy, stub } from 'sinon'
 
-import { t, tp, tn, tpn, tc, tcp, tcn, tcpn } from '../src/translators.js'
+import { t, tp, tn, tnp, tc, tcp, tcn, tcnp } from '../src/translators.js'
 
 describe('translators', () => {
   let interpolate
@@ -57,16 +57,16 @@ describe('translators', () => {
     })
   })
 
-  describe('tpn()', () => {
+  describe('tnp()', () => {
     it('translates the message using the provided translate function', () => {
-      tpn(translate, 'context', 'wow', 'wows', 1)
+      tnp(translate, 'context', 'wow', 'wows', 1)
       expect(translate.calledWithMatch('context', 'wow', 'wows', 1)).to.equal(true)
     })
   })
 
-  describe('tcpn()', () => {
+  describe('tcnp()', () => {
     it('interpolates the translated string with the provided scope', () => {
-      tcpn(interpolate, translate, 'context', 'wow', 'wows', 1, scope)
+      tcnp(interpolate, translate, 'context', 'wow', 'wows', 1, scope)
       expect(interpolate.calledWithMatch('groundhog day', scope)).to.equal(true)
     })
   })

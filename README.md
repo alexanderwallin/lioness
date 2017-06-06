@@ -107,7 +107,7 @@ ReactDOM.render(
 
 Sometimes, you will need to just translate and interpolate pure strings, without rendering components. To do this you can hook up your components with translator functions using the `withTranslators(Component)` composer function.
 
-`withTranslators(Component)` will provide any component you feed it with a set of translator functions as props. Those props are: `t`, `tn`, `tp`, `tpn`, `tc`, `tcn`, `tcp` and `tcpn`.
+`withTranslators(Component)` will provide any component you feed it with a set of translator functions as props. Those props are: `t`, `tn`, `tp`, `tnp`, `tc`, `tcn`, `tcp` and `tcnp`.
 
 ```js
 import { withTranslators } from 'lioness'

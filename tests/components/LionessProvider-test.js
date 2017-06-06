@@ -67,6 +67,6 @@ describe('<LionessProvider />', () => {
 
   it('provides all translators through its child context', () => {
     const consumer = provider.find(ContextConsumer)
-    expect(consumer.node.context).to.contain.all.keys(['t', 'tn', 'tp', 'tpn', 'tc', 'tcn', 'tcp', 'tcpn'])
+    expect(consumer.node.context).to.contain.all.keys(['t', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
   })
 })
