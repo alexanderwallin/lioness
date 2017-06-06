@@ -141,12 +141,12 @@ export default withTranslators(PotatoNotification)
         "tc": ["msgid", null],
         "tcn": ["msgid", "msgid_plural", null, null],
         "tcp": ["msgctxt", "msgid", null],
-        "tcpn": ["msgctxt", "msgid", "msgid_plural", null, null],
+        "tcnp": ["msgctxt", "msgid", "msgid_plural", null, null],
 
         "t": ["msgid"],
         "tn": ["msgid", "msgid_plural", null],
         "tp": ["msgctxt", "msgid"],
-        "tpn": ["msgctxt", "msgid", "msgid_plural", null]
+        "tnp": ["msgctxt", "msgid", "msgid_plural", null]
       },
       "componentPropsMap": {
         "T": {
