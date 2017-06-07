@@ -1,6 +1,9 @@
 {
   "parser": "babel-eslint",
-  "extends": "alexander",
+  "extends": [
+    "alexander",
+    "plugin:react/recommended"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
