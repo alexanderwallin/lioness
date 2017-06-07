@@ -6,5 +6,8 @@
       "jsx": true
     }
   },
+  "rules": {
+    "max-params": "off"
+  },
   "plugins": ["react", "class-property"]
 }
