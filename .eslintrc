@@ -1,8 +1,16 @@
 {
   "parser": "babel-eslint",
-  "extends": "alexander",
-  "ecmaFeatures": {
-    "jsx": true
+  "extends": [
+    "alexander",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "max-params": "off"
   },
   "plugins": ["react", "class-property"]
 }
