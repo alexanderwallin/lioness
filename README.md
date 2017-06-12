@@ -179,7 +179,7 @@ Translate a message and context
 
 ### tnp(context, one, other, count)
 
-Translate a plural message with context and variable interpolate
+Translate a plural message with context
 
 
 ### tc(message, scope = {})
