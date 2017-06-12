@@ -128,7 +128,7 @@ function PotatoNotification({ notificationCode, t }) {
 export default withTranslators(PotatoNotification)
 ```
 
-## Via [`babel-plugin-react-gettext-parser`](http://github.com/alexanderwallin/babel-plugin-react-gettext-parser)
+### Via [`babel-plugin-react-gettext-parser`](http://github.com/alexanderwallin/babel-plugin-react-gettext-parser)
 
 ```js
 // .babelrc
