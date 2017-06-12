@@ -175,36 +175,47 @@ The following table indicates how gettext strings map to parameters in `withTran
 | msgid_plural | other | messagePlural |
 
 
-### t(message)
+### withTranslations
+
+| Letter | Meaning | Parameter
+| --- | --- | --- |
+| t | string to translate | message |
+| c | interpolate string | scope |
+| n | string is plural | one, other, count |
+| p | context as used in gettext | context |
+
+
+
+#### t(message)
 
 Translate a message
 
-### tn(one, other, count)
+#### tn(one, other, count)
 
 Translate a plural message
 
-### tp(context, message)
+#### tp(context, message)
 
 Translate a message and context
 
-### tnp(context, one, other, count)
+#### tnp(context, one, other, count)
 
 Translate a plural message with context
 
 
-### tc(message, scope = {})
+#### tc(message, scope = {})
 
 Translate a message with variable interpolate
 
-### tcn(one, other, count, scope)
+#### tcn(one, other, count, scope)
 
 Translate a plural message with variable interpolate
 
-### tcp(context, message, scope)
+#### tcp(context, message, scope)
 
 Translate a message with context and variable interpolate
 
-### tcnp(context, one, other, count, scope)
+#### tcnp(context, one, other, count, scope)
 
 Translate a plural message with context and variable interpolate
 
