@@ -128,10 +128,97 @@ function PotatoNotification({ notificationCode, t }) {
 export default withTranslators(PotatoNotification)
 ```
 
+### Via [`babel-plugin-react-gettext-parser`](http://github.com/alexanderwallin/babel-plugin-react-gettext-parser)
+
+```js
+// .babelrc
+{
+  ...
+  "plugins": [
+    ["react-gettext-parser", {
+      "output": "gettext.pot",
+      "funcArgumentsMap": {
+        "tc": ["msgid", null],
+        "tcn": ["msgid", "msgid_plural", null, null],
+        "tcp": ["msgctxt", "msgid", null],
+        "tcnp": ["msgctxt", "msgid", "msgid_plural", null, null],
+
+        "t": ["msgid"],
+        "tn": ["msgid", "msgid_plural", null],
+        "tp": ["msgctxt", "msgid"],
+        "tnp": ["msgctxt", "msgid", "msgid_plural", null]
+      },
+      "componentPropsMap": {
+        "T": {
+          "message": "msgid",
+          "messagePlural": "msgid_plural",
+          "context": "msgctxt",
+          "comment": "comment"
+        }
+      }
+    }]
+  ]
+  ...
+}
+```
+
 
 ## API
 
-Working on it! ⚒
+
+The following table indicates how gettext strings map to parameters in `withTranslations` and props for `<T />`
+
+| Gettext | withTranslations | <T />
+| --- | --- | --- |
+| msgctxt | context | context |
+| msgid | message \| one | message |
+| msgid_plural | other | messagePlural |
+
+
+### withTranslations
+
+| Letter | Meaning | Parameter
+| --- | --- | --- |
+| t | string to translate | message |
+| c | interpolate string | scope |
+| n | string is plural | one, other, count |
+| p | context as used in gettext | context |
+
+
+
+#### t(message)
+
+Translate a message
+
+#### tn(one, other, count)
+
+Translate a plural message
+
+#### tp(context, message)
+
+Translate a message and context
+
+#### tnp(context, one, other, count)
+
+Translate a plural message with context
+
+
+#### tc(message, scope = {})
+
+Translate a message with variable interpolate
+
+#### tcn(one, other, count, scope)
+
+Translate a plural message with variable interpolate
+
+#### tcp(context, message, scope)
+
+Translate a message with context and variable interpolate
+
+#### tcnp(context, one, other, count, scope)
+
+Translate a plural message with context and variable interpolate
+
 
 
 ## Contributing
