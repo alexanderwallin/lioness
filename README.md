@@ -168,7 +168,7 @@ export default withTranslators(PotatoNotification)
 
 The following table indicates how gettext strings map to parameters in `withTranslations` and props for `<T />`
 
-| Gettext | withTranslations | <T />
+| Gettext | `withTranslations` | `<T />` |
 | --- | --- | --- |
 | msgctxt | context | context |
 | msgid | message \| one | message |
