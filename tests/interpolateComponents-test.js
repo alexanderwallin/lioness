@@ -33,6 +33,15 @@ describe('interpolateComponents()', () => {
     expect(elem.props.children[2].props.children).to.equal('Steph')
   })
 
+  it('replaces multiple instances of the same variable correctly', () => {
+    const elem = interpolateComponents('{{ spam }}, {{ spam }}, {{ spam }} and {{ spam }}', { spam: 'spam' })
+    expect(elem.props.children.length).to.equal(7)
+    expect(elem.props.children[0].props.children).to.equal('spam')
+    expect(elem.props.children[2].props.children).to.equal('spam')
+    expect(elem.props.children[4].props.children).to.equal('spam')
+    expect(elem.props.children[6].props.children).to.equal('spam')
+  })
+
   it('returns a template variable with an undefined value in its original form', () => {
     const elem = interpolateComponents('This behaviour is {{ und }}', { und: undefined })
     expect(shallow(elem).text()).to.equal('This behaviour is {{ und }}')
