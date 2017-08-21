@@ -70,7 +70,11 @@ import messages from './translations/messages.json'
 
 function App({ name, numPotatoes }) {
   return (
-    <LionessProvider messages={messages} locale="sv-SE">
+    <LionessProvider
+      messages={messages}
+      locale="sv-SE"
+      debug={/* true | false | null */}
+    >
       <div className="App">
         <h1><T>Potato inventory</T></h1>
         {/* => <h1><span>Potatisinventarie</span></h1> */}
