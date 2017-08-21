@@ -16,6 +16,11 @@ class LionessProvider extends Component {
     messages: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
+    debug: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    debug: null,
   }
 
   // Child context types
@@ -26,7 +31,10 @@ class LionessProvider extends Component {
   constructor(props) {
     super(props)
 
-    this.gt = getGettextInstance(props.messages, props.locale)
+    const options = props.debug === null
+      ? {}
+      : { debug: props.debug }
+    this.gt = getGettextInstance(props.messages, props.locale, options)
   }
 
   /**

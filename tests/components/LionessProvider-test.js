@@ -9,6 +9,7 @@ import { spy } from 'sinon'
 import Gettext from 'node-gettext'
 
 import LionessProvider from '../../src/components/LionessProvider.js'
+import * as gti from '../../src/getGettextInstance.js'
 import withTranslators from '../../src/withTranslators.js'
 
 chai.use(chaiEnzyme())
@@ -25,15 +26,19 @@ function EmptyComponent() {
 }
 const ContextConsumer = withTranslators(EmptyComponent)
 
+function createProvider(extraProps = {}) {
+  return mount(
+    <LionessProvider messages={MESSAGES} locale={'en'} {...extraProps}>
+      <ContextConsumer />
+    </LionessProvider>
+  )
+}
+
 describe('<LionessProvider />', () => {
   let provider
 
   beforeEach(() => {
-    provider = mount(
-      <LionessProvider messages={MESSAGES} locale={'en'}>
-        <ContextConsumer />
-      </LionessProvider>
-    )
+    provider = createProvider()
   })
 
   it('accepts a locale as prop', () => {
@@ -47,6 +52,21 @@ describe('<LionessProvider />', () => {
   it('constructors a Gettext instance using its given props', () => {
     expect(provider.node.gt).to.be.truthy
     expect(provider.node.gt).to.be.an.instanceof(Gettext)
+  })
+
+  it('passes on the debug prop in an options object if it is set to a boolean', () => {
+    spy(gti, 'default')
+
+    createProvider()
+    expect(gti.default.args[0]).to.deep.equal([MESSAGES, 'en', {}])
+
+    createProvider({ debug: true })
+    expect(gti.default.args[1]).to.deep.equal([MESSAGES, 'en', { debug: true }])
+
+    createProvider({ debug: false })
+    expect(gti.default.args[2]).to.deep.equal([MESSAGES, 'en', { debug: false }])
+
+    gti.default.restore()
   })
 
   it('it sets the Gettext locale (only) when the locale prop changes', () => {

@@ -12,10 +12,11 @@ const MESSAGES = {
 }
 
 describe('getGettextInstance()', () => {
-  it('constructs a new Gettext instance with the given translations and default locale', () => {
-    const gt = getGettextInstance(MESSAGES, 'en')
+  it('constructs a new Gettext instance with the given translations, default locale and options', () => {
+    const gt = getGettextInstance(MESSAGES, 'en', { debug: false })
     expect(gt.catalogs['en']).to.be.truthy
     expect(gt.catalogs['sv-SE']).to.be.truthy
     expect(gt.locale).to.equal('en')
+    expect(gt.debug).to.equal(false)
   })
 })
