@@ -3,7 +3,7 @@
 import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import { interpolateComponents, isTemplateVariable } from '../src/interpolateComponents.js'
 
@@ -79,7 +79,9 @@ describe('interpolateComponents()', () => {
     const elem5 = interpolateComponents('Fat {{ strong:5 }}', { strong: <strong /> })
     expect(shallow(elem5).text()).to.equal('Fat 5')
 
+    /* eslint-disable */
     const elem6 = interpolateComponents('Dance to the {{ func }}', { func: function beat() {} })
+    /* eslint-enable */
     expect(shallow(elem6).text()).to.equal('Dance to the function beat() {}')
   })
 
