@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.2.8
+- Fix: Supports new lines in raw strings, scope variables and template variable values
+
 ## 0.2.7
 - Feature: Added a debug prop to `<LionessProvider>`
 
