@@ -12,7 +12,9 @@ import React from 'react'
 
 export default interpolateComponents
 
-const variableRegex = /(\{\{\s.+?(?=\s\}\})\s\}\})/g
+// Note that [^] is used rather than . to match any character. This
+// is because . doesn't span over multiple lines, whereas [^] does.
+const variableRegex = /(\{\{\s[^]+?(?=\s\}\})\s\}\})/g
 
 /**
  * Returns whether a string is a template variable
@@ -50,7 +52,7 @@ export function interpolateComponents(str, scope = {}) {
     }
 
     let keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
-    let [scopeKey, scopeChildren] = keyName.split(/:(.+)/)
+    let [scopeKey, scopeChildren] = keyName.split(/:([^]+)/)
 
     // No matching scope replacement, return raw string
     if (scope[scopeKey] === undefined) {

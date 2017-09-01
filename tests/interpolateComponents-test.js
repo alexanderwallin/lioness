@@ -47,6 +47,22 @@ describe('interpolateComponents()', () => {
     expect(shallow(elem).text()).to.equal('This behaviour is {{ und }}')
   })
 
+  it('supports new lines in the passed string', () => {
+    const elem = interpolateComponents('First row\nSecond row')
+    expect(shallow(<span>{elem}</span>).text()).to.equal('First row\nSecond row')
+  })
+
+  it('supports new lines in the form of spaces inside an injected scope variable', () => {
+    const elem = interpolateComponents('{{ thingy }}', { thingy: '1\n2' })
+    expect(shallow(elem).text()).to.equal('1 2')
+  })
+
+  it('supports new lines inside template variable values', () => {
+    const slimShady = 'Hi my name is\nwhat\nmy name is\nwho\nmy name is'
+    const elem = interpolateComponents(`{{ em:${slimShady} }}`, { em: <em /> })
+    expect(shallow(elem).text()).to.equal(slimShady)
+  })
+
   it('safely injects non-string variables', () => {
     const elem1 = interpolateComponents('You have {{ swagCount }} swagger', { swagCount: 9 })
     expect(shallow(elem1).text()).to.equal('You have 9 swagger')
@@ -95,5 +111,7 @@ describe('isTemplateVariable()', () => {
     expect(isTemplateVariable('{{ key:value }}')).to.equal(true)
     expect(isTemplateVariable('{{ key:value: }}')).to.equal(true)
     expect(isTemplateVariable('{{ spaced key:with a spaced value }}')).to.equal(true)
+    expect(isTemplateVariable('{{ key:with\nnew\nlines }}')).to.equal(true)
+    expect(isTemplateVariable('{{ key:🚜 }}')).to.equal(true)
   })
 })
