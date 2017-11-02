@@ -9,23 +9,19 @@ import { subscribe, unsubscribe } from './pubsub.js'
  */
 export default function forceUpdatedComponent(InputComponent) {
   class SubscribeUpdater extends PureComponent {
-    constructor(props) {
-      super(props)
-
-      this.state = {
-        lastNotification: null,
-      }
+    state = {
+      lastNotification: null,
     }
 
     componentDidMount() {
-      subscribe(this.handleNotification.bind(this))
+      subscribe(this.handleNotification)
     }
 
     componentWillUnmount() {
       unsubscribe(this.handleNotification)
     }
 
-    handleNotification() {
+    handleNotification = () => {
       this.setState({
         lastNotification: Date.now(),
       })
