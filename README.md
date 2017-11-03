@@ -31,6 +31,7 @@ It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as
 * [Usage](#usage)
   - [Using `<T />`](#using-t-)
   - [Using `withTranslators(Component)`](#using-withtranslatorscomponent)
+  - [Locale switching](#locale-switching)
 * [API](#api)
 * [Contributing](#contributing)
 * [See also](#see-also)
@@ -41,6 +42,7 @@ It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as
 * Context and plural
 * String interpolation using a `{{ variable }}` style syntax
 * **Component interpolation** with translatable child content using a `{{ link:Link text here }}` style syntax
+* [Locale switching](#locale-switching) on the fly
 
 
 ## Installation
@@ -165,6 +167,12 @@ export default withTranslators(PotatoNotification)
   ...
 }
 ```
+
+### Locale switching
+
+Lioness makes it possible to change locale and have all the application's translations instantly update to those of the new locale. `<LionessProvider>` will trigger a re-render of all `<T>` components and components wrapped in `withTranslators()` whenever its `locale` or `messages` props change.
+
+**Note:** For performance reasons, and in favour of immutability, this check is done using shallow equality, which means you need to pass an entirely new object reference as `messages` for it to trigger the re-render. If this is an issue for you, simply make sure you create a new object when you get new messages, for instace by using something like `messages = Object.assign({}, messages)`.
 
 
 ## API
