@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import getGettextInstance from '../getGettextInstance.js'
 import * as contextTypes from '../contextTypes.js'
+import { emit } from '../pubsub.js'
 import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
 import interpolateComponents from '../interpolateComponents.js'
 
@@ -35,6 +36,15 @@ class LionessProvider extends Component {
       ? {}
       : { debug: props.debug }
     this.gt = getGettextInstance(props.messages, props.locale, options)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.locale !== this.props.locale) {
+      emit()
+    }
+    if (prevProps.messages !== this.props.messages) {
+      emit()
+    }
   }
 
   /**

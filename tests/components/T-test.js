@@ -17,20 +17,24 @@ const identity = x => x
 // Translation fixtures
 const MESSAGES = {
   'en': {
+    charset: 'utf-8',
+    headers: {},
     'translations': {
       '': {
         'hi there': {
-          'msid': 'hi there',
+          'msgid': 'hi there',
           'msgstr': 'hi there',
         },
       },
     },
   },
   'sv-SE': {
+    charset: 'utf-8',
+    headers: {},
     'translations': {
       '': {
         'hi there': {
-          'msid': 'hi there',
+          'msgid': 'hi there',
           'msgstr': 'hallå där',
         },
       },

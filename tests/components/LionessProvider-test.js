@@ -5,11 +5,12 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { mount } from 'enzyme'
-import { spy } from 'sinon'
+import { spy, stub } from 'sinon'
 import Gettext from 'node-gettext'
 
 import LionessProvider from '../../src/components/LionessProvider.js'
 import * as gti from '../../src/getGettextInstance.js'
+import * as pubsub from '../../src/pubsub.js'
 import withTranslators from '../../src/withTranslators.js'
 
 chai.use(chaiEnzyme())
@@ -88,5 +89,20 @@ describe('<LionessProvider />', () => {
   it('provides all translators through its child context', () => {
     const consumer = provider.find(ContextConsumer)
     expect(consumer.node.context).to.contain.all.keys(['t', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
+  })
+
+  it('calls the pubsub emit() function whenever the `locale` or `messages` props change', () => {
+    const emitStub = stub(pubsub, 'emit')
+
+    provider.setProps({ locale: 'sv-SE' })
+    expect(emitStub.callCount).to.equal(1)
+
+    provider.setProps({ messages: { ...MESSAGES } })
+    expect(emitStub.callCount).to.equal(2)
+
+    provider.setProps({ debug: true })
+    expect(emitStub.callCount).to.equal(2)
+
+    emitStub.restore()
   })
 })
