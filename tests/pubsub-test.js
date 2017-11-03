@@ -23,4 +23,39 @@ describe('subscribe() and unsubscribe()', () => {
     emit()
     expect(fn.callCount).to.equal(2)
   })
+
+  it('notifies the right subscribers in a group of subscribers', () => {
+    const fn1 = spy()
+    const fn2 = spy()
+    const fn3 = spy()
+
+    subscribe(fn1)
+    subscribe(fn2)
+    emit()
+    expect(fn1.callCount).to.equal(1)
+    expect(fn2.callCount).to.equal(1)
+    expect(fn3.callCount).to.equal(0)
+
+    subscribe(fn3)
+    unsubscribe(fn1)
+    emit()
+    expect(fn1.callCount).to.equal(1)
+    expect(fn2.callCount).to.equal(2)
+    expect(fn3.callCount).to.equal(1)
+
+    unsubscribe(fn2)
+    emit()
+    expect(fn1.callCount).to.equal(1)
+    expect(fn2.callCount).to.equal(2)
+    expect(fn3.callCount).to.equal(2)
+  })
+
+  it('subscribes a function only once', () => {
+    const fn = spy()
+
+    subscribe(fn)
+    subscribe(fn)
+    emit()
+    expect(fn.callCount).to.equal(1)
+  })
 })
