@@ -1,7 +1,7 @@
 let subscribers = []
 
 export const subscribe = fn => {
-  if (subscribers.includes(fn) === false) {
+  if (subscribers.indexOf(fn) === -1) {
     subscribers = [...subscribers, fn]
   }
 }
