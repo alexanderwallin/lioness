@@ -20,6 +20,8 @@ class T extends Component {
     context: PropTypes.string,
     count: PropTypes.number,
     tcnp: PropTypes.func.isRequired,
+    onMissingTranslation: PropTypes.func.isRequired,
+    debug: PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
@@ -30,8 +32,22 @@ class T extends Component {
     count: 1,
   }
 
+  listenForError() {
+
+  }
+
   render() {
-    const { message, messagePlural, context, count, children, tcnp, ...scope } = this.props
+    const {
+      message,
+      messagePlural,
+      context,
+      count,
+      children,
+      tcnp,
+      debug,
+      onMissingTranslation,
+      ...scope,
+    } = this.props
 
     delete scope.t
     delete scope.tp
@@ -43,11 +59,27 @@ class T extends Component {
 
     const msgid = message || children || ''
 
+    let isMissing = false
+    const unsubscribe = onMissingTranslation(msg => {
+      const [, errMsgid] = /msgid "([^"]*)"/.exec(msg)
+      const [, errMsgctxt] = /msgctxt "([^"]*)"/.exec(msg)
+
+      if (msgid === errMsgid && context === errMsgctxt) {
+        isMissing = true
+      }
+    })
+
     const translatedContent = tcnp(context, msgid, messagePlural, count, { ...scope, count })
 
-    return typeof translatedContent === 'string'
+    unsubscribe()
+
+    const output = typeof translatedContent === 'string'
       ? <span>{translatedContent}</span>
       : translatedContent
+
+    return debug === true && isMissing === true
+      ? <span style={{ outline: '1px solid red' }}>{output}</span>
+      : output
   }
 }
 

@@ -29,6 +29,10 @@ class LionessProvider extends Component {
     ...contextTypes,
   }
 
+  // state = {
+  //   missingTranslations: [],
+  // }
+
   constructor(props) {
     super(props)
 
@@ -62,6 +66,12 @@ class LionessProvider extends Component {
       tcn: tcn(interpolateComponents, this.gt.ngettext.bind(this.gt)),
       tcp: tcp(interpolateComponents, this.gt.pgettext.bind(this.gt)),
       tcnp: tcnp(interpolateComponents, this.gt.npgettext.bind(this.gt)),
+      debug: this.props.debug === true,
+      onMissingTranslation: (callback) => {
+        const gtCallback = msg => callback(msg)
+        this.gt.on('error', gtCallback)
+        return () => this.gt.off('error', gtCallback)
+      },
     }
   }
 

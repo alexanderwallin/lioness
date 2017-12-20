@@ -37,6 +37,15 @@ const messages = {
             "Close"
           ]
         },
+        "Hello": {
+          "msgid": "Hello",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:29"
+          },
+          "msgstr": [
+            "Hello"
+          ]
+        },
       }
     }
   },
@@ -73,6 +82,15 @@ const messages = {
             "Stäng"
           ]
         },
+        "Hello": {
+          "msgid": "Hello",
+          "comments": {
+            "reference": "./src/filtering/components/FilterBox.jsx:29"
+          },
+          "msgstr": [
+            "Hallå"
+          ]
+        },
       }
     }
   }
@@ -103,7 +121,7 @@ const ClickableNumber = () =>
  * Example app
  */
 const App = () =>
-  <LionessProvider locale="sv" messages={messages}>
+  <LionessProvider locale="sv" messages={messages} debug>
     <div className="App">
       <pre>{'<T message="Clap {{ num }} times" num={<ClickableNumber />} />'}</pre>
       <T message="Clap {{ num }} times" num={<ClickableNumber />} />
