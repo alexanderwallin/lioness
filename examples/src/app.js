@@ -85,12 +85,12 @@ let MyThing = ({ t, message }) =>
 MyThing = withTranslators(MyThing);
 
 // Singular/plural
-const Diff = withTranslators(({ tn, num }) => (
+const Diff = withTranslators(({ tcn, num }) => (
   <div>
-    {tn('{{ one:One }} thing ({{ link:Add more }})', '{{ count }} things', num, {
+    {tcn('{{ one:One }} thing ({{ link:Add more }})', '{{ num }} things', num, {
       one: <em />,
-      count: <strong>{num}</strong>,
       link: <a href="#add-more" />,
+      num: num,
     })}
   </div>
 ));
@@ -98,6 +98,13 @@ const Diff = withTranslators(({ tn, num }) => (
 // A clickable number
 const ClickableNumber = () =>
   <em onClick={() => alert('click')} style={{ cursor: 'pointer' }}>131</em>;
+
+// A pure interpolated string
+const HoverableItemWithNumber = withTranslators(({ t, itemNumber }) => (
+  <div title={t('This is item number {{ itemNumber }}', { itemNumber })}>
+    Hover me to see my number
+  </div>
+))
 
 /**
  * Example app
@@ -117,12 +124,12 @@ const App = () =>
       <MyThing message="Close" />
 
       <hr />
-      <pre>{`const Diff = withTranslators(({ tn, num }) => (
+      <pre>{`const Diff = withTranslators(({ tcn, num }) => (
   <div>
-    {tn('{{ one:One }} thing ({{ link:Add more }})', '{{ count }} things', num, {
+    {tcn('{{ one:One }} thing ({{ link:Add more }})', '{{ num }} things', num, {
       one: <em />,
-      count: <strong>{num}</strong>,
       link: <a href="#add-more" />,
+      num: num,
     })}
   </div>
 ));
@@ -133,6 +140,18 @@ const App = () =>
 <Diff num={2} />`}</pre>
       <Diff num={1} />
       <Diff num={2} />
+
+      <hr />
+      <pre>{`const HoverableItemWithNumber = withTranslators(({ t, itemNumber }) => (
+  <div title={t('This is item number {{ itemNumber }}', { itemNumber })}>
+    Hover me to see my number
+  </div>
+))
+
+<HoverableItemWithNumber itemNumber={1} />
+<HoverableItemWithNumber itemNumber={2} />`}</pre>
+      <HoverableItemWithNumber itemNumber={1} />
+      <HoverableItemWithNumber itemNumber={2} />
     </div>
   </LionessProvider>;
 
