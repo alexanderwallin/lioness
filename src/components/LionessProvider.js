@@ -5,7 +5,6 @@ import getGettextInstance from '../getGettextInstance.js'
 import * as contextTypes from '../contextTypes.js'
 import { emit } from '../pubsub.js'
 import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
-import interpolateComponents from '../interpolateComponents.js'
 
 /**
  * Localization context provider
@@ -58,10 +57,10 @@ class LionessProvider extends Component {
       tn: tn(this.gt.ngettext.bind(this.gt)),
       tp: tp(this.gt.pgettext.bind(this.gt)),
       tnp: tnp(this.gt.npgettext.bind(this.gt)),
-      tc: tc(interpolateComponents, this.gt.gettext.bind(this.gt)),
-      tcn: tcn(interpolateComponents, this.gt.ngettext.bind(this.gt)),
-      tcp: tcp(interpolateComponents, this.gt.pgettext.bind(this.gt)),
-      tcnp: tcnp(interpolateComponents, this.gt.npgettext.bind(this.gt)),
+      tc: tc(this.gt.gettext.bind(this.gt)),
+      tcn: tcn(this.gt.ngettext.bind(this.gt)),
+      tcp: tcp(this.gt.pgettext.bind(this.gt)),
+      tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
     }
   }
 

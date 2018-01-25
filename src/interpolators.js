@@ -10,14 +10,16 @@ import React from 'react'
 
 */
 
-export default interpolateComponents
-
 // Note that [^] is used rather than . to match any character. This
 // is because . doesn't span over multiple lines, whereas [^] does.
 const variableRegex = /(\{\{\s[^]+?(?=\s\}\})\s\}\})/g
 
 /**
- * Returns whether a string is a template variable
+ * Returns whether a string is a template variable.
+ *
+ * @param  {String}    str  A string
+ * @return {Boolean}        True if the string is a template variable,
+ *                          false if not
  */
 export function isTemplateVariable(str) {
   return new RegExp(variableRegex).test(str)
@@ -27,7 +29,48 @@ export function isTemplateVariable(str) {
  * Interpolates a string, replacing template variables with values
  * provided in the scope.
  *
- * Besides replacing variables with
+ * @param  {String}    str    A string to be interpolated
+ * @param  {Object}    scope  An object with variable names and their
+ *                            replacements
+ * @return {String}           An interpolated string
+ */
+export function interpolateString(str, scope = {}) {
+  if (!str) {
+    return str
+  }
+
+  // Split string into array with regular text and variables split
+  // into separate segments, like ['This is a ', '{{ thing }}', '!']
+  const parts = str.split(new RegExp(variableRegex)).filter(x => x)
+
+  // If the only thing we have is a single regular string, just return it as is
+  if (parts.length === 1 && isTemplateVariable(parts[0]) === false) {
+    return str
+  }
+
+  return parts
+    .map(part => {
+      if (isTemplateVariable(part) === false) {
+        return part
+      }
+
+      const variableName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
+      if (scope[variableName] === undefined) {
+        return part
+      }
+
+      return scope[variableName]
+    })
+    .join('')
+}
+
+/**
+ * Interpolates a string, with support for injecting React components.
+ *
+ * @param  {String}    str    A string to be interpolated
+ * @param  {Object}    scope  An object with variable names and their
+ *                            replacements
+ * @return {Component}        A React component
  */
 export function interpolateComponents(str, scope = {}) {
   if (!str) {
