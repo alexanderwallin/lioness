@@ -5,9 +5,65 @@ import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { shallow } from 'enzyme'
 
-import { interpolateComponents, isTemplateVariable } from '../src/interpolateComponents.js'
+import {
+  interpolateComponents,
+  interpolateString,
+  isTemplateVariable,
+} from '../src/interpolators.js'
 
 chai.use(chaiEnzyme())
+
+describe('interpolateString()', () => {
+  it('returns the input string as is if it does not contain any variables', () => {
+    const result = interpolateString('wow')
+    expect(result).to.equal('wow')
+  })
+
+  it('replaces multiple variables correctly', () => {
+    const result = interpolateString('{{ name1 }} knows {{ name2 }}', { name1: 'Abdel', name2: 'Steph' })
+    expect(result).to.equal('Abdel knows Steph')
+  })
+
+  it('replaces multiple instances of the same variable correctly', () => {
+    const result = interpolateString('{{ spam }}, {{ spam }}, {{ spam }} and {{ spam }}', { spam: 'spam' })
+    expect(result).to.equal('spam, spam, spam and spam')
+  })
+
+  it('returns a template variable with an undefined value in its original form', () => {
+    const result = interpolateString('This behaviour is {{ und }}', { und: undefined })
+    expect(result).to.equal('This behaviour is {{ und }}')
+  })
+
+  it('supports new lines in the passed string', () => {
+    const result = interpolateString('First row\nSecond row')
+    expect(result).to.equal('First row\nSecond row')
+  })
+
+  it('supports new lines in template variable values', () => {
+    const slimShady = 'Hi my name is\nwhat\nmy name is\nwho\nmy name is'
+    const result = interpolateString(`{{ slimShady }}`, { slimShady })
+    expect(result).to.equal(slimShady)
+  })
+
+  it('safely injects non-string variables', () => {
+    const result1 = interpolateString('You have {{ swagCount }} swagger', { swagCount: 9 })
+    expect(result1).to.equal('You have 9 swagger')
+
+    const result2 = interpolateString('Is there coffee: {{ thereIsCoffee }}', { thereIsCoffee: true })
+    expect(result2).to.equal('Is there coffee: true')
+
+    const result3 = interpolateString('Rich kids have {{ NaN }}nies', { NaN: NaN })
+    expect(result3).to.equal('Rich kids have NaNnies')
+
+    const result4 = interpolateString('Say "object": {{ obj }}', { obj: { objectz: 'Awbyect' } })
+    expect(result4).to.equal('Say "object": [object Object]')
+
+    /* eslint-disable */
+    const result5 = interpolateString('Dance to the {{ func }}', { func: function beat() {} })
+    /* eslint-enable */
+    expect(result5).to.equal('Dance to the function beat() {}')
+  })
+})
 
 describe('interpolateComponents()', () => {
   it('returns the input string as is if it does not contain any variables', () => {

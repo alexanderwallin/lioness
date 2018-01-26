@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint src",
     "test": "mocha --compilers js:babel-core/register tests/helpers/browser.js tests/{.,components,integration-tests}/*.js",
+    "test-file": "mocha --compilers js:babel-core/register tests/helpers/browser.js",
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist src",
     "example": "cd examples && webpack-dev-server --port 8111"
