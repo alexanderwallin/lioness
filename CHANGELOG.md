@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.2.10
+
+- Feature: Adds string interpolation support to non-component translator functions `t()`, `tn()`, `tp()` and `tnp()`, using the same `{{ variable }}` template syntax as for the other translator functions.
+
+## 0.2.9
+- Feature: Forces `<T>` and components decorated with `withTranslator()` to re-render whenever `<LionessProvider>`'s `locale` or `messages` props are updated.
+
 ## 0.2.8
 - Fix: Supports new lines in raw strings, scope variables and template variable values
 
