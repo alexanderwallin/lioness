@@ -187,49 +187,54 @@ The following table indicates how gettext strings map to parameters in `withTran
 | msgid_plural | other | messagePlural |
 
 
-### withTranslations
+### `withTranslations(Component)`
 
-| Letter | Meaning | Parameter
+Provides `Component` with the `lioness` context variables as props. These are `locale`, `t`, `tn`, `tp`, `tnp`, `tc`, `tcn`, `tcp` and `tcnp`.
+
+As a little helper, here's what the letters stand for:
+
+| Letter | Meaning | Parameters
 | --- | --- | --- |
-| t | string to translate | message |
-| c | interpolate string | scope |
-| n | string is plural | one, other, count |
-| p | context as used in gettext | context |
+| t | translate a message | `message` |
+| c | ...with injected React components | - |
+| n | ...with pluralisation | `one`, `other`, `count` |
+| p | ...in a certain gettext context | `context` |
 
+* #### `locale`
 
+  The currently set locale passed to `<LionessProvider />`.
 
-#### t(message)
+* #### `t(message, scope = {})`
 
-Translate a message
+  Translates and interpolates message.
 
-#### tn(one, other, count)
+* #### `tn(one, other, count, scope = {})`
 
-Translate a plural message
+  Translates and interpolates a pluralised message.
 
-#### tp(context, message)
+* #### `tp(context, message, scope = {})`
 
-Translate a message and context
+  Translates and interpolates a message in a given context.
 
-#### tnp(context, one, other, count)
+* #### `tnp(context, one, other, count, scope = {})`
 
-Translate a plural message with context
+  Translates and interpolates a pluralised message in a given context.
 
+* #### `tc(message, scope = {})`
 
-#### tc(message, scope = {})
+  Translates and interpolates a message.
 
-Translate a message with variable interpolate
+* #### `tcn(one, other, count, scope = {})`
 
-#### tcn(one, other, count, scope)
+  Translates and interpolates a pluralised message.
 
-Translate a plural message with variable interpolate
+* #### `tcp(context, message, scope = {})`
 
-#### tcp(context, message, scope)
+  Translates and interpolates a message in a given context.
 
-Translate a message with context and variable interpolate
+* #### `tcnp(context, one, other, count, scope = {})`
 
-#### tcnp(context, one, other, count, scope)
-
-Translate a plural message with context and variable interpolate
+  Translates and interpolates a plural message in a given context.
 
 
 
