@@ -110,8 +110,11 @@ export function interpolateComponents(str, scope = {}) {
       return React.createElement('span', { key }, String(replacement))
     }
 
-    // Clone React elements right off
-    return React.cloneElement(replacement, { key }, scopeChildren || null)
+    // Returns a clone of the to-be injected element, passing child content
+    // from the scope if it exists
+    return scopeChildren === undefined
+      ? React.cloneElement(replacement, { key })
+      : React.cloneElement(replacement, { key }, scopeChildren)
   })
 
   return interpolatedParts.length > 1

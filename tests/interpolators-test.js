@@ -153,6 +153,12 @@ describe('interpolateComponents()', () => {
     expect(link.props.href).to.equal('http://website.com')
     expect(link.props.children).to.equal('this website')
   })
+
+  it('does not inject content into a React element if there is none specified', () => {
+    const elem = interpolateComponents('go to {{ link }}', { link: <a href="http://website.com">http://website.com</a> })
+    const link = elem.props.children[1]
+    expect(link.props.children).to.equal('http://website.com')
+  })
 })
 
 describe('isTemplateVariable()', () => {
