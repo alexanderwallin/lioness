@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.11
+
+- Fix: Only injects the `content` part of `{{ component:content }}` if it is specified.
+
 ## 0.2.10
 
 - Feature: Adds string interpolation support to non-component translator functions `t()`, `tn()`, `tp()` and `tnp()`, using the same `{{ variable }}` template syntax as for the other translator functions.
