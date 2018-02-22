@@ -1,7 +1,7 @@
 {
   "name": "lioness",
   "version": "0.2.10",
-  "description": "Makes your gettext life in the React world a breeze",
+  "description": "A React library for efficiently implementing Gettext localization",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -18,7 +18,14 @@
     "type": "git",
     "url": "git+https://github.com/alexanderwallin/lioness-react.git"
   },
-  "keywords": [],
+  "keywords": [
+    "gettext",
+    "react",
+    "l10n",
+    "localization",
+    "localisation",
+    "translation"
+  ],
   "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
   "license": "ISC",
   "bugs": {
