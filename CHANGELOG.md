@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.13
+
+- Fix: Removes default transformInput function that trims strings, since it might break things.
+
 ## 0.2.12
 
 - Feature: Provides a way to transform strings provided to `<T />` before it is sent to the translation function.
