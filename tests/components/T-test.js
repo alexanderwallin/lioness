@@ -5,6 +5,7 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { shallow, mount } from 'enzyme'
+import { stub } from 'sinon'
 // import { spy, stub } from 'sinon'
 
 import LionessProvider from '../../src/components/LionessProvider.js'
@@ -40,17 +41,23 @@ const MESSAGES = {
   },
 }
 
+const identity = x => x
+
 // eslint-disable-next-line
 function App({ children }) {
   return (
-    <LionessProvider messages={MESSAGES} locale={'en'}>
+    <LionessProvider
+      messages={MESSAGES}
+      locale={'en'}
+      transformInput={identity}
+    >
       <div>{children}</div>
     </LionessProvider>
   )
 }
 
 describe('<T />', () => {
-  it('receives locale and translators via context', () => {
+  it('receives locale, translators and string transform function via context', () => {
     const app = mount(
       <App>
         <T message="wow" />
@@ -66,6 +73,7 @@ describe('<T />', () => {
       'tcn',
       'tcp',
       'tcnp',
+      'transformInput',
     ])
   })
 
@@ -112,6 +120,22 @@ describe('<T />', () => {
 
   // ...and here
   it('excludes context provided props from the interpolation scope')
+
+  it('transforms input strings using the transformInput context prop', () => {
+    const transformSpy = stub().returns('wow')
+    mount(
+      <LionessProvider
+        messages={MESSAGES}
+        locale={'en'}
+        transformInput={transformSpy}
+      >
+        <div>
+          <T>wow</T>
+        </div>
+      </LionessProvider>
+    )
+    expect(transformSpy.calledWith('wow')).to.equal(true)
+  })
 
   it('always returns a renderable React component', () => {
     const app = mount(

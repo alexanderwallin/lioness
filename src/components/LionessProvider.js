@@ -5,6 +5,7 @@ import getGettextInstance from '../getGettextInstance.js'
 import * as contextTypes from '../contextTypes.js'
 import { emit } from '../pubsub.js'
 import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
+import trimExcessiveWhitespace from '../trimExcessiveWhitespace.js'
 
 /**
  * Localization context provider
@@ -14,12 +15,13 @@ class LionessProvider extends Component {
   static propTypes = {
     messages: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
-    transformInput: PropTypes.func.isRequired,
+    transformInput: PropTypes.func,
     children: PropTypes.node.isRequired,
     debug: PropTypes.bool,
   }
 
   static defaultProps = {
+    transformInput: trimExcessiveWhitespace,
     debug: null,
   }
 
@@ -59,6 +61,7 @@ class LionessProvider extends Component {
       tcn: tcn(this.gt.ngettext.bind(this.gt)),
       tcp: tcp(this.gt.pgettext.bind(this.gt)),
       tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
+      transformInput: this.props.transformInput,
     }
   }
 

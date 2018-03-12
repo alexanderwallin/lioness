@@ -20,6 +20,7 @@ class T extends Component {
     context: PropTypes.string,
     count: PropTypes.number,
     tcnp: PropTypes.func.isRequired,
+    transformInput: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -38,6 +39,7 @@ class T extends Component {
       count,
       children,
       tcnp,
+      transformInput,
       ...scope
     } = this.props
 
@@ -51,10 +53,16 @@ class T extends Component {
 
     const msgid = message || children || ''
 
-    const translatedContent = tcnp(context, msgid, messagePlural, count, {
-      ...scope,
+    const translatedContent = tcnp(
+      context,
+      transformInput(msgid),
+      transformInput(messagePlural),
       count,
-    })
+      {
+        ...scope,
+        count,
+      }
+    )
 
     return typeof translatedContent === 'string' ? (
       <span>{translatedContent}</span>

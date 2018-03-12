@@ -23,19 +23,17 @@ It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as
 // items.length === 7 => Du har 7 grejer, <a href="/thingies">kolla in dem här<a/>.
 ```
 
-
 ## Table of contents
 
 * [Features](#features)
 * [Installation](#installation)
 * [Usage](#usage)
-  - [Using `<T />`](#using-t-)
-  - [Using `withTranslators(Component)`](#using-withtranslatorscomponent)
-  - [Locale switching](#locale-switching)
+  * [Using `<T />`](#using-t-)
+  * [Using `withTranslators(Component)`](#using-withtranslatorscomponent)
+  * [Locale switching](#locale-switching)
 * [API](#api)
 * [Contributing](#contributing)
 * [See also](#see-also)
-
 
 ## Features
 
@@ -43,7 +41,6 @@ It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as
 * String interpolation using a `{{ variable }}` style syntax
 * **Component interpolation** with translatable child content using a `{{ link:Link text here }}` style syntax
 * [Locale switching](#locale-switching) on the fly
-
 
 ## Installation
 
@@ -53,7 +50,6 @@ npm install --save lioness
 # ...or the shorter...
 npm i -S lioness
 ```
-
 
 ## Usage
 
@@ -123,8 +119,7 @@ function PotatoNotification({ notificationCode, t }) {
 
   if (notificationCode === 'POTATOES_RECEIVED') {
     message = t(`You have received potatoes`)
-  }
-  else if (notificationCode === 'POTATOES_STOLEN') {
+  } else if (notificationCode === 'POTATOES_STOLEN') {
     message = t(`Someone stole all your potatoes :(`)
   }
 
@@ -174,18 +169,15 @@ Lioness makes it possible to change locale and have all the application's transl
 
 **Note:** For performance reasons, and in favour of immutability, this check is done using shallow equality, which means you need to pass an entirely new object reference as `messages` for it to trigger the re-render. If this is an issue for you, simply make sure you create a new object when you get new messages, for instace by using something like `messages = Object.assign({}, messages)`.
 
-
 ## API
-
 
 The following table indicates how gettext strings map to parameters in `withTranslations` and props for `<T />`
 
-| Gettext | `withTranslations` | `<T />` |
-| --- | --- | --- |
-| msgctxt | context | context |
-| msgid | message \| one | message |
-| msgid_plural | other | messagePlural |
-
+| Gettext      | `withTranslations` | `<T />`       |
+| ------------ | ------------------ | ------------- |
+| msgctxt      | context            | context       |
+| msgid        | message \| one     | message       |
+| msgid_plural | other              | messagePlural |
 
 ### `withTranslations(Component)`
 
@@ -193,12 +185,12 @@ Provides `Component` with the `lioness` context variables as props. These are `l
 
 As a little helper, here's what the letters stand for:
 
-| Letter | Meaning | Parameters
-| --- | --- | --- |
-| t | translate a message | `message` |
-| c | ...with injected React components | - |
-| n | ...with pluralisation | `one`, `other`, `count` |
-| p | ...in a certain gettext context | `context` |
+| Letter | Meaning                           | Parameters              |
+| ------ | --------------------------------- | ----------------------- |
+| t      | translate a message               | `message`               |
+| c      | ...with injected React components | -                       |
+| n      | ...with pluralisation             | `one`, `other`, `count` |
+| p      | ...in a certain gettext context   | `context`               |
 
 * #### `locale`
 
@@ -236,12 +228,19 @@ As a little helper, here's what the letters stand for:
 
   Translates and interpolates a plural message in a given context.
 
+### `<LionessProvider />`
 
+A higher-order component that provides the translation functions and state to `<T />` through context.
+
+**Props:**
+
+* `messages` – An object containing translations for all languages. It should have the format created by [gettext-parser](https://github.com/smhg/gettext-parser)
+* `locale` – The currently selected locale (which should correspond to a key in `messages`)
+* `transformInput` – A function `(input: String) => String` that you can use to transform a string before `<T />` sends it to the translation function. One use case is normalising strings when something like [`prettier`](https://github.com/prettier/prettier) puts child content in `<T />` on new lines, with lots of indentation.
 
 ## Contributing
 
 All PRs that passes the tests are very much appreciated! 🎂
-
 
 ## See also
 
