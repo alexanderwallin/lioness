@@ -1,4 +1,7 @@
+/* global document */
+/* eslint import/first: 0 */
 import babelRegister from 'babel-register'
+
 babelRegister()
 
 import { jsdom } from 'jsdom'
@@ -17,5 +20,3 @@ Object.keys(document.defaultView).forEach(property => {
 global.navigator = {
   userAgent: 'node.js',
 }
-
-const documentRef = document

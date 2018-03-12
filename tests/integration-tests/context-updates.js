@@ -17,6 +17,7 @@ const MESSAGES = {
   'sv-SE': {},
 }
 
+// eslint-disable-next-line
 const Parent = ({ children }) => <div>{children}</div>
 const FreezedParent = shouldUpdate(() => false)(Parent)
 

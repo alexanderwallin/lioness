@@ -2,7 +2,13 @@
   "parser": "babel-eslint",
   "extends": [
     "alexander",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+  ],
+  "plugins": [
+    "react",
+    "class-property",
+    "prettier",
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -12,5 +18,4 @@
   "rules": {
     "max-params": "off"
   },
-  "plugins": ["react", "class-property"]
 }

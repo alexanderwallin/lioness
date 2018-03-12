@@ -12,8 +12,6 @@ import T from '../../src/components/T.js'
 
 chai.use(chaiEnzyme())
 
-const identity = x => x
-
 // Translation fixtures
 const MESSAGES = {
   en: {
@@ -42,6 +40,7 @@ const MESSAGES = {
   },
 }
 
+// eslint-disable-next-line
 function App({ children }) {
   return (
     <LionessProvider messages={MESSAGES} locale={'en'}>
