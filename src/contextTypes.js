@@ -9,3 +9,4 @@ export const tc = PropTypes.func
 export const tcn = PropTypes.func
 export const tcp = PropTypes.func
 export const tcnp = PropTypes.func
+export const transformInput = PropTypes.func

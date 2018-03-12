@@ -57,7 +57,9 @@ describe('<LionessProvider />', () => {
     expect(provider.props().messages).to.deep.equal(MESSAGES)
   })
 
-  it('accepts a transformInput function as a prop')
+  it('accepts a transformInput function as a prop', () => {
+    expect(provider.props().transformInput).to.equal(identity)
+  })
 
   it('constructors a Gettext instance using its given props', () => {
     expect(provider.node.gt).to.be.truthy
@@ -112,6 +114,13 @@ describe('<LionessProvider />', () => {
       'tcnp',
     ])
   })
+
+  it('provides the string transform function through its child context', () => {
+    const consumer = provider.find(ContextConsumer)
+    expect(consumer.node.context.transformInput).to.equal(identity)
+  })
+
+  it('uses trimExcessiveWhitespace() as string transform function by default', () => {})
 
   it('calls the pubsub emit() function whenever the `locale` or `messages` props change', () => {
     const emitStub = stub(pubsub, 'emit')
