@@ -5,7 +5,6 @@ import getGettextInstance from '../getGettextInstance.js'
 import * as contextTypes from '../contextTypes.js'
 import { emit } from '../pubsub.js'
 import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
-import trimExcessiveWhitespace from '../trimExcessiveWhitespace.js'
 
 /**
  * Localization context provider
@@ -21,7 +20,7 @@ class LionessProvider extends Component {
   }
 
   static defaultProps = {
-    transformInput: trimExcessiveWhitespace,
+    transformInput: x => x,
     debug: null,
   }
 

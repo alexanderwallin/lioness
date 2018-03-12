@@ -120,7 +120,14 @@ describe('<LionessProvider />', () => {
     expect(consumer.node.context.transformInput).to.equal(identity)
   })
 
-  it('uses trimExcessiveWhitespace() as string transform function by default', () => {})
+  it('uses the identity function as string transform function by default', () => {
+    const transformInput = LionessProvider.defaultProps.transformInput
+    expect(transformInput('\n\t asd \t\n')).to.equal('\n\t asd \t\n')
+    const wow = {}
+    expect(transformInput(wow)).to.equal(wow)
+    const fn = () => {}
+    expect(transformInput(fn)).to.equal(fn)
+  })
 
   it('calls the pubsub emit() function whenever the `locale` or `messages` props change', () => {
     const emitStub = stub(pubsub, 'emit')
