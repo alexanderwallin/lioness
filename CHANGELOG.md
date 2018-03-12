@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.12
+
+- Feature: Provides a way to transform strings provided to `<T />` before it is sent to the translation function.
+
 ## 0.2.11
 
 - Fix: Only injects the `content` part of `{{ component:content }}` if it is specified.
