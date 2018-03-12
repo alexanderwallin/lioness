@@ -16,14 +16,14 @@ const identity = x => x
 
 // Translation fixtures
 const MESSAGES = {
-  'en': {
+  en: {
     charset: 'utf-8',
     headers: {},
-    'translations': {
+    translations: {
       '': {
         'hi there': {
-          'msgid': 'hi there',
-          'msgstr': 'hi there',
+          msgid: 'hi there',
+          msgstr: 'hi there',
         },
       },
     },
@@ -31,11 +31,11 @@ const MESSAGES = {
   'sv-SE': {
     charset: 'utf-8',
     headers: {},
-    'translations': {
+    translations: {
       '': {
         'hi there': {
-          'msgid': 'hi there',
-          'msgstr': 'hallå där',
+          msgid: 'hi there',
+          msgstr: 'hallå där',
         },
       },
     },
@@ -45,31 +45,53 @@ const MESSAGES = {
 function App({ children }) {
   return (
     <LionessProvider messages={MESSAGES} locale={'en'}>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </LionessProvider>
   )
 }
 
 describe('<T />', () => {
   it('receives locale and translators via context', () => {
-    const app = mount(<App><T message="wow" /></App>)
-    expect(app.find(T).node.context).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
+    const app = mount(
+      <App>
+        <T message="wow" />
+      </App>
+    )
+    expect(app.find(T).node.context).to.contain.all.keys([
+      'locale',
+      't',
+      'tn',
+      'tp',
+      'tnp',
+      'tc',
+      'tcn',
+      'tcp',
+      'tcnp',
+    ])
   })
 
   it('accepts children as input message', () => {
-    const app = shallow(<App><T>wow</T></App>)
+    const app = shallow(
+      <App>
+        <T>wow</T>
+      </App>
+    )
     expect(app.find(T).props().children).to.equal('wow')
   })
 
   it('proritises the message prop before children', () => {
-    const app = mount(<App><T message="i am prop">i am child</T></App>)
+    const app = mount(
+      <App>
+        <T message="i am prop">i am child</T>
+      </App>
+    )
     expect(app.find(T).text()).to.equal('i am prop')
   })
 
   // NOTE: How to test prop type validations? This is not working a.t.m.
-  it('throws an error when neither message nor string-only children are provided')
+  it(
+    'throws an error when neither message nor string-only children are provided'
+  )
   // it('throws an error when neither message nor string-only children are provided', () => {
   //   const consoleError = stub(console, 'error')
   //   const t = <T tcnp={identity} />

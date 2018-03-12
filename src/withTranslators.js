@@ -10,6 +10,9 @@ import forceUpdatedComponent from './forceUpdatedComponent.js'
 export default function withTranslators(WrappedComponent) {
   const forceUpdatedWrappedComponent = forceUpdatedComponent(WrappedComponent)
   const withTranslators = getContext(contextTypes)(forceUpdatedWrappedComponent)
-  withTranslators.displayName = wrapDisplayName(WrappedComponent, 'withTranslators')
+  withTranslators.displayName = wrapDisplayName(
+    WrappedComponent,
+    'withTranslators'
+  )
   return withTranslators
 }

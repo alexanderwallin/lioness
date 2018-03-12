@@ -7,7 +7,7 @@ import { expect } from 'chai'
 import getGettextInstance from '../src/getGettextInstance.js'
 
 const MESSAGES = {
-  'en': {},
+  en: {},
   'sv-SE': {},
 }
 

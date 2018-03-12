@@ -10,11 +10,11 @@ import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
  * Localization context provider
  */
 class LionessProvider extends Component {
-
   // Prop types
   static propTypes = {
     messages: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
+    transformInput: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
     debug: PropTypes.bool,
   }
@@ -31,9 +31,7 @@ class LionessProvider extends Component {
   constructor(props) {
     super(props)
 
-    const options = props.debug === null
-      ? {}
-      : { debug: props.debug }
+    const options = props.debug === null ? {} : { debug: props.debug }
     this.gt = getGettextInstance(props.messages, props.locale, options)
   }
 

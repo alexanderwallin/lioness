@@ -17,9 +17,11 @@ chai.use(chaiEnzyme())
 
 // Fixtures
 const MESSAGES = {
-  'en': {},
+  en: {},
   'sv-SE': {},
 }
+
+const identity = x => x
 
 // A child component that will receive the provider's context
 function EmptyComponent() {
@@ -29,7 +31,12 @@ const ContextConsumer = withTranslators(EmptyComponent)
 
 function createProvider(extraProps = {}) {
   return mount(
-    <LionessProvider messages={MESSAGES} locale={'en'} {...extraProps}>
+    <LionessProvider
+      messages={MESSAGES}
+      locale={'en'}
+      {...extraProps}
+      transformInput={identity}
+    >
       <ContextConsumer />
     </LionessProvider>
   )
@@ -50,6 +57,8 @@ describe('<LionessProvider />', () => {
     expect(provider.props().messages).to.deep.equal(MESSAGES)
   })
 
+  it('accepts a transformInput function as a prop')
+
   it('constructors a Gettext instance using its given props', () => {
     expect(provider.node.gt).to.be.truthy
     expect(provider.node.gt).to.be.an.instanceof(Gettext)
@@ -65,7 +74,11 @@ describe('<LionessProvider />', () => {
     expect(gti.default.args[1]).to.deep.equal([MESSAGES, 'en', { debug: true }])
 
     createProvider({ debug: false })
-    expect(gti.default.args[2]).to.deep.equal([MESSAGES, 'en', { debug: false }])
+    expect(gti.default.args[2]).to.deep.equal([
+      MESSAGES,
+      'en',
+      { debug: false },
+    ])
 
     gti.default.restore()
   })
@@ -88,7 +101,16 @@ describe('<LionessProvider />', () => {
 
   it('provides all translators through its child context', () => {
     const consumer = provider.find(ContextConsumer)
-    expect(consumer.node.context).to.contain.all.keys(['t', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
+    expect(consumer.node.context).to.contain.all.keys([
+      't',
+      'tn',
+      'tp',
+      'tnp',
+      'tc',
+      'tcn',
+      'tcp',
+      'tcnp',
+    ])
   })
 
   it('calls the pubsub emit() function whenever the `locale` or `messages` props change', () => {

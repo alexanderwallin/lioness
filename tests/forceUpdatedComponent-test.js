@@ -57,7 +57,7 @@ describe('forceUpdatedComponent()', () => {
     expect(unsubscribeStub.callCount).to.equal(1)
   })
 
-  it('updates the lastNotification state value when handleNotification is called', (done) => {
+  it('updates the lastNotification state value when handleNotification is called', done => {
     const app = mount(<ForceUpdatedThingy />)
     expect(app.state().lastNotification).to.equal(null)
 

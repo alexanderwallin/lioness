@@ -20,13 +20,25 @@ describe('withTranslators()', () => {
         </div>
       </LionessProvider>
     )
-    expect(app.find('span').props()['0']).to.contain.all.keys(['locale', 't', 'tn', 'tp', 'tnp', 'tc', 'tcn', 'tcp', 'tcnp'])
+    expect(app.find('span').props()['0']).to.contain.all.keys([
+      'locale',
+      't',
+      'tn',
+      'tp',
+      'tnp',
+      'tc',
+      'tcn',
+      'tcp',
+      'tcnp',
+    ])
   })
 
   it('sets displayName', () => {
     const MyComponent = (...props) => <span {...props} />
     MyComponent.displayName = 'MyComponent'
 
-    expect(withTranslators(MyComponent).displayName).to.equal('withTranslators(MyComponent)')
+    expect(withTranslators(MyComponent).displayName).to.equal(
+      'withTranslators(MyComponent)'
+    )
   })
 })

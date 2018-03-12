@@ -13,7 +13,7 @@ import T from '../../src/components/T.js'
 chai.use(chaiEnzyme())
 
 const MESSAGES = {
-  'en': {},
+  en: {},
   'sv-SE': {},
 }
 

@@ -4,10 +4,10 @@ import isRequiredIf from 'react-proptype-conditional-require'
 
 import withTranslators from '../withTranslators.js'
 
-const messagePropType = (otherPropName) => {
+const messagePropType = otherPropName => {
   return isRequiredIf(
     PropTypes.string,
-    (props) => !props[otherPropName],
+    props => !props[otherPropName],
     `T requires either a message prop or a child node in the form of a pure string`
   )
 }
@@ -31,7 +31,15 @@ class T extends Component {
   }
 
   render() {
-    const { message, messagePlural, context, count, children, tcnp, ...scope } = this.props
+    const {
+      message,
+      messagePlural,
+      context,
+      count,
+      children,
+      tcnp,
+      ...scope
+    } = this.props
 
     delete scope.t
     delete scope.tp
@@ -43,11 +51,16 @@ class T extends Component {
 
     const msgid = message || children || ''
 
-    const translatedContent = tcnp(context, msgid, messagePlural, count, { ...scope, count })
+    const translatedContent = tcnp(context, msgid, messagePlural, count, {
+      ...scope,
+      count,
+    })
 
-    return typeof translatedContent === 'string'
-      ? <span>{translatedContent}</span>
-      : translatedContent
+    return typeof translatedContent === 'string' ? (
+      <span>{translatedContent}</span>
+    ) : (
+      translatedContent
+    )
   }
 }
 

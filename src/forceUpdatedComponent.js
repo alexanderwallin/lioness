@@ -32,6 +32,9 @@ export default function forceUpdatedComponent(InputComponent) {
     }
   }
 
-  SubscribeUpdater.displayName = wrapDisplayName(InputComponent, 'forceUpdatedComponent')
+  SubscribeUpdater.displayName = wrapDisplayName(
+    InputComponent,
+    'forceUpdatedComponent'
+  )
   return SubscribeUpdater
 }

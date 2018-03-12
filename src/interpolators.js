@@ -117,7 +117,9 @@ export function interpolateComponents(str, scope = {}) {
       : React.cloneElement(replacement, { key }, scopeChildren)
   })
 
-  return interpolatedParts.length > 1
-    ? <span>{interpolatedParts}</span>
-    : interpolatedParts[0]
+  return interpolatedParts.length > 1 ? (
+    <span>{interpolatedParts}</span>
+  ) : (
+    interpolatedParts[0]
+  )
 }
