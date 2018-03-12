@@ -1,6 +1,6 @@
 {
   "name": "lioness",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "A React library for efficiently implementing Gettext localization",
   "main": "dist/index.js",
   "files": [
