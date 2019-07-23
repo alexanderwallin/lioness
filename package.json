@@ -39,7 +39,7 @@
     "react": "^15.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.5",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^6.0.3",
     "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
