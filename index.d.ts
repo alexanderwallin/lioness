@@ -33,6 +33,10 @@ declare module 'lioness' {
     ): string
   }
 
+  export const withTranslators: <T>(
+    component: React.ComponentType<T & WithTranslators>,
+  ) => React.ComponentType<T>;
+
   namespace T {
     export interface Props {
       message: string
