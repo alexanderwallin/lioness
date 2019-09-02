@@ -36,8 +36,12 @@ class LionessProvider extends Component {
     this.gt = getGettextInstance(props.messages, props.locale, options)
   }
 
+  /**
+   * Set the locale when receiving new props
+   */
   componentDidUpdate(prevProps) {
     if (prevProps.locale !== this.props.locale) {
+      this.gt.setLocale(this.props.locale)
       emit()
     }
     if (prevProps.messages !== this.props.messages) {
@@ -61,15 +65,6 @@ class LionessProvider extends Component {
       tcp: tcp(this.gt.pgettext.bind(this.gt)),
       tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
       transformInput: this.props.transformInput,
-    }
-  }
-
-  /**
-   * Set the locale when receiving new props
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.locale !== this.props.locale) {
-      this.gt.setLocale(nextProps.locale)
     }
   }
 
