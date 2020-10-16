@@ -12,8 +12,8 @@ import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
 class LionessProvider extends Component {
   // Prop types
   static propTypes = {
-    messages: PropTypes.object.isRequired,
-    locale: PropTypes.string.isRequired,
+    messages: PropTypes.object,
+    locale: PropTypes.string,
     transformInput: PropTypes.func,
     gettextInstance: PropTypes.shape({}),
     children: PropTypes.node.isRequired,
