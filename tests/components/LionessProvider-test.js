@@ -62,21 +62,28 @@ describe('<LionessProvider />', () => {
     expect(provider.props().transformInput).to.equal(identity)
   })
 
+  it('constructs a default Gettext instance', () => {
+    expect(provider.node.gt).to.be.truthy
+    expect(provider.node.gt).to.be.an.instanceof(Gettext)
+  })
+
   it('accepts a custom Gettext instance', () => {
     const gettextInstance = new Gettext()
     spy(gettextInstance, 'npgettext')
+    const translations = {}
     const provider = mount(
-      <LionessProvider gettextInstance={gettextInstance}>
+      <LionessProvider
+        gettextInstance={gettextInstance}
+        locale="xx"
+        messages={{ xx: translations }}
+      >
         <T>Custom Gettext</T>
       </LionessProvider>
     )
-    expect(provider.instance().gt).to.equal(gettextInstance)
+    expect(provider.node.gt).to.equal(gettextInstance)
+    expect(provider.node.gt.locale).to.equal('xx')
+    expect(provider.node.gt.catalogs.xx.messages).to.equal(translations)
     expect(gettextInstance.npgettext.args[0]).to.include('Custom Gettext')
-  })
-
-  it('constructors a Gettext instance using its given props', () => {
-    expect(provider.node.gt).to.be.truthy
-    expect(provider.node.gt).to.be.an.instanceof(Gettext)
   })
 
   it('passes on the debug prop in an options object if it is set to a boolean', () => {
