@@ -9,6 +9,7 @@ import { spy, stub } from 'sinon'
 import Gettext from 'node-gettext'
 
 import LionessProvider from '../../src/components/LionessProvider.js'
+import T from '../../src/components/T.js'
 import * as gti from '../../src/getGettextInstance.js'
 import * as pubsub from '../../src/pubsub.js'
 import withTranslators from '../../src/withTranslators.js'
@@ -59,6 +60,18 @@ describe('<LionessProvider />', () => {
 
   it('accepts a transformInput function as a prop', () => {
     expect(provider.props().transformInput).to.equal(identity)
+  })
+
+  it('accepts a custom Gettext instance', () => {
+    const gettextInstance = new Gettext()
+    spy(gettextInstance, 'npgettext')
+    const provider = mount(
+      <LionessProvider gettextInstance={gettextInstance}>
+        <T>Custom Gettext</T>
+      </LionessProvider>
+    )
+    expect(provider.instance().gt).to.equal(gettextInstance)
+    expect(gettextInstance.npgettext.args[0]).to.include('Custom Gettext')
   })
 
   it('constructors a Gettext instance using its given props', () => {

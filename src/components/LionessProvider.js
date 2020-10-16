@@ -15,6 +15,7 @@ class LionessProvider extends Component {
     messages: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
     transformInput: PropTypes.func,
+    gettextInstance: PropTypes.shape({}),
     children: PropTypes.node.isRequired,
     debug: PropTypes.bool,
   }
@@ -33,7 +34,9 @@ class LionessProvider extends Component {
     super(props)
 
     const options = props.debug === null ? {} : { debug: props.debug }
-    this.gt = getGettextInstance(props.messages, props.locale, options)
+    this.gt =
+      props.gettextInstance ||
+      getGettextInstance(props.messages, props.locale, options)
   }
 
   /**
