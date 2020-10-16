@@ -236,6 +236,7 @@ A higher-order component that provides the translation functions and state to `<
 
 * `messages` – An object containing translations for all languages. It should have the format created by [gettext-parser](https://github.com/smhg/gettext-parser)
 * `locale` – The currently selected locale (which should correspond to a key in `messages`)
+* `gettextInstance` - A custom [node-gettext](https://github.com/alexanderwallin/node-gettext) instance. If you provide the `messages` and/or `local` props they will be passed on to this instance.
 * `transformInput` – A function `(input: String) => String` that you can use to transform a string before `<T />` sends it to the translation function. One use case is normalising strings when something like [`prettier`](https://github.com/prettier/prettier) puts child content in `<T />` on new lines, with lots of indentation. The default is a function that simply returns the input as is.
 
 ## Contributing
