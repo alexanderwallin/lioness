@@ -32,11 +32,23 @@ class LionessProvider extends Component {
 
   constructor(props) {
     super(props)
+    const { debug, gettextInstance, locale, messages } = props
 
-    const options = props.debug === null ? {} : { debug: props.debug }
-    this.gt =
-      props.gettextInstance ||
-      getGettextInstance(props.messages, props.locale, options)
+    const options = debug === null ? {} : { debug }
+
+    if (gettextInstance) {
+      this.gt = gettextInstance
+      if (locale) {
+        this.gt.setLocale(locale)
+      }
+      if (messages) {
+        Object.keys(messages).forEach(lang => {
+          this.gt.addTranslations(lang, 'messages', messages[lang])
+        })
+      }
+    } else {
+      this.gt = getGettextInstance(messages, locale, options)
+    }
   }
 
   /**
