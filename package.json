@@ -60,7 +60,7 @@
     "paco": "^0.4.0",
     "prettier": "^1.11.1",
     "react": "^15.0.1",
-    "react-addons-test-utils": "^15.0.1",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^15.0.1",
     "rimraf": "^2.5.2",
     "sinon": "^1.17.7"
@@ -68,7 +68,7 @@
   "dependencies": {
     "lodash.curry": "^4.0.1",
     "node-gettext": "^2.0.0-rc.1",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.7.2",
     "react-proptype-conditional-require": "^1.0.4",
     "recompose": "^0.18.0"
   }
