@@ -141,9 +141,9 @@ describe('interpolateComponents()', () => {
     )
   })
 
-  it('supports new lines in the form of spaces inside an injected scope variable', () => {
+  it('supports new lines in injected scope variables', () => {
     const elem = interpolateComponents('{{ thingy }}', { thingy: '1\n2' })
-    expect(shallow(elem).text()).to.equal('1 2')
+    expect(shallow(elem).text()).to.equal('1\n2')
   })
 
   it('supports new lines inside template variable values', () => {
