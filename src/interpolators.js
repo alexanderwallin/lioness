@@ -41,7 +41,7 @@ export function interpolateString(str, scope = {}) {
 
   // Split string into array with regular text and variables split
   // into separate segments, like ['This is a ', '{{ thing }}', '!']
-  const parts = str.split(new RegExp(variableRegex)).filter(x => x)
+  const parts = str.split(new RegExp(variableRegex)).filter((x) => x)
 
   // If the only thing we have is a single regular string, just return it as is
   if (parts.length === 1 && isTemplateVariable(parts[0]) === false) {
@@ -49,7 +49,7 @@ export function interpolateString(str, scope = {}) {
   }
 
   return parts
-    .map(part => {
+    .map((part) => {
       if (isTemplateVariable(part) === false) {
         return part
       }
@@ -79,7 +79,7 @@ export function interpolateComponents(str, scope = {}) {
 
   // Split string into array with regular text and variables split
   // into separate segments, like ['This is a ', '{{ thing }}', '!']
-  const parts = str.split(new RegExp(variableRegex)).filter(x => x)
+  const parts = str.split(new RegExp(variableRegex)).filter((x) => x)
 
   // If the only thing we have is a single regular string, just return it as is
   if (parts.length === 1 && isTemplateVariable(parts[0]) === false) {
@@ -94,8 +94,8 @@ export function interpolateComponents(str, scope = {}) {
       return React.createElement('span', { key }, parts[i])
     }
 
-    let keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
-    let [scopeKey, scopeChildren] = keyName.split(/:([^]+)/)
+    const keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
+    const [scopeKey, scopeChildren] = keyName.split(/:([^]+)/)
 
     // No matching scope replacement, return raw string
     if (scope[scopeKey] === undefined) {

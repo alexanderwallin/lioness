@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* eslint react/jsx-props-no-spreading: 0 */
 
 import React from 'react'
 import { describe, it } from 'mocha'
@@ -57,16 +58,16 @@ describe('forceUpdatedComponent()', () => {
     expect(unsubscribeStub.callCount).to.equal(1)
   })
 
-  it('updates the lastNotification state value when handleNotification is called', done => {
+  it('updates the lastNotification state value when handleNotification is called', (done) => {
     const app = mount(<ForceUpdatedThingy />)
     expect(app.state().lastNotification).to.equal(null)
 
-    app.node.handleNotification()
+    app.instance().handleNotification()
     const notification1 = app.state().lastNotification
     expect(notification1).to.be.above(0)
 
     setTimeout(() => {
-      app.node.handleNotification()
+      app.instance().handleNotification()
       expect(app.state().lastNotification).to.be.above(notification1)
       done()
     }, 10)

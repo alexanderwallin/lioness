@@ -1,22 +1,21 @@
-/* global document */
-/* eslint import/first: 0 */
-import babelRegister from 'babel-register'
+import { JSDOM } from 'jsdom'
 
-babelRegister()
-
-import { jsdom } from 'jsdom'
-
-const exposedProperties = ['window', 'navigator', 'document']
-
-global.document = jsdom('')
-global.window = document.defaultView
-Object.keys(document.defaultView).forEach(property => {
-  if (typeof global[property] === 'undefined') {
-    exposedProperties.push(property)
-    global[property] = document.defaultView[property]
-  }
-})
-
+const { window } = new JSDOM('<!doctype html><html><body></body></html>')
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src)
+    .filter((prop) => typeof target[prop] === 'undefined')
+    .reduce(
+      (result, prop) => ({
+        ...result,
+        [prop]: Object.getOwnPropertyDescriptor(src, prop),
+      }),
+      {}
+    )
+  Object.defineProperties(target, props)
+}
+global.window = window
+global.document = window.document
 global.navigator = {
   userAgent: 'node.js',
 }
+copyProps(window, global)

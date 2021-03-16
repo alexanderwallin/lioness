@@ -41,16 +41,12 @@ const MESSAGES = {
   },
 }
 
-const identity = x => x
+const identity = (x) => x
 
 // eslint-disable-next-line
 function App({ children }) {
   return (
-    <LionessProvider
-      messages={MESSAGES}
-      locale={'en'}
-      transformInput={identity}
-    >
+    <LionessProvider messages={MESSAGES} locale="en" transformInput={identity}>
       <div>{children}</div>
     </LionessProvider>
   )
@@ -63,7 +59,7 @@ describe('<T />', () => {
         <T message="wow" />
       </App>
     )
-    expect(app.find(T).node.context).to.contain.all.keys([
+    expect(app.find(T).instance().context()).to.contain.all.keys([
       'locale',
       't',
       'tn',
@@ -126,7 +122,7 @@ describe('<T />', () => {
     mount(
       <LionessProvider
         messages={MESSAGES}
-        locale={'en'}
+        locale="en"
         transformInput={transformSpy}
       >
         <div>
@@ -139,7 +135,7 @@ describe('<T />', () => {
 
   it('always returns a renderable React component', () => {
     const app = mount(
-      <LionessProvider messages={MESSAGES} locale={'en'}>
+      <LionessProvider messages={MESSAGES} locale="en">
         <div>
           <T message="simple message" />
         </div>

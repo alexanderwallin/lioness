@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import isRequiredIf from 'react-proptype-conditional-require'
 
 import withTranslators from '../withTranslators.js'
 
-const messagePropType = otherPropName => {
+const messagePropType = (otherPropName) => {
   return isRequiredIf(
     PropTypes.string,
-    props => !props[otherPropName],
+    (props) => !props[otherPropName],
     `T requires either a message prop or a child node in the form of a pure string`
   )
 }
 
-class T extends Component {
+class T extends PureComponent {
   static propTypes = {
     message: messagePropType('children'),
     children: messagePropType('messages'),

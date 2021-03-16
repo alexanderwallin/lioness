@@ -1,4 +1,6 @@
 /* eslint-env node, mocha */
+/* eslint jsx-a11y/anchor-has-content: 0 */
+/* eslint jsx-a11y/control-has-associated-label: 0 */
 
 import React from 'react'
 import chai, { expect } from 'chai'
@@ -65,7 +67,7 @@ describe('interpolateString()', () => {
     expect(result2).to.equal('Is there coffee: true')
 
     const result3 = interpolateString('Rich kids have {{ NaN }}nies', {
-      NaN: NaN,
+      NaN,
     })
     expect(result3).to.equal('Rich kids have NaNnies')
 
@@ -163,7 +165,7 @@ describe('interpolateComponents()', () => {
     expect(shallow(elem2).text()).to.equal('Is there coffee: true')
 
     const elem3 = interpolateComponents('Rich kids have {{ NaN }}nies', {
-      NaN: NaN,
+      NaN,
     })
     expect(shallow(elem3).text()).to.equal('Rich kids have NaNnies')
 

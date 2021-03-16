@@ -1,3 +1,5 @@
+/* eslint react/no-unused-state: 0 */
+/* eslint react/jsx-props-no-spreading: 0 */
 import React, { PureComponent } from 'react'
 import { wrapDisplayName } from 'recompose'
 
@@ -8,9 +10,17 @@ import { subscribe, unsubscribe } from './pubsub.js'
  * a subscription notification is received.
  */
 export default function forceUpdatedComponent(InputComponent) {
-  class SubscribeUpdater extends PureComponent {
-    state = {
-      lastNotification: null,
+  return class SubscribeUpdater extends PureComponent {
+    static displayName = wrapDisplayName(
+      InputComponent,
+      'forceUpdatedComponent'
+    )
+
+    constructor(props) {
+      super(props)
+      this.state = {
+        lastNotification: null,
+      }
     }
 
     componentDidMount() {
@@ -31,10 +41,4 @@ export default function forceUpdatedComponent(InputComponent) {
       return <InputComponent {...this.props} />
     }
   }
-
-  SubscribeUpdater.displayName = wrapDisplayName(
-    InputComponent,
-    'forceUpdatedComponent'
-  )
-  return SubscribeUpdater
 }

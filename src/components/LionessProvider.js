@@ -12,7 +12,7 @@ import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
 class LionessProvider extends Component {
   // Prop types
   static propTypes = {
-    messages: PropTypes.object.isRequired,
+    messages: PropTypes.shape({}).isRequired,
     locale: PropTypes.string.isRequired,
     transformInput: PropTypes.func,
     children: PropTypes.node.isRequired,
@@ -20,7 +20,7 @@ class LionessProvider extends Component {
   }
 
   static defaultProps = {
-    transformInput: x => x,
+    transformInput: (x) => x,
     debug: null,
   }
 
@@ -37,25 +37,13 @@ class LionessProvider extends Component {
   }
 
   /**
-   * Set the locale when receiving new props
-   */
-  componentDidUpdate(prevProps) {
-    if (prevProps.locale !== this.props.locale) {
-      this.gt.setLocale(this.props.locale)
-      emit()
-    }
-    if (prevProps.messages !== this.props.messages) {
-      emit()
-    }
-  }
-
-  /**
    * Translator functions are curried, so we return a set of functions
    * which all have been given a translation function.
    */
   getChildContext() {
+    const { locale, transformInput } = this.props
     return {
-      locale: this.props.locale,
+      locale,
       t: t(this.gt.gettext.bind(this.gt)),
       tn: tn(this.gt.ngettext.bind(this.gt)),
       tp: tp(this.gt.pgettext.bind(this.gt)),
@@ -64,12 +52,27 @@ class LionessProvider extends Component {
       tcn: tcn(this.gt.ngettext.bind(this.gt)),
       tcp: tcp(this.gt.pgettext.bind(this.gt)),
       tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
-      transformInput: this.props.transformInput,
+      transformInput,
+    }
+  }
+
+  /**
+   * Set the locale when receiving new props
+   */
+  componentDidUpdate(prevProps) {
+    const { locale, messages } = this.props
+    if (prevProps.locale !== locale) {
+      this.gt.setLocale(locale)
+      emit()
+    }
+    if (prevProps.messages !== messages) {
+      emit()
     }
   }
 
   render() {
-    return React.Children.only(this.props.children)
+    const { children } = this.props
+    return React.Children.only(children)
   }
 }
 

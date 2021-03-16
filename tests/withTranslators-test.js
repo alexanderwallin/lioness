@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* eslint react/jsx-props-no-spreading: 0 */
 
 import React from 'react'
 import chai, { expect } from 'chai'

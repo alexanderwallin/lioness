@@ -1,21 +1,16 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "alexander",
-    "plugin:react/recommended",
+    "airbnb",
     "plugin:prettier/recommended",
+    "plugin:import/errors"
   ],
-  "plugins": [
-    "react",
-    "class-property",
-    "prettier",
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
   "rules": {
-    "max-params": "off"
+    "camelcase": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "yoda": ["error", "never", { "exceptRange": true }],
+    "import/extensions": ["error", "always", { "ignorePackages": true }],
+    "react/jsx-filename-extension": "off",
+    "react/static-property-placement": ["error", "static public field"],
   },
 }

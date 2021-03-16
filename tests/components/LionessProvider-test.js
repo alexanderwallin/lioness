@@ -1,5 +1,6 @@
 /* eslint-env mocha */
 /* eslint no-unused-expressions: 0 */
+/* eslint react/jsx-props-no-spreading: 0 */
 
 import React from 'react'
 import chai, { expect } from 'chai'
@@ -21,7 +22,7 @@ const MESSAGES = {
   'sv-SE': {},
 }
 
-const identity = x => x
+const identity = (x) => x
 
 // A child component that will receive the provider's context
 function EmptyComponent() {
@@ -33,7 +34,7 @@ function createProvider(extraProps = {}) {
   return mount(
     <LionessProvider
       messages={MESSAGES}
-      locale={'en'}
+      locale="en"
       {...extraProps}
       transformInput={identity}
     >
@@ -62,8 +63,8 @@ describe('<LionessProvider />', () => {
   })
 
   it('constructors a Gettext instance using its given props', () => {
-    expect(provider.node.gt).to.be.truthy
-    expect(provider.node.gt).to.be.an.instanceof(Gettext)
+    expect(provider.instance().gt).to.be.ok
+    expect(provider.instance().gt).to.be.an.instanceof(Gettext)
   })
 
   it('passes on the debug prop in an options object if it is set to a boolean', () => {
@@ -86,7 +87,7 @@ describe('<LionessProvider />', () => {
   })
 
   it('it sets the Gettext locale (only) when the locale prop changes', () => {
-    const setLocaleSpy = spy(provider.node.gt, 'setLocale')
+    const setLocaleSpy = spy(provider.instance().gt, 'setLocale')
 
     provider.setProps({ ...provider.props(), messages: {} })
     expect(setLocaleSpy.called).to.equal(false)
@@ -96,14 +97,14 @@ describe('<LionessProvider />', () => {
 
   it('provides the current locale through its child context', () => {
     const consumer = provider.find(ContextConsumer)
-    expect(consumer.node.context.locale).to.equal('en')
+    expect(consumer.context().locale).to.equal('en')
     provider.setProps({ ...provider.props(), locale: 'sv-SE' })
-    expect(consumer.node.context.locale).to.equal('sv-SE')
+    expect(consumer.context().locale).to.equal('sv-SE')
   })
 
   it('provides all translators through its child context', () => {
     const consumer = provider.find(ContextConsumer)
-    expect(consumer.node.context).to.contain.all.keys([
+    expect(consumer.context()).to.contain.all.keys([
       't',
       'tn',
       'tp',
@@ -117,11 +118,11 @@ describe('<LionessProvider />', () => {
 
   it('provides the string transform function through its child context', () => {
     const consumer = provider.find(ContextConsumer)
-    expect(consumer.node.context.transformInput).to.equal(identity)
+    expect(consumer.context().transformInput).to.equal(identity)
   })
 
   it('uses the identity function as string transform function by default', () => {
-    const transformInput = LionessProvider.defaultProps.transformInput
+    const { transformInput } = LionessProvider.defaultProps
     expect(transformInput('\n\t asd \t\n')).to.equal('\n\t asd \t\n')
     const wow = {}
     expect(transformInput(wow)).to.equal(wow)
