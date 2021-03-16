@@ -89,9 +89,9 @@ export function interpolateComponents(str, scope = {}) {
   const interpolatedParts = parts.map((part, i) => {
     const key = `${part}_${i}`
 
-    // Not a template variable, return simple <span> with a string
+    // Not a template variable, return simple <> with a string
     if (isTemplateVariable(part) === false) {
-      return React.createElement('span', { key }, parts[i])
+      return <React.Fragment key={key}>{parts[i]}</React.Fragment>
     }
 
     const keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
@@ -99,7 +99,7 @@ export function interpolateComponents(str, scope = {}) {
 
     // No matching scope replacement, return raw string
     if (scope[scopeKey] === undefined) {
-      return React.createElement('span', { key }, parts[i])
+      return <React.Fragment key={key}>{parts[i]}</React.Fragment>
     }
 
     const replacement = scope[scopeKey]
@@ -107,7 +107,7 @@ export function interpolateComponents(str, scope = {}) {
     // If the interpolated scope variable is not a React element, render
     // it as a string inside a <span>
     if (React.isValidElement(replacement) === false) {
-      return React.createElement('span', { key }, String(replacement))
+      return <React.Fragment key={key}>{String(replacement)}</React.Fragment>
     }
 
     // Returns a clone of the to-be injected element, passing child content
@@ -117,9 +117,5 @@ export function interpolateComponents(str, scope = {}) {
       : React.cloneElement(replacement, { key }, scopeChildren)
   })
 
-  return interpolatedParts.length > 1 ? (
-    <span>{interpolatedParts}</span>
-  ) : (
-    interpolatedParts[0]
-  )
+  return <>{interpolatedParts}</>
 }

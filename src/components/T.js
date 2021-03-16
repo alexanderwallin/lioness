@@ -64,11 +64,7 @@ class T extends PureComponent {
       }
     )
 
-    return typeof translatedContent === 'string' ? (
-      <span>{translatedContent}</span>
-    ) : (
-      translatedContent
-    )
+    return <>{translatedContent}</>
   }
 }
 
