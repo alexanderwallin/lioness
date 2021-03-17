@@ -65,6 +65,11 @@ export default function interpolate(str, scope = {}) {
 
     const replacement = scope[scopeKey]
 
+    // Let the caller create the result
+    if (typeof replacement === 'function') {
+      return replacement(scopeChildren)
+    }
+
     // If the interpolated scope variable is not a React element, render
     // it as a string inside a <span>
     if (React.isValidElement(replacement) === false) {
