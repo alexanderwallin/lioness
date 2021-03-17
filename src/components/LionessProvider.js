@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 
 import Context from '../Context.js'
 import createTranslator from '../createTranslator.js'
-import GettextAdapter from '../adapters/GettextAdapter.js'
 
 /**
  * Localization context provider
  */
 class LionessProvider extends Component {
   static propTypes = {
-    adapter: PropTypes.func,
+    adapter: PropTypes.func.isRequired,
     messages: PropTypes.shape({}).isRequired,
     locale: PropTypes.string.isRequired,
     transformInput: PropTypes.func,
@@ -19,7 +18,6 @@ class LionessProvider extends Component {
   }
 
   static defaultProps = {
-    adapter: GettextAdapter,
     transformInput: (x) => x,
     debug: false,
   }
