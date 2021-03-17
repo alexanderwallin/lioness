@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 import { LionessProvider, T, withTranslators } from '../../dist/index.js'
@@ -110,26 +110,43 @@ const HoverableItemWithNumber = withTranslators(({ t, itemNumber }) => (
 /**
  * Example app
  */
-const App = () => (
-  <LionessProvider locale="sv" messages={messages}>
-    <div className="App">
-      <pre>
-        {'<T message="Clap {{ num }} times" num={<ClickableNumber />} />'}
-      </pre>
-      <T message="Clap {{ num }} times" num={<ClickableNumber />} />
+const App = () => {
+  const [locale, setLocale] = useState('sv')
+  return (
+    <LionessProvider locale={locale} messages={messages}>
+      <div className="App">
+        <button
+          onClick={() => setLocale('en')}
+          style={locale === 'en' ? { fontWeight: 'bold' } : {}}
+        >
+          English
+        </button>
+        <button
+          onClick={() => setLocale('sv')}
+          style={locale === 'sv' ? { fontWeight: 'bold' } : {}}
+        >
+          Swedish
+        </button>
 
-      <hr />
-      <pre>{'<p><T>Hello</T></p>'}</pre>
-      <p>
-        <T>Hello</T>
-      </p>
+        <hr />
 
-      <hr />
-      <pre>{'<MyThing message="Close" />'}</pre>
-      <MyThing message="Close" />
+        <pre>
+          {'<T message="Clap {{ num }} times" num={<ClickableNumber />} />'}
+        </pre>
+        <T message="Clap {{ num }} times" num={<ClickableNumber />} />
 
-      <hr />
-      <pre>{`const Diff = withTranslators(({ tcn, num }) => (
+        <hr />
+        <pre>{'<p><T>Hello</T></p>'}</pre>
+        <p>
+          <T>Hello</T>
+        </p>
+
+        <hr />
+        <pre>{'<MyThing message="Close" />'}</pre>
+        <MyThing message="Close" />
+
+        <hr />
+        <pre>{`const Diff = withTranslators(({ tcn, num }) => (
   <div>
     {tcn('{{ one:One }} thing ({{ link:Add more }})', '{{ num }} things', num, {
       one: <em />,
@@ -143,11 +160,11 @@ const App = () => (
 
 <Diff num={1} />
 <Diff num={2} />`}</pre>
-      <Diff num={1} />
-      <Diff num={2} />
+        <Diff num={1} />
+        <Diff num={2} />
 
-      <hr />
-      <pre>{`const HoverableItemWithNumber = withTranslators(({ t, itemNumber }) => (
+        <hr />
+        <pre>{`const HoverableItemWithNumber = withTranslators(({ t, itemNumber }) => (
   <div title={t('This is item number {{ itemNumber }}', { itemNumber })}>
     Hover me to see my number
   </div>
@@ -155,10 +172,11 @@ const App = () => (
 
 <HoverableItemWithNumber itemNumber={1} />
 <HoverableItemWithNumber itemNumber={2} />`}</pre>
-      <HoverableItemWithNumber itemNumber={1} />
-      <HoverableItemWithNumber itemNumber={2} />
-    </div>
-  </LionessProvider>
-)
+        <HoverableItemWithNumber itemNumber={1} />
+        <HoverableItemWithNumber itemNumber={2} />
+      </div>
+    </LionessProvider>
+  )
+}
 
 ReactDOM.render(<App />, document.querySelector('#app'))
