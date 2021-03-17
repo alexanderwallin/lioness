@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Context from '../Context.js'
 import getGettextInstance from '../getGettextInstance.js'
-import * as contextTypes from '../contextTypes.js'
-import { emit } from '../pubsub.js'
 import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
 
 /**
@@ -24,11 +23,6 @@ class LionessProvider extends Component {
     debug: null,
   }
 
-  // Child context types
-  static childContextTypes = {
-    ...contextTypes,
-  }
-
   constructor(props) {
     super(props)
 
@@ -37,42 +31,38 @@ class LionessProvider extends Component {
   }
 
   /**
-   * Translator functions are curried, so we return a set of functions
-   * which all have been given a translation function.
-   */
-  getChildContext() {
-    const { locale, transformInput } = this.props
-    return {
-      locale,
-      t: t(this.gt.gettext.bind(this.gt)),
-      tn: tn(this.gt.ngettext.bind(this.gt)),
-      tp: tp(this.gt.pgettext.bind(this.gt)),
-      tnp: tnp(this.gt.npgettext.bind(this.gt)),
-      tc: tc(this.gt.gettext.bind(this.gt)),
-      tcn: tcn(this.gt.ngettext.bind(this.gt)),
-      tcp: tcp(this.gt.pgettext.bind(this.gt)),
-      tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
-      transformInput,
-    }
-  }
-
-  /**
    * Set the locale when receiving new props
    */
-  componentDidUpdate(prevProps) {
-    const { locale, messages } = this.props
-    if (prevProps.locale !== locale) {
-      this.gt.setLocale(locale)
-      emit()
+  shouldComponentUpdate(nextProps) {
+    const { locale } = this.props
+    if (nextProps.locale !== locale) {
+      this.gt.setLocale(nextProps.locale)
     }
-    if (prevProps.messages !== messages) {
-      emit()
-    }
+    return true
   }
 
   render() {
-    const { children } = this.props
-    return React.Children.only(children)
+    const { locale, messages, transformInput, children } = this.props
+
+    return (
+      <Context.Provider
+        value={{
+          locale,
+          messages,
+          transformInput,
+          t: t(this.gt.gettext.bind(this.gt)),
+          tn: tn(this.gt.ngettext.bind(this.gt)),
+          tp: tp(this.gt.pgettext.bind(this.gt)),
+          tnp: tnp(this.gt.npgettext.bind(this.gt)),
+          tc: tc(this.gt.gettext.bind(this.gt)),
+          tcn: tcn(this.gt.ngettext.bind(this.gt)),
+          tcp: tcp(this.gt.pgettext.bind(this.gt)),
+          tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
+        }}
+      >
+        {children}
+      </Context.Provider>
+    )
   }
 }
 

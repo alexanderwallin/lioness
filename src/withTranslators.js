@@ -1,20 +1,23 @@
-import { getContext, wrapDisplayName } from 'recompose'
+/* eslint react/jsx-props-no-spreading: 0 */
+import React, { useContext } from 'react'
 
-import * as contextTypes from './contextTypes.js'
-import forceUpdatedComponent from './forceUpdatedComponent.js'
+import Context from './Context.js'
+
+function getDisplayName(Component) {
+  return Component.displayName || Component.name || 'Component'
+}
 
 /**
  * Provides the given component with translator functions
  * as props.
  */
 export default function withTranslators(WrappedComponent) {
-  const forceUpdatedWrappedComponent = forceUpdatedComponent(WrappedComponent)
-  const withTranslatorHoc = getContext(contextTypes)(
-    forceUpdatedWrappedComponent
-  )
-  withTranslatorHoc.displayName = wrapDisplayName(
-    WrappedComponent,
-    'withTranslators'
-  )
-  return withTranslatorHoc
+  function ComponentWithTranslators(props) {
+    const context = useContext(Context)
+    return <WrappedComponent {...context} {...props} />
+  }
+  ComponentWithTranslators.displayName = `withTranslators(${getDisplayName(
+    WrappedComponent
+  )})`
+  return ComponentWithTranslators
 }
