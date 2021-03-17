@@ -21,47 +21,8 @@ const variableRegex = /(\{\{\s[^]+?(?=\s\}\})\s\}\})/g
  * @return {Boolean}        True if the string is a template variable,
  *                          false if not
  */
-export function isTemplateVariable(str) {
+function isTemplateVariable(str) {
   return new RegExp(variableRegex).test(str)
-}
-
-/**
- * Interpolates a string, replacing template variables with values
- * provided in the scope.
- *
- * @param  {String}    str    A string to be interpolated
- * @param  {Object}    scope  An object with variable names and their
- *                            replacements
- * @return {String}           An interpolated string
- */
-export function interpolateString(str, scope = {}) {
-  if (!str) {
-    return str
-  }
-
-  // Split string into array with regular text and variables split
-  // into separate segments, like ['This is a ', '{{ thing }}', '!']
-  const parts = str.split(new RegExp(variableRegex)).filter((x) => x)
-
-  // If the only thing we have is a single regular string, just return it as is
-  if (parts.length === 1 && isTemplateVariable(parts[0]) === false) {
-    return str
-  }
-
-  return parts
-    .map((part) => {
-      if (isTemplateVariable(part) === false) {
-        return part
-      }
-
-      const variableName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
-      if (scope[variableName] === undefined) {
-        return part
-      }
-
-      return scope[variableName]
-    })
-    .join('')
 }
 
 /**
@@ -70,9 +31,9 @@ export function interpolateString(str, scope = {}) {
  * @param  {String}    str    A string to be interpolated
  * @param  {Object}    scope  An object with variable names and their
  *                            replacements
- * @return {Component}        A React component
+ * @return {String|Component} A string or React component
  */
-export function interpolateComponents(str, scope = {}) {
+export default function interpolate(str, scope = {}) {
   if (!str) {
     return str
   }
@@ -91,7 +52,7 @@ export function interpolateComponents(str, scope = {}) {
 
     // Not a template variable, return simple <> with a string
     if (isTemplateVariable(part) === false) {
-      return <React.Fragment key={key}>{parts[i]}</React.Fragment>
+      return parts[i]
     }
 
     const keyName = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
@@ -99,7 +60,7 @@ export function interpolateComponents(str, scope = {}) {
 
     // No matching scope replacement, return raw string
     if (scope[scopeKey] === undefined) {
-      return <React.Fragment key={key}>{parts[i]}</React.Fragment>
+      return parts[i]
     }
 
     const replacement = scope[scopeKey]
@@ -107,7 +68,7 @@ export function interpolateComponents(str, scope = {}) {
     // If the interpolated scope variable is not a React element, render
     // it as a string inside a <span>
     if (React.isValidElement(replacement) === false) {
-      return <React.Fragment key={key}>{String(replacement)}</React.Fragment>
+      return String(replacement)
     }
 
     // Returns a clone of the to-be injected element, passing child content
@@ -117,5 +78,8 @@ export function interpolateComponents(str, scope = {}) {
       : React.cloneElement(replacement, { key }, scopeChildren)
   })
 
-  return <>{interpolatedParts}</>
+  if (interpolatedParts.every((part) => React.isValidElement(part) === false)) {
+    return interpolatedParts.join('')
+  }
+  return <>{React.Children.toArray(interpolatedParts)}</>
 }

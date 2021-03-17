@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import isRequiredIf from 'react-proptype-conditional-require'
 
-import withTranslators from '../withTranslators.js'
+import withTranslation from '../withTranslation.js'
 
 const messagePropType = (otherPropName) => {
   return isRequiredIf(
@@ -19,7 +19,7 @@ class T extends PureComponent {
     messagePlural: PropTypes.string,
     context: PropTypes.string,
     count: PropTypes.number,
-    tcnp: PropTypes.func.isRequired,
+    translate: PropTypes.func.isRequired,
     transformInput: PropTypes.func.isRequired,
   }
 
@@ -38,34 +38,25 @@ class T extends PureComponent {
       context,
       count,
       children,
-      tcnp,
+      translate,
       transformInput,
       ...scope
     } = this.props
 
-    delete scope.t
-    delete scope.tp
-    delete scope.tn
-    delete scope.tnp
-    delete scope.tc
-    delete scope.tcp
-    delete scope.tcn
-
     const msgid = message || children || ''
-
-    const translatedContent = tcnp(
+    const translatedContent = translate({
       context,
-      transformInput(msgid),
-      transformInput(messagePlural),
+      message: transformInput(msgid),
+      messagePlural: transformInput(messagePlural),
       count,
-      {
+      scope: {
         ...scope,
         count,
-      }
-    )
+      },
+    })
 
     return <>{translatedContent}</>
   }
 }
 
-export default withTranslators(T)
+export default withTranslation(T)

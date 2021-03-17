@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Context from '../Context.js'
-import getGettextInstance from '../getGettextInstance.js'
-import { t, tn, tp, tnp, tc, tcn, tcp, tcnp } from '../translators.js'
+import createTranslator from '../createTranslator.js'
+import GettextAdapter from '../adapters/GettextAdapter.js'
 
 /**
  * Localization context provider
  */
 class LionessProvider extends Component {
-  // Prop types
   static propTypes = {
+    adapter: PropTypes.func,
     messages: PropTypes.shape({}).isRequired,
     locale: PropTypes.string.isRequired,
     transformInput: PropTypes.func,
@@ -19,6 +19,7 @@ class LionessProvider extends Component {
   }
 
   static defaultProps = {
+    adapter: GettextAdapter,
     transformInput: (x) => x,
     debug: false,
   }
@@ -26,8 +27,12 @@ class LionessProvider extends Component {
   constructor(props) {
     super(props)
 
-    const options = { debug: Boolean(props.debug) }
-    this.gt = getGettextInstance(props.messages, props.locale, options)
+    const options = {
+      sourceLocale: props.locale,
+      debug: Boolean(props.debug),
+    }
+    this.adapter = props.adapter(props.messages, props.locale, options)
+    this.translate = createTranslator(this.adapter.translate)
   }
 
   /**
@@ -36,7 +41,7 @@ class LionessProvider extends Component {
   shouldComponentUpdate(nextProps) {
     const { locale } = this.props
     if (nextProps.locale !== locale) {
-      this.gt.setLocale(nextProps.locale)
+      this.adapter.setLocale(nextProps.locale)
     }
     return true
   }
@@ -50,14 +55,7 @@ class LionessProvider extends Component {
           locale,
           messages,
           transformInput,
-          t: t(this.gt.gettext.bind(this.gt)),
-          tn: tn(this.gt.ngettext.bind(this.gt)),
-          tp: tp(this.gt.pgettext.bind(this.gt)),
-          tnp: tnp(this.gt.npgettext.bind(this.gt)),
-          tc: tc(this.gt.gettext.bind(this.gt)),
-          tcn: tcn(this.gt.ngettext.bind(this.gt)),
-          tcp: tcp(this.gt.pgettext.bind(this.gt)),
-          tcnp: tcnp(this.gt.npgettext.bind(this.gt)),
+          translate: this.translate,
         }}
       >
         {children}

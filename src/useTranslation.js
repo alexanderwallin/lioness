@@ -2,9 +2,7 @@ import { useContext } from 'react'
 
 import Context from './Context.js'
 
-function useTranslators() {
+export default function useTranslation() {
   const context = useContext(Context)
   return context
 }
-
-export default useTranslators

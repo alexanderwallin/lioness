@@ -1,7 +1,7 @@
 /* eslint react/jsx-props-no-spreading: 0 */
 import React from 'react'
 
-import useTranslators from './useTranslators.js'
+import useTranslation from './useTranslation.js'
 
 function getDisplayName(Component) {
   return Component.displayName || Component.name || 'Component'
@@ -11,12 +11,12 @@ function getDisplayName(Component) {
  * Provides the given component with translator functions
  * as props.
  */
-export default function withTranslators(WrappedComponent) {
+export default function withTranslation(WrappedComponent) {
   function ComponentWithTranslators(props) {
-    const translators = useTranslators()
-    return <WrappedComponent {...translators} {...props} />
+    const context = useTranslation()
+    return <WrappedComponent {...context} {...props} />
   }
-  ComponentWithTranslators.displayName = `withTranslators(${getDisplayName(
+  ComponentWithTranslators.displayName = `withTranslation(${getDisplayName(
     WrappedComponent
   )})`
   return ComponentWithTranslators
