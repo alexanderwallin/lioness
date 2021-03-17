@@ -2,7 +2,19 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Context from '../Context.js'
-import createTranslator from '../createTranslator.js'
+import interpolate from '../interpolate.js'
+
+function createTranslator(translator) {
+  return function translate({ context, message, messagePlural, count, scope }) {
+    const translation = translator({
+      context,
+      message,
+      messagePlural,
+      count,
+    })
+    return interpolate(translation, scope)
+  }
+}
 
 /**
  * Localization context provider
