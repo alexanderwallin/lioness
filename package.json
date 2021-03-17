@@ -39,7 +39,7 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "optionalDependencies": {
-    "node-gettext": "^3.0.0",
+    "node-gettext": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -73,7 +73,6 @@
     "sinon": "^9.0.1"
   },
   "dependencies": {
-    "lodash.curry": "^4.0.1",
     "prop-types": "^15.5.10",
     "react-proptype-conditional-require": "^1.0.4"
   }
