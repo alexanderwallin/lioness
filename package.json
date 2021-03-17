@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "lodash.curry": "^4.0.1",
-    "node-gettext": "^2.0.0-rc.1",
+    "node-gettext": "^3.0.0",
     "prop-types": "^15.5.10",
     "react-proptype-conditional-require": "^1.0.4"
   }

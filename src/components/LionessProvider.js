@@ -20,13 +20,13 @@ class LionessProvider extends Component {
 
   static defaultProps = {
     transformInput: (x) => x,
-    debug: null,
+    debug: false,
   }
 
   constructor(props) {
     super(props)
 
-    const options = props.debug === null ? {} : { debug: props.debug }
+    const options = { debug: Boolean(props.debug) }
     this.gt = getGettextInstance(props.messages, props.locale, options)
   }
 
