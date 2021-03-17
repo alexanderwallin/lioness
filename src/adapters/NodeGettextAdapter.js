@@ -1,6 +1,6 @@
 import Gettext from 'node-gettext'
 
-export default function GettextAdapter(messages, locale, options) {
+export default function NodeGettextAdapter(messages, locale, options) {
   const gt = new Gettext(options)
   Object.keys(messages).forEach((lang) => {
     gt.addTranslations(lang, 'messages', messages[lang])
