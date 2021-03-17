@@ -72,7 +72,6 @@
     "lodash.curry": "^4.0.1",
     "node-gettext": "^2.0.0-rc.1",
     "prop-types": "^15.5.10",
-    "react-proptype-conditional-require": "^1.0.4",
-    "recompose": "^0.18.0"
+    "react-proptype-conditional-require": "^1.0.4"
   }
 }
