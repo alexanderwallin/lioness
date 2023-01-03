@@ -3,11 +3,11 @@
     "start": "webpack-dev-server --port 8111 --content-base public/"
   },
   "devDependencies": {
-    "babel-loader": "^6.2.4",
+    "babel-loader": "^9.1.0",
     "json-loader": "^0.5.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "webpack": "^1.13.0",
+    "webpack": "^5.75.0",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {}
