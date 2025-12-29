@@ -19,7 +19,7 @@ class T extends PureComponent {
     messagePlural: PropTypes.string,
     context: PropTypes.string,
     count: PropTypes.number,
-    translate: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired,
     transformInput: PropTypes.func.isRequired,
   }
 
@@ -38,13 +38,13 @@ class T extends PureComponent {
       context,
       count,
       children,
-      translate,
+      t,
       transformInput,
       ...scope
     } = this.props
 
     const msgid = message || children || ''
-    const translatedContent = translate({
+    const translatedContent = t({
       context,
       message: transformInput(msgid),
       messagePlural: transformInput(messagePlural),

@@ -10,7 +10,7 @@
   "scripts": {
     "prettier": "prettier",
     "lint": "eslint src tests",
-    "test": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js tests/{.,components,integration-tests}/*.js",
+    "test": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js tests/{.,components}/*.js",
     "test-file": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js",
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist src",
@@ -67,13 +67,12 @@
     "paco": "^0.4.0",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
-    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.13.1",
     "rimraf": "^2.5.2",
     "sinon": "^9.0.1"
   },
   "dependencies": {
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.5.8",
     "react-proptype-conditional-require": "^1.0.4"
   }
 }

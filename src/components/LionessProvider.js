@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import Context from '../Context.js'
 import interpolate from '../interpolate.js'
 
-function createTranslator(translator) {
-  return function translate({ context, message, messagePlural, count, scope }) {
-    const translation = translator({
+function createInterpolatingTranslate(translate) {
+  return function ({ context, message, messagePlural, count, scope }) {
+    const translation = translate({
       context,
       message,
       messagePlural,
@@ -41,8 +41,8 @@ class LionessProvider extends Component {
       sourceLocale: props.locale,
       debug: Boolean(props.debug),
     }
-    this.adapter = props.adapter(props.messages, props.locale, options)
-    this.translate = createTranslator(this.adapter.translate)
+    this.translator = props.adapter(props.messages, props.locale, options)
+    this.translate = createInterpolatingTranslate(this.translator.translate)
   }
 
   /**
@@ -51,7 +51,7 @@ class LionessProvider extends Component {
   shouldComponentUpdate(nextProps) {
     const { locale } = this.props
     if (nextProps.locale !== locale) {
-      this.adapter.setLocale(nextProps.locale)
+      this.translator.setLocale(nextProps.locale)
     }
     return true
   }
@@ -65,7 +65,7 @@ class LionessProvider extends Component {
           locale,
           messages,
           transformInput,
-          translate: this.translate,
+          t: this.translate,
         }}
       >
         {children}

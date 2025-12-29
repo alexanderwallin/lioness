@@ -21,7 +21,7 @@ const variableRegex = /(\{\{\s[^]+?(?=\s\}\})\s\}\})/g
  * @return {Boolean}        True if the string is a template variable,
  *                          false if not
  */
-function isTemplateVariable(str) {
+export function isTemplateVariable(str) {
   return new RegExp(variableRegex).test(str)
 }
 

@@ -6,13 +6,10 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { mount } from 'enzyme'
-import { spy, stub } from 'sinon'
-import Gettext from 'node-gettext'
+import { spy } from 'sinon'
 
 import LionessProvider from '../../src/components/LionessProvider.js'
-import * as gti from '../../src/getGettextInstance.js'
-import * as pubsub from '../../src/pubsub.js'
-import withTranslators from '../../src/withTranslators.js'
+import withTranslation from '../../src/withTranslation.js'
 
 chai.use(chaiEnzyme())
 
@@ -24,17 +21,23 @@ const MESSAGES = {
 
 const identity = (x) => x
 
+const adapter = () => ({
+  setLocale: () => {},
+  translate: () => {},
+})
+
 // A child component that will receive the provider's context
 function EmptyComponent() {
   return <div />
 }
-const ContextConsumer = withTranslators(EmptyComponent)
+const ContextConsumer = withTranslation(EmptyComponent)
 
 function createProvider(extraProps = {}) {
   return mount(
     <LionessProvider
       messages={MESSAGES}
       locale="en"
+      adapter={adapter}
       {...extraProps}
       transformInput={identity}
     >
@@ -62,64 +65,14 @@ describe('<LionessProvider />', () => {
     expect(provider.props().transformInput).to.equal(identity)
   })
 
-  it('constructors a Gettext instance using its given props', () => {
-    expect(provider.instance().gt).to.be.ok
-    expect(provider.instance().gt).to.be.an.instanceof(Gettext)
-  })
-
-  it('passes on the debug prop in an options object if it is set to a boolean', () => {
-    spy(gti, 'default')
-
-    createProvider()
-    expect(gti.default.args[0]).to.deep.equal([MESSAGES, 'en', {}])
-
-    createProvider({ debug: true })
-    expect(gti.default.args[1]).to.deep.equal([MESSAGES, 'en', { debug: true }])
-
-    createProvider({ debug: false })
-    expect(gti.default.args[2]).to.deep.equal([
-      MESSAGES,
-      'en',
-      { debug: false },
-    ])
-
-    gti.default.restore()
-  })
-
   it('it sets the Gettext locale (only) when the locale prop changes', () => {
-    const setLocaleSpy = spy(provider.instance().gt, 'setLocale')
+    const setLocaleSpy = spy(provider.instance().translator, 'setLocale')
 
-    provider.setProps({ ...provider.props(), messages: {} })
+    provider.setProps({ ...provider.props(), someProp: 123 })
     expect(setLocaleSpy.called).to.equal(false)
     provider.setProps({ ...provider.props(), locale: 'sv-SE' })
     expect(setLocaleSpy.calledWithMatch('sv-SE'))
   })
-
-  // it('provides the current locale through its child context', () => {
-  //   const consumer = provider.find(ContextConsumer)
-  //   expect(consumer.context().locale).to.equal('en')
-  //   provider.setProps({ ...provider.props(), locale: 'sv-SE' })
-  //   expect(consumer.context().locale).to.equal('sv-SE')
-  // })
-
-  // it('provides all translators through its child context', () => {
-  //   const consumer = provider.find(ContextConsumer)
-  //   expect(consumer.context()).to.contain.all.keys([
-  //     't',
-  //     'tn',
-  //     'tp',
-  //     'tnp',
-  //     'tc',
-  //     'tcn',
-  //     'tcp',
-  //     'tcnp',
-  //   ])
-  // })
-
-  // it('provides the string transform function through its child context', () => {
-  //   const consumer = provider.find(ContextConsumer)
-  //   expect(consumer.context().transformInput).to.equal(identity)
-  // })
 
   it('uses the identity function as string transform function by default', () => {
     const { transformInput } = LionessProvider.defaultProps
@@ -128,20 +81,5 @@ describe('<LionessProvider />', () => {
     expect(transformInput(wow)).to.equal(wow)
     const fn = () => {}
     expect(transformInput(fn)).to.equal(fn)
-  })
-
-  it('calls the pubsub emit() function whenever the `locale` or `messages` props change', () => {
-    const emitStub = stub(pubsub, 'emit')
-
-    provider.setProps({ locale: 'sv-SE' })
-    expect(emitStub.callCount).to.equal(1)
-
-    provider.setProps({ messages: { ...MESSAGES } })
-    expect(emitStub.callCount).to.equal(2)
-
-    provider.setProps({ debug: true })
-    expect(emitStub.callCount).to.equal(2)
-
-    emitStub.restore()
   })
 })

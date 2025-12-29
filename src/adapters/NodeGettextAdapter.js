@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import Gettext from 'node-gettext'
 
 export default function NodeGettextAdapter(messages, locale, options) {

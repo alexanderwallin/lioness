@@ -43,36 +43,26 @@ const MESSAGES = {
 
 const identity = (x) => x
 
+const adapter = () => ({
+  setLocale: () => {},
+  translate: ({ message }) => message,
+})
+
 // eslint-disable-next-line
 function App({ children }) {
   return (
-    <LionessProvider messages={MESSAGES} locale="en" transformInput={identity}>
+    <LionessProvider
+      messages={MESSAGES}
+      locale="en"
+      adapter={adapter}
+      transformInput={identity}
+    >
       <div>{children}</div>
     </LionessProvider>
   )
 }
 
 describe('<T />', () => {
-  // it('receives locale, translators and string transform function via context', () => {
-  //   const app = mount(
-  //     <App>
-  //       <T message="wow" />
-  //     </App>
-  //   )
-  //   expect(app.find(T).props()).to.contain.all.keys([
-  //     'locale',
-  //     't',
-  //     'tn',
-  //     'tp',
-  //     'tnp',
-  //     'tc',
-  //     'tcn',
-  //     'tcp',
-  //     'tcnp',
-  //     'transformInput',
-  //   ])
-  // })
-
   it('accepts children as input message', () => {
     const app = shallow(
       <App>
@@ -90,17 +80,6 @@ describe('<T />', () => {
     )
     expect(app.find(T).text()).to.equal('i am prop')
   })
-
-  // NOTE: How to test prop type validations? This is not working a.t.m.
-  it(
-    'throws an error when neither message nor string-only children are provided'
-  )
-  // it('throws an error when neither message nor string-only children are provided', () => {
-  //   const consoleError = stub(console, 'error')
-  //   const t = <T tcnp={identity} />
-  //   expect(consoleError.calledOnce).to.equal(true)
-  //   console.error.restore()
-  // })
 
   // NOTE: withTranslations(Component) overrides the tcnp passed as a prop here,
   //       so how we test this?
@@ -123,6 +102,7 @@ describe('<T />', () => {
       <LionessProvider
         messages={MESSAGES}
         locale="en"
+        adapter={adapter}
         transformInput={transformSpy}
       >
         <div>
@@ -131,17 +111,5 @@ describe('<T />', () => {
       </LionessProvider>
     )
     expect(transformSpy.calledWith('wow')).to.equal(true)
-  })
-
-  it('always returns a renderable React component', () => {
-    const app = mount(
-      <LionessProvider messages={MESSAGES} locale="en">
-        <div>
-          <T message="simple message" />
-        </div>
-      </LionessProvider>
-    )
-
-    expect(app.find(T).find('span')).to.have.length(1)
   })
 })

@@ -7,22 +7,18 @@ import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { shallow } from 'enzyme'
 
-import {
-  interpolateComponents,
-  interpolateString,
-  isTemplateVariable,
-} from '../src/interpolators.js'
+import interpolate, { isTemplateVariable } from '../src/interpolate.js'
 
 chai.use(chaiEnzyme())
 
-describe('interpolateString()', () => {
+describe('interpolate() - strings', () => {
   it('returns the input string as is if it does not contain any variables', () => {
-    const result = interpolateString('wow')
+    const result = interpolate('wow')
     expect(result).to.equal('wow')
   })
 
   it('replaces multiple variables correctly', () => {
-    const result = interpolateString('{{ name1 }} knows {{ name2 }}', {
+    const result = interpolate('{{ name1 }} knows {{ name2 }}', {
       name1: 'Abdel',
       name2: 'Steph',
     })
@@ -30,7 +26,7 @@ describe('interpolateString()', () => {
   })
 
   it('replaces multiple instances of the same variable correctly', () => {
-    const result = interpolateString(
+    const result = interpolate(
       '{{ spam }}, {{ spam }}, {{ spam }} and {{ spam }}',
       { spam: 'spam' }
     )
@@ -38,164 +34,151 @@ describe('interpolateString()', () => {
   })
 
   it('returns a template variable with an undefined value in its original form', () => {
-    const result = interpolateString('This behaviour is {{ und }}', {
+    const result = interpolate('This behaviour is {{ und }}', {
       und: undefined,
     })
     expect(result).to.equal('This behaviour is {{ und }}')
   })
 
   it('supports new lines in the passed string', () => {
-    const result = interpolateString('First row\nSecond row')
+    const result = interpolate('First row\nSecond row')
     expect(result).to.equal('First row\nSecond row')
   })
 
   it('supports new lines in template variable values', () => {
     const slimShady = 'Hi my name is\nwhat\nmy name is\nwho\nmy name is'
-    const result = interpolateString(`{{ slimShady }}`, { slimShady })
+    const result = interpolate(`{{ slimShady }}`, { slimShady })
     expect(result).to.equal(slimShady)
   })
 
   it('safely injects non-string variables', () => {
-    const result1 = interpolateString('You have {{ swagCount }} swagger', {
+    const result1 = interpolate('You have {{ swagCount }} swagger', {
       swagCount: 9,
     })
     expect(result1).to.equal('You have 9 swagger')
 
-    const result2 = interpolateString('Is there coffee: {{ thereIsCoffee }}', {
+    const result2 = interpolate('Is there coffee: {{ thereIsCoffee }}', {
       thereIsCoffee: true,
     })
     expect(result2).to.equal('Is there coffee: true')
 
-    const result3 = interpolateString('Rich kids have {{ NaN }}nies', {
+    const result3 = interpolate('Rich kids have {{ NaN }}nies', {
       NaN,
     })
     expect(result3).to.equal('Rich kids have NaNnies')
 
-    const result4 = interpolateString('Say "object": {{ obj }}', {
+    const result4 = interpolate('Say "object": {{ obj }}', {
       obj: { objectz: 'Awbyect' },
     })
     expect(result4).to.equal('Say "object": [object Object]')
-
-    /* eslint-disable */
-    const result5 = interpolateString('Dance to the {{ func }}', {
-      func: function beat() {},
-    })
-    /* eslint-enable */
-    expect(result5).to.equal('Dance to the function beat() {}')
   })
 })
 
-describe('interpolateComponents()', () => {
+describe('interpolate() - components', () => {
   it('returns the input string as is if it does not contain any variables', () => {
-    const elem = interpolateComponents('wow')
+    const elem = interpolate('wow')
     expect(elem).to.equal('wow')
   })
 
-  it('returns a single element if the input string is only a variable', () => {
-    const elem = interpolateComponents('{{ var }}', { var: 'replacement' })
-    expect(elem.props.children).to.equal('replacement')
+  it('returns a string if all scope variables are strings', () => {
+    const elem = interpolate('{{ var1 }} {{ var2 }}', {
+      var1: 'strings',
+      var2: 'only',
+    })
+    expect(elem).to.equal('strings only')
   })
 
-  it('wraps multiple interpolated variables into a parent <span>', () => {
-    const elem = interpolateComponents('{{ name1 }} knows {{ name2 }}', {
-      name1: 'Abdel',
+  it('wraps multiple interpolated variables into a parent component>', () => {
+    const elem = interpolate('{{ name1 }} knows {{ name2 }}', {
+      name1: <span>Abdel</span>,
       name2: 'Steph',
     })
-    expect(elem.type).to.equal('span')
     expect(elem.props.children.length).to.equal(3)
   })
 
   it('replaces multiple variables correctly', () => {
-    const elem = interpolateComponents('{{ name1 }} knows {{ name2 }}', {
-      name1: 'Abdel',
-      name2: 'Steph',
+    const elem = interpolate('{{ name1 }} knows {{ name2 }}', {
+      name1: <span>Abdel</span>,
+      name2: <em>Steph</em>,
     })
-    expect(elem.props.children[0].props.children).to.equal('Abdel')
-    expect(elem.props.children[1].props.children).to.equal(' knows ')
-    expect(elem.props.children[2].props.children).to.equal('Steph')
+    const [abdel, knows, steph] = elem.props.children
+
+    expect(abdel.type).to.equal('span')
+    expect(abdel.props.children).to.equal('Abdel')
+
+    expect(knows).to.equal(' knows ')
+
+    expect(steph.type).to.equal('em')
+    expect(steph.props.children).to.equal('Steph')
   })
 
   it('replaces multiple instances of the same variable correctly', () => {
-    const elem = interpolateComponents(
+    const elem = interpolate(
       '{{ spam }}, {{ spam }}, {{ spam }} and {{ spam }}',
       { spam: 'spam' }
     )
-    expect(elem.props.children.length).to.equal(7)
-    expect(elem.props.children[0].props.children).to.equal('spam')
-    expect(elem.props.children[2].props.children).to.equal('spam')
-    expect(elem.props.children[4].props.children).to.equal('spam')
-    expect(elem.props.children[6].props.children).to.equal('spam')
+    expect(elem).to.equal('spam, spam, spam and spam')
   })
 
   it('returns a template variable with an undefined value in its original form', () => {
-    const elem = interpolateComponents('This behaviour is {{ und }}', {
+    const elem = interpolate('This behaviour is {{ und }}', {
       und: undefined,
     })
-    expect(shallow(elem).text()).to.equal('This behaviour is {{ und }}')
+    expect(elem).to.equal('This behaviour is {{ und }}')
   })
 
   it('supports new lines in the passed string', () => {
-    const elem = interpolateComponents('First row\nSecond row')
-    expect(shallow(<span>{elem}</span>).text()).to.equal(
-      'First row\nSecond row'
-    )
+    const elem = interpolate('First row\nSecond row')
+    expect(elem).to.equal('First row\nSecond row')
   })
 
   it('supports new lines in injected scope variables', () => {
-    const elem = interpolateComponents('{{ thingy }}', { thingy: '1\n2' })
-    expect(shallow(elem).text()).to.equal('1\n2')
+    const elem = interpolate('{{ thingy }}', { thingy: '1\n2' })
+    expect(elem).to.equal('1\n2')
   })
 
   it('supports new lines inside template variable values', () => {
     const slimShady = 'Hi my name is\nwhat\nmy name is\nwho\nmy name is'
-    const elem = interpolateComponents(`{{ em:${slimShady} }}`, { em: <em /> })
-    expect(shallow(elem).text()).to.equal(slimShady)
+    const elem = interpolate(`{{ em:${slimShady} }}`, { em: <em /> })
+    expect(shallow(<span>{elem}</span>).text()).to.equal(slimShady)
   })
 
   it('safely injects non-string variables', () => {
-    const elem1 = interpolateComponents('You have {{ swagCount }} swagger', {
+    const elem1 = interpolate('You have {{ swagCount }} swagger', {
       swagCount: 9,
     })
-    expect(shallow(elem1).text()).to.equal('You have 9 swagger')
+    expect(elem1).to.equal('You have 9 swagger')
 
-    const elem2 = interpolateComponents(
-      'Is there coffee: {{ thereIsCoffee }}',
-      { thereIsCoffee: true }
-    )
-    expect(shallow(elem2).text()).to.equal('Is there coffee: true')
+    const elem2 = interpolate('Is there coffee: {{ thereIsCoffee }}', {
+      thereIsCoffee: true,
+    })
+    expect(elem2).to.equal('Is there coffee: true')
 
-    const elem3 = interpolateComponents('Rich kids have {{ NaN }}nies', {
+    const elem3 = interpolate('Rich kids have {{ NaN }}nies', {
       NaN,
     })
-    expect(shallow(elem3).text()).to.equal('Rich kids have NaNnies')
+    expect(elem3).to.equal('Rich kids have NaNnies')
 
-    const elem4 = interpolateComponents('Say "object": {{ obj }}', {
+    const elem4 = interpolate('Say "object": {{ obj }}', {
       obj: { objectz: 'Awbyect' },
     })
-    expect(shallow(elem4).text()).to.equal('Say "object": [object Object]')
+    expect(elem4).to.equal('Say "object": [object Object]')
 
-    const elem5 = interpolateComponents('Fat {{ strong:5 }}', {
+    const elem5 = interpolate('Fat {{ strong:5 }}', {
       strong: <strong />,
     })
-    expect(shallow(elem5).text()).to.equal('Fat 5')
-
-    /* eslint-disable */
-    const elem6 = interpolateComponents('Dance to the {{ func }}', {
-      func: function beat() {},
-    })
-    /* eslint-enable */
-    expect(shallow(elem6).text()).to.equal('Dance to the function beat() {}')
+    expect(shallow(<span>{elem5}</span>).text()).to.equal('Fat 5')
   })
 
   it('replaces a variable with a React element', () => {
-    const elem = interpolateComponents('this is a line: {{ line }}', {
+    const elem = interpolate('this is a line: {{ line }}', {
       line: <hr />,
     })
     expect(elem.props.children[1].type).to.equal('hr')
   })
 
   it('replaces a variable with a React element and injects content into it', () => {
-    const elem = interpolateComponents('go to {{ link:this website }}', {
+    const elem = interpolate('go to {{ link:this website }}', {
       link: <a href="http://website.com" />,
     })
     const link = elem.props.children[1]
@@ -205,7 +188,7 @@ describe('interpolateComponents()', () => {
   })
 
   it('does not inject content into a React element if there is none specified', () => {
-    const elem = interpolateComponents('go to {{ link }}', {
+    const elem = interpolate('go to {{ link }}', {
       link: <a href="http://website.com">http://website.com</a>,
     })
     const link = elem.props.children[1]

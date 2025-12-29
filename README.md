@@ -9,8 +9,6 @@
 
 **Lioness** is a React library for efficiently implementing Gettext localization in your app with little effort.
 
-It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as translations tool, but this ought to be modularized in the future.
-
 ```js
 <T
   message="You have one thingy, {{ itemLink:check it out }}"
@@ -25,30 +23,27 @@ It utilises [`node-gettext`](https://github.com/alexanderwallin/node-gettext) as
 
 ## Table of contents
 
-* [Features](#features)
-* [Installation](#installation)
-* [Usage](#usage)
-  * [Using `<T />`](#using-t-)
-  * [Using `withTranslators(Component)`](#using-withtranslatorscomponent)
-  * [Locale switching](#locale-switching)
-* [API](#api)
-* [Contributing](#contributing)
-* [See also](#see-also)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Using `<T />`](#using-t-)
+  - [Using `withTranslators(Component)`](#using-withtranslatorscomponent)
+  - [Locale switching](#locale-switching)
+- [API](#api)
+- [Contributing](#contributing)
+- [See also](#see-also)
 
 ## Features
 
-* Context and plural
-* String interpolation using a `{{ variable }}` style syntax
-* **Component interpolation** with translatable child content using a `{{ link:Link text here }}` style syntax
-* [Locale switching](#locale-switching) on the fly
+- Context and plural
+- String interpolation using a `{{ variable }}` style syntax
+- **Component interpolation** with translatable child content using a `{{ link:Link text here }}` style syntax
+- [Locale switching](#locale-switching) on the fly
 
 ## Installation
 
 ```sh
 npm install --save lioness
-
-# ...or the shorter...
-npm i -S lioness
 ```
 
 ## Usage
@@ -192,39 +187,39 @@ As a little helper, here's what the letters stand for:
 | n      | ...with pluralisation             | `one`, `other`, `count` |
 | p      | ...in a certain gettext context   | `context`               |
 
-* #### `locale`
+- #### `locale`
 
   The currently set locale passed to `<LionessProvider />`.
 
-* #### `t(message, scope = {})`
+- #### `t(message, scope = {})`
 
   Translates and interpolates message.
 
-* #### `tn(one, other, count, scope = {})`
+- #### `tn(one, other, count, scope = {})`
 
   Translates and interpolates a pluralised message.
 
-* #### `tp(context, message, scope = {})`
+- #### `tp(context, message, scope = {})`
 
   Translates and interpolates a message in a given context.
 
-* #### `tnp(context, one, other, count, scope = {})`
+- #### `tnp(context, one, other, count, scope = {})`
 
   Translates and interpolates a pluralised message in a given context.
 
-* #### `tc(message, scope = {})`
+- #### `tc(message, scope = {})`
 
   Translates and interpolates a message.
 
-* #### `tcn(one, other, count, scope = {})`
+- #### `tcn(one, other, count, scope = {})`
 
   Translates and interpolates a pluralised message.
 
-* #### `tcp(context, message, scope = {})`
+- #### `tcp(context, message, scope = {})`
 
   Translates and interpolates a message in a given context.
 
-* #### `tcnp(context, one, other, count, scope = {})`
+- #### `tcnp(context, one, other, count, scope = {})`
 
   Translates and interpolates a plural message in a given context.
 
@@ -234,9 +229,9 @@ A higher-order component that provides the translation functions and state to `<
 
 **Props:**
 
-* `messages` – An object containing translations for all languages. It should have the format created by [gettext-parser](https://github.com/smhg/gettext-parser)
-* `locale` – The currently selected locale (which should correspond to a key in `messages`)
-* `transformInput` – A function `(input: String) => String` that you can use to transform a string before `<T />` sends it to the translation function. One use case is normalising strings when something like [`prettier`](https://github.com/prettier/prettier) puts child content in `<T />` on new lines, with lots of indentation. The default is a function that simply returns the input as is.
+- `messages` – An object containing translations for all languages. It should have the format created by [gettext-parser](https://github.com/smhg/gettext-parser)
+- `locale` – The currently selected locale (which should correspond to a key in `messages`)
+- `transformInput` – A function `(input: String) => String` that you can use to transform a string before `<T />` sends it to the translation function. One use case is normalising strings when something like [`prettier`](https://github.com/prettier/prettier) puts child content in `<T />` on new lines, with lots of indentation. The default is a function that simply returns the input as is.
 
 ## Contributing
 
@@ -244,7 +239,7 @@ All PRs that passes the tests are very much appreciated! 🎂
 
 ## See also
 
-* [node-gettext](https://github.com/alexanderwallin/node-gettext) - A JavaScript implementation of Gettext.
-* [gettext-parser](https://github.com/smhg/gettext-parser) – A parser between JSON and .po/.mo files. The JSON has the format required by this library.
-* [react-gettext-parser](https://github.com/laget-se/react-gettext-parser) – A utility that extracts translatable content from JavaScript code.
-* [narp](https://github.com/laget-se/narp) – A workflow utility for extracting, uploading, downloading and integrating translations.
+- [node-gettext](https://github.com/alexanderwallin/node-gettext) - A JavaScript implementation of Gettext.
+- [gettext-parser](https://github.com/smhg/gettext-parser) – A parser between JSON and .po/.mo files. The JSON has the format required by this library.
+- [react-gettext-parser](https://github.com/laget-se/react-gettext-parser) – A utility that extracts translatable content from JavaScript code.
+- [narp](https://github.com/laget-se/narp) – A workflow utility for extracting, uploading, downloading and integrating translations.
