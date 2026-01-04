@@ -2,10 +2,10 @@
   "name": "lioness",
   "version": "0.2.17",
   "description": "A React library for efficiently implementing Gettext localization",
+  "type": "module",
   "main": "dist/index.js",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
     "prettier": "prettier",
@@ -13,7 +13,7 @@
     "test": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js tests/{.,components}/*.js",
     "test-file": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js",
     "prebuild": "rimraf dist",
-    "build": "babel --out-dir dist src",
+    "build": "tsc",
     "example": "cd examples && webpack-dev-server --port 8111"
   },
   "repository": {
@@ -34,45 +34,26 @@
     "url": "https://github.com/alexanderwallin/lioness-react/issues"
   },
   "homepage": "https://github.com/alexanderwallin/lioness-react#readme",
-  "peerDependencies": {
-    "prop-types": "^15.5.8",
-    "react": "^15.0.0 || ^16.0.0"
+  "dependencies": {
+    "react": "^18.3.1"
   },
   "optionalDependencies": {
     "node-gettext": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.13.10",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/register": "^7.9.0",
-    "babel-eslint": "^10.1.0",
+    "@types/node": "^25.0.3",
+    "@types/node-gettext": "^3.0.6",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "chai": "^4.2.0",
-    "chai-enzyme": "^1.0.0-beta.1",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
     "jsdom": "^16.2.2",
     "mocha": "^7.1.1",
     "node-gettext": "^3.0.0",
-    "paco": "^0.4.0",
-    "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "prettier": "^3.7.4",
+    "react-dom": "^18.3.1",
     "rimraf": "^2.5.2",
-    "sinon": "^9.0.1"
-  },
-  "dependencies": {
-    "prop-types": "^15.5.8",
-    "react-proptype-conditional-require": "^1.0.4"
+    "sinon": "^9.0.1",
+    "typescript": "^5.9.3"
   }
 }
