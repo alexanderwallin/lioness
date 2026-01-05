@@ -10,10 +10,9 @@
   "scripts": {
     "prettier": "prettier",
     "lint": "eslint src tests",
-    "test": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js tests/{.,components}/*.js",
-    "test-file": "mocha --require @babel/register tests/helpers/browser.js tests/helpers/enzyme-adapter.js",
+    "test": "vitest",
     "prebuild": "rimraf dist",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "example": "cd examples && webpack-dev-server --port 8111"
   },
   "repository": {
@@ -41,19 +40,19 @@
     "node-gettext": "^3.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "@types/node-gettext": "^3.0.6",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "chai": "^4.2.0",
-    "enzyme": "^3.11.0",
-    "jsdom": "^16.2.2",
-    "mocha": "^7.1.1",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser-playwright": "^4.0.16",
     "node-gettext": "^3.0.0",
     "prettier": "^3.7.4",
     "react-dom": "^18.3.1",
     "rimraf": "^2.5.2",
-    "sinon": "^9.0.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16",
+    "vitest-browser-react": "^2.0.2"
   }
 }

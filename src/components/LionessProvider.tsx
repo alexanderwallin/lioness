@@ -13,7 +13,7 @@ import type {
   TranslateProps,
 } from '../types.js'
 
-const inputIdentity = (x: string): any => x
+const inputIdentity = (x: string): string => x
 
 /**
  * Localization context provider
@@ -22,8 +22,8 @@ interface LionessProviderProps {
   adapter: Adapter
   messages: MessageSet
   locale: Locale
-  transformInput?: TransformFunc
   children: ReactNode
+  transformInput?: TransformFunc
   debug?: boolean
 }
 

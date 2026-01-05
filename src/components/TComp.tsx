@@ -2,7 +2,7 @@ import React, { type FC, type ReactNode } from 'react'
 
 import type {
   LionessContext,
-  RequireAtLeastOne,
+  RequireOnlyOne,
   TransformFunc,
   TranslateProps,
 } from '../types.js'
@@ -18,7 +18,7 @@ interface TPropsBase {
   [key: string]: any
 }
 
-type TProps = RequireAtLeastOne<TPropsBase, 'message' | 'children'>
+type TProps = RequireOnlyOne<TPropsBase, 'message' | 'children'>
 
 export default function T({
   message,

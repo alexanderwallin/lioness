@@ -15,8 +15,8 @@ import React, {
 
 */
 
-type ReplacementFunction = (children: string) => ReactNode
-type ScopeKeyValuePair = [string, string] | null
+type ReplacementFunction = (children: string | null | undefined) => ReactNode
+type ScopeKeyValuePair = [string, string | null]
 
 // Note that [^] is used rather than . to match any character. This
 // is because . doesn't span over multiple lines, whereas [^] does.
@@ -34,13 +34,10 @@ export function isTemplateVariable(str: string) {
 }
 
 function getScopeKeyValuePair(keyValue: string): ScopeKeyValuePair {
-  const [scopeKey, scopeChildren]: string[] = keyValue.split(/:([^]+)/)
-
-  if (scopeKey && scopeChildren) {
-    return [scopeKey, scopeChildren]
-  }
-
-  return null
+  const parts: string[] = keyValue.split(/:([^]+)/)
+  return parts.length > 1
+    ? [parts[0] as string, parts[1] as string]
+    : [parts[0] as string, null]
 }
 
 /**
@@ -73,32 +70,25 @@ export default function interpolate(
   }
 
   const interpolatedParts: ReactNode[] = parts.map((part, i) => {
-    const key = `${part}_${i}`
-
     // Not a template variable, return as is
     if (isTemplateVariable(part) === false) {
       return part
     }
 
-    const keyName: string = part.replace(/^\{\{\s/, '').replace(/\s\}\}$/, '')
-    const keyValuePair: ScopeKeyValuePair = getScopeKeyValuePair(keyName)
-
-    if (keyValuePair === null) {
-      return part
-    }
-
-    const [scopeKey, scopeChildren] = keyValuePair
+    const partContents: string = part
+      .replace(/^\{\{\s/, '')
+      .replace(/\s\}\}$/, '')
+    const [key, value]: ScopeKeyValuePair = getScopeKeyValuePair(partContents)
+    const replacement = scope[key]
 
     // No matching scope replacement, return raw string
-    if (scope[scopeKey] === undefined) {
+    if (replacement === undefined) {
       return part
     }
-
-    const replacement = scope[scopeKey]
 
     // Let the caller create the result
     if (typeof replacement === 'function') {
-      return (replacement as ReplacementFunction)(scopeChildren)
+      return (replacement as ReplacementFunction)(value)
     }
 
     // If the interpolated scope variable is not a React element, render
@@ -109,13 +99,19 @@ export default function interpolate(
 
     // Returns a clone of the to-be injected element, passing child content
     // from the scope if it exists
-    return scopeChildren === undefined
-      ? cloneElement(replacement, { key })
-      : cloneElement(replacement, { key }, scopeChildren)
+    const reactKey = `${part}_${i}`
+    return value === null
+      ? cloneElement(replacement, { key: reactKey })
+      : cloneElement(replacement, { key: reactKey }, value)
   })
 
   if (interpolatedParts.every((part) => isValidElement(part) === false)) {
     return interpolatedParts.join('')
   }
+
+  if (interpolatedParts.length === 1) {
+    return interpolatedParts[0]
+  }
+
   return <>{Children.toArray(interpolatedParts)}</>
 }
