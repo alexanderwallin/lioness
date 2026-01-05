@@ -5,27 +5,28 @@ import { render } from 'vitest-browser-react'
 import { LionessProvider, T } from '../../src/index.js'
 import type {
   Adapter,
+  AdapterTranslateParams,
   InterpolationScope,
   Locale,
   MessageSet,
-  TranslateProps,
 } from '../../src/types.js'
 
 import adapter from '../fixtures/adapter.js'
 import messages from '../fixtures/messages.js'
 
 // Mock the t() function
-const mockT = vi.fn(
-  (payload: TranslateProps, scope: InterpolationScope): string => payload.one
+const mockTi = vi.fn(
+  (payload: AdapterTranslateParams, scope: InterpolationScope): string =>
+    payload.one
 )
 
 vi.mock('../../src/useTranslation.js', () => ({
   default: () => ({
-    t: mockT,
+    ti: mockTi,
   }),
 }))
 
-type TArgs = [payload: TranslateProps, scope: InterpolationScope]
+type TArgs = [payload: AdapterTranslateParams, scope: InterpolationScope]
 
 const identity = vi.fn((x: string): string => x)
 
@@ -49,7 +50,7 @@ function App({ children }: AppProps) {
 
 describe('<T />', () => {
   beforeEach(() => {
-    mockT.mockClear()
+    mockTi.mockClear()
   })
 
   it('passes translation props to t()', async () => {
@@ -60,8 +61,8 @@ describe('<T />', () => {
         </div>
       </App>
     )
-    expect(mockT).toHaveBeenCalled()
-    expect((mockT.mock.lastCall as TArgs)[0]).toEqual({
+    expect(mockTi).toHaveBeenCalled()
+    expect((mockTi.mock.lastCall as TArgs)[0]).toEqual({
       one: 'Singular',
       other: 'Plural',
       context: 'Test',
@@ -80,8 +81,8 @@ describe('<T />', () => {
         </div>
       </App>
     )
-    expect(mockT).toHaveBeenCalled()
-    expect((mockT.mock.lastCall as TArgs)[1]).toEqual({
+    expect(mockTi).toHaveBeenCalled()
+    expect((mockTi.mock.lastCall as TArgs)[1]).toEqual({
       prop1: 123,
       prop2: date,
     })
@@ -97,9 +98,9 @@ describe('<T />', () => {
         </div>
       </App>
     )
-    expect(mockT).toHaveBeenCalled()
-    expect((mockT.mock.lastCall as TArgs)[0].one).toBe('wow')
-    expect((mockT.mock.lastCall as TArgs)[1]).toEqual({
+    expect(mockTi).toHaveBeenCalled()
+    expect((mockTi.mock.lastCall as TArgs)[0].one).toBe('wow')
+    expect((mockTi.mock.lastCall as TArgs)[1]).toEqual({
       prop1: 123,
       prop2: '456',
     })
@@ -113,7 +114,7 @@ describe('<T />', () => {
         </div>
       </App>
     )
-    expect(mockT).toHaveBeenCalled()
-    expect((mockT.mock.lastCall as TArgs)[1].count).toBe(2)
+    expect(mockTi).toHaveBeenCalled()
+    expect((mockTi.mock.lastCall as TArgs)[1].count).toBe(2)
   })
 })

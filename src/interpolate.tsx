@@ -33,6 +33,12 @@ export function isTemplateVariable(str: string) {
   return new RegExp(variableRegex).test(str)
 }
 
+/**
+ * Returns a "key:value" as a [key, value] tuple.
+ *
+ * @param  {String} keyValue  A "key:value" string
+ * @return {Array}            A [key, value] tuple
+ */
 function getScopeKeyValuePair(keyValue: string): ScopeKeyValuePair {
   const parts: string[] = keyValue.split(/:([^]+)/)
   return parts.length > 1

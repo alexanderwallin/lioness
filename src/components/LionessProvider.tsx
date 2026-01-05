@@ -41,18 +41,28 @@ export default function LionessProvider({
     adapter.setLocale(locale)
   }, [locale])
 
-  // Create translation+interpolation function
+  // Create a simple translation function
   const t = useCallback(
-    (props: AdapterTranslateParams, scope: InterpolationScope) => {
-      const transformedProps: AdapterTranslateParams = {
-        ...props,
-        one: transformInput(props.one),
+    (message: string): string => {
+      return adapter.translate({
+        one: transformInput(message),
+      })
+    },
+    [adapter, transformInput]
+  )
+
+  // Create translation+interpolation function
+  const ti = useCallback(
+    (params: AdapterTranslateParams, scope: InterpolationScope) => {
+      const transformedParams: AdapterTranslateParams = {
+        ...params,
+        one: transformInput(params.one),
       }
-      if (props.other) {
-        transformedProps.other = transformInput(props.other)
+      if (params.other) {
+        transformedParams.other = transformInput(params.other)
       }
 
-      const translation: string = adapter.translate(transformedProps)
+      const translation: string = adapter.translate(transformedParams)
       const interpolatedTranslation: ReactNode = interpolate(translation, scope)
       return interpolatedTranslation
     },
@@ -64,6 +74,7 @@ export default function LionessProvider({
     messages,
     transformInput,
     t,
+    ti,
   }
 
   return <Context.Provider value={context}>{children}</Context.Provider>

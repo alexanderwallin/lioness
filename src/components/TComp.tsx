@@ -28,7 +28,7 @@ export default function T({
   count,
   ...scope
 }: TProps): ReactNode {
-  const { t } = useTranslation()
+  const { ti } = useTranslation()
 
   const msgid = one || children || ''
   const payload: AdapterTranslateParams = {
@@ -39,6 +39,6 @@ export default function T({
   }
   const scopeWithCount = { ...scope, count }
 
-  const translatedContent = t(payload, scopeWithCount)
+  const translatedContent = ti(payload, scopeWithCount)
   return <>{translatedContent}</>
 }
