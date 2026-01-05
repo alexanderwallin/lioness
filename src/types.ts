@@ -49,8 +49,6 @@ export type InterpolationScope = Record<string, ReactNode>
 // Context
 export type LionessContext = {
   locale: Locale
-  messages: MessageSet
-  transformInput: (input: string) => string
   t: (input: string) => string
   ti: (props: AdapterTranslateParams, scope: InterpolationScope) => ReactNode
 }

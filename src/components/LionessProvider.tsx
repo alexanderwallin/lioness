@@ -71,8 +71,6 @@ export default function LionessProvider({
 
   const context: LionessContext = {
     locale,
-    messages,
-    transformInput,
     t,
     ti,
   }
