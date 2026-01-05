@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/alexanderwallin/lioness/blob/master/docs/lioness-logo-2.png?raw=true" />
+  <img src="docs/lioness-logo-2.png" />
   <br />
   <br />
   Lioness
