@@ -27,28 +27,31 @@ export type Locale = string
 
 export type TransformFunc = (input: string) => string
 
-export interface TranslateProps {
+// Adapter
+export interface AdapterTranslateParams {
   one: string
   other?: string | undefined
   context?: string | undefined
   count?: number | undefined
 }
 
-export type TranslateFunc = (props: TranslateProps) => string
+export type AdapterTranslateFunc = (props: AdapterTranslateParams) => string
 
 export type Adapter = {
   setup: (messages: MessageSet, locale: Locale) => void
   setLocale: (locale: Locale) => void
-  translate: TranslateFunc
+  translate: AdapterTranslateFunc
 }
 
+// Interpolation
 export type InterpolationScope = Record<string, ReactNode>
 
+// Context
 export type LionessContext = {
   locale: Locale
   messages: MessageSet
   transformInput: (input: string) => string
-  t: (props: TranslateProps, scope: InterpolationScope) => ReactNode
+  t: (props: AdapterTranslateParams, scope: InterpolationScope) => ReactNode
 }
 
 // node-gettext types

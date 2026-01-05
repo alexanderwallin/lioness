@@ -1,10 +1,10 @@
 import React, { type FC, type ReactNode } from 'react'
 
 import type {
+  AdapterTranslateParams,
   LionessContext,
   RequireOnlyOne,
   TransformFunc,
-  TranslateProps,
 } from '../types.js'
 import useTranslation from '../useTranslation.js'
 import withTranslation from '../withTranslation.js'
@@ -31,7 +31,7 @@ export default function T({
   const { t } = useTranslation()
 
   const msgid = one || children || ''
-  const payload: TranslateProps = {
+  const payload: AdapterTranslateParams = {
     context,
     one: msgid,
     other,

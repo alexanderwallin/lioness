@@ -4,13 +4,12 @@ import Context from '../Context.js'
 import interpolate from '../interpolate.js'
 import type {
   Adapter,
+  AdapterTranslateParams,
   MessageSet,
   LionessContext,
   Locale,
   InterpolationScope,
   TransformFunc,
-  TranslateFunc,
-  TranslateProps,
 } from '../types.js'
 
 const inputIdentity = (x: string): string => x
@@ -44,8 +43,8 @@ export default function LionessProvider({
 
   // Create translation+interpolation function
   const t = useCallback(
-    (props: TranslateProps, scope: InterpolationScope) => {
-      const transformedProps: TranslateProps = {
+    (props: AdapterTranslateParams, scope: InterpolationScope) => {
+      const transformedProps: AdapterTranslateParams = {
         ...props,
         one: transformInput(props.one),
       }
