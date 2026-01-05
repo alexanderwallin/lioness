@@ -47,10 +47,10 @@ export default function LionessProvider({
     (props: TranslateProps, scope: InterpolationScope) => {
       const transformedProps: TranslateProps = {
         ...props,
-        message: transformInput(props.message),
+        one: transformInput(props.one),
       }
-      if (props.messagePlural) {
-        transformedProps.messagePlural = transformInput(props.messagePlural)
+      if (props.other) {
+        transformedProps.other = transformInput(props.other)
       }
 
       const translation: string = adapter.translate(transformedProps)

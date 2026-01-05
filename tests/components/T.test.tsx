@@ -16,8 +16,7 @@ import messages from '../fixtures/messages.js'
 
 // Mock the t() function
 const mockT = vi.fn(
-  (payload: TranslateProps, scope: InterpolationScope): string =>
-    payload.message
+  (payload: TranslateProps, scope: InterpolationScope): string => payload.one
 )
 
 vi.mock('../../src/useTranslation.js', () => ({
@@ -57,19 +56,14 @@ describe('<T />', () => {
     const app = await render(
       <App>
         <div role="article">
-          <T
-            message="Singular"
-            messagePlural="Plural"
-            context="Test"
-            count={123}
-          />
+          <T one="Singular" other="Plural" context="Test" count={123} />
         </div>
       </App>
     )
     expect(mockT).toHaveBeenCalled()
     expect((mockT.mock.lastCall as TArgs)[0]).toEqual({
-      message: 'Singular',
-      messagePlural: 'Plural',
+      one: 'Singular',
+      other: 'Plural',
       context: 'Test',
       count: 123,
     })
@@ -80,7 +74,9 @@ describe('<T />', () => {
     const app = await render(
       <App>
         <div role="article">
-          <T message="Singular" prop1={123} prop2={date} />
+          <T prop1={123} prop2={date}>
+            {'Singular {{ prop1 }} {{ prop2 }}'}
+          </T>
         </div>
       </App>
     )
@@ -102,7 +98,7 @@ describe('<T />', () => {
       </App>
     )
     expect(mockT).toHaveBeenCalled()
-    expect((mockT.mock.lastCall as TArgs)[0].message).toBe('wow')
+    expect((mockT.mock.lastCall as TArgs)[0].one).toBe('wow')
     expect((mockT.mock.lastCall as TArgs)[1]).toEqual({
       prop1: 123,
       prop2: '456',
@@ -113,7 +109,7 @@ describe('<T />', () => {
     const app = await render(
       <App>
         <div role="article">
-          <T message="One thing" messagePlural="{{ num }} things" count={2} />
+          <T one="One thing" other="{{ num }} things" count={2} />
         </div>
       </App>
     )

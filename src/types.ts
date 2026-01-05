@@ -28,8 +28,8 @@ export type Locale = string
 export type TransformFunc = (input: string) => string
 
 export interface TranslateProps {
-  message: string
-  messagePlural?: string | undefined
+  one: string
+  other?: string | undefined
   context?: string | undefined
   count?: number | undefined
 }

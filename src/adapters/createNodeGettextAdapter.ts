@@ -33,7 +33,7 @@ export default function createNodeGettextAdapter(
     /**
      * Get a translation
      */
-    translate: ({ message, messagePlural = '', context = '', count = 1 }) =>
-      gt.npgettext(context, message, messagePlural, count),
+    translate: ({ one, other = '', context = '', count = 1 }) =>
+      gt.npgettext(context, one, other, count),
   }
 }

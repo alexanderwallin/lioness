@@ -10,31 +10,31 @@ import useTranslation from '../useTranslation.js'
 import withTranslation from '../withTranslation.js'
 
 interface TPropsBase {
-  message?: string
+  one?: string
   children?: string
-  messagePlural?: string
+  other?: string
   context?: string
   count?: number
   [key: string]: any
 }
 
-type TProps = RequireOnlyOne<TPropsBase, 'message' | 'children'>
+type TProps = RequireOnlyOne<TPropsBase, 'one' | 'children'>
 
 export default function T({
-  message,
+  one,
   children,
-  messagePlural,
+  other,
   context,
   count,
   ...scope
 }: TProps): ReactNode {
   const { t } = useTranslation()
 
-  const msgid = message || children || ''
+  const msgid = one || children || ''
   const payload: TranslateProps = {
     context,
-    message: msgid,
-    messagePlural,
+    one: msgid,
+    other,
     count,
   }
   const scopeWithCount = { ...scope, count }
