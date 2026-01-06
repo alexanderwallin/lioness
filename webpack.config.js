@@ -1,4 +1,4 @@
-var path = require('path');
+var path = require('path')
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'examples', 'build'),
     publicPath: '/assets/',
-    filename: 'app.js'
+    filename: 'app.js',
   },
   module: {
     loaders: [
@@ -16,16 +16,16 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015', 'react'],
-          plugins: ['transform-object-rest-spread']
-        }
+          plugins: ['transform-object-rest-spread'],
+        },
       },
       {
         test: /\.json$/,
-        loader: 'json'
-      }
-    ]
+        loader: 'json',
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
-  }
-};
+    extensions: ['.js', '.jsx', '.json'],
+  },
+}

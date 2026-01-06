@@ -1,19 +1,18 @@
 {
   "name": "lioness",
-  "version": "0.2.19",
+  "version": "0.2.17",
   "description": "A React library for efficiently implementing Gettext localization",
+  "type": "module",
   "main": "dist/index.js",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
     "prettier": "prettier",
     "lint": "eslint src tests",
-    "test": "mocha --require babel-core/register tests/helpers/browser.js tests/{.,components,integration-tests}/*.js",
-    "test-file": "mocha --require babel-core/register tests/helpers/browser.js",
+    "test": "vitest",
     "prebuild": "rimraf dist",
-    "build": "babel --out-dir dist src",
+    "build": "tsc -p tsconfig.build.json",
     "example": "cd examples && webpack-dev-server --port 8111"
   },
   "repository": {
@@ -34,42 +33,26 @@
     "url": "https://github.com/alexanderwallin/lioness-react/issues"
   },
   "homepage": "https://github.com/alexanderwallin/lioness-react#readme",
-  "peerDependencies": {
-    "prop-types": "^15.5.8",
-    "react": "^15.0.0 || ^16.0.0 || ^17.0.0"
+  "dependencies": {
+    "react": "^18.3.1"
+  },
+  "optionalDependencies": {
+    "node-gettext": "^3.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^6.0.3",
-    "babel-plugin-transform-class-properties": "^6.6.0",
-    "babel-plugin-transform-object-rest-spread": "^6.6.5",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-register": "^6.24.0",
-    "chai": "^3.5.0",
-    "chai-enzyme": "^0.6.1",
-    "enzyme": "^2.7.1",
-    "eslint": "^3.17.1",
-    "eslint-config-alexander": "^1.3.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-class-property": "0.0.3",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^6.10.0",
-    "jsdom": "^9.12.0",
-    "mocha": "^6.2.0",
-    "paco": "^0.4.0",
-    "prettier": "^1.11.1",
-    "react": "^15.0.1",
-    "react-addons-test-utils": "^15.6.2",
-    "react-dom": "^15.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
+    "@types/node-gettext": "^3.0.6",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser-playwright": "^4.0.16",
+    "node-gettext": "^3.0.0",
+    "prettier": "^3.7.4",
+    "react-dom": "^18.3.1",
     "rimraf": "^2.5.2",
-    "sinon": "^1.17.7"
-  },
-  "dependencies": {
-    "lodash.curry": "^4.0.1",
-    "node-gettext": "^2.0.0-rc.1",
-    "prop-types": "^15.7.2",
-    "react-proptype-conditional-require": "^1.0.4",
-    "recompose": "^0.18.0"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16",
+    "vitest-browser-react": "^2.0.2"
   }
 }

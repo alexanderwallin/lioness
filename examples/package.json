@@ -1,14 +1,14 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --port 8111 --content-base public/"
+    "start": "webpack-dev-server"
   },
   "devDependencies": {
-    "babel-loader": "^6.2.4",
-    "json-loader": "^0.5.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "babel-loader": "^8.2.2",
+    "json-loader": "^0.5.7",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "webpack": "^5.26.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {}
 }
