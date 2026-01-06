@@ -26,7 +26,7 @@ interface LionessProviderProps {
   debug?: boolean
 }
 
-export default function LionessProvider({
+export function LionessProvider({
   adapter,
   messages,
   locale,

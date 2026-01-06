@@ -54,7 +54,7 @@ function getScopeKeyValuePair(keyValue: string): ScopeKeyValuePair {
  *                            replacements
  * @return {String|Component} A string or React component
  */
-export default function interpolate(
+export function interpolate(
   str: string,
   scope: Record<string, ReactNode> = {}
 ): ReactNode {

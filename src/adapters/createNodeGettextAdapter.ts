@@ -8,9 +8,13 @@ interface GettextOptions {
   sourceLocale?: Locale
 }
 
-export default function createNodeGettextAdapter(
-  options?: GettextOptions
-): Adapter {
+/**
+ * Creates an adapter for node-gettext.
+ *
+ * @param  {GettextOptions} options  node-gettext options
+ * @return {Adapter}                 An adapter
+ */
+export function createNodeGettextAdapter(options?: GettextOptions): Adapter {
   const gt = new Gettext(options)
 
   return {
