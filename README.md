@@ -219,6 +219,15 @@ function App() {
 }
 ```
 
+### `interpolate`
+
+```js
+interpolate = (
+  str: string,
+  scope: Record<string, ReactNode> = {}
+) => ReactNode
+```
+
 ### `T`
 
 Component that renders translated content. Variables that are to be replaced via interpolation are passed as additional props (see examples).
@@ -311,16 +320,34 @@ ti = (params: AdapterTranslateParams, scope: InterpolationScope) => ReactNode
 
 Returns an interpolated translation for a pluralized and/or contextual message. Strings are transformed using `LionessProvider#transformInput` before being passed on to the adapter's `translate` function.
 
+Accessed through `useTranslation` or `withTranslation`.
+
 #### Arguments
 
 | Argument  | Type                      | Description                        |
 |-----------|---------------------------|------------------------------------|
-| `params`  | `AdapterTranslateParams`  | An object of the shape `{ one, other, count, context }` that will be passed to the adapter's `translate` function (after `one` and `other` has been transformed using the `transformInput` function passed to the `LionessProvider` before). |
+| `params`  | `AdapterTranslateParams`  | An object of the shape `{ one, other?, count?, context? }` that will be passed to the adapter's `translate` function (after `one` and `other` has been transformed using the `transformInput` function passed to the `LionessProvider` before). |
 | `scope`   | `InterpolationScope`      | An object containing key-value replacements for variables in the translated strings. The `params.count` parameter is automatically added to this scope. |
 
 #### Examples
 
-Accessed through `useTranslation` or `withTranslation`.
+```jsx
+import { useTranslation } from 'lioness'
+
+function MyComponent({ user, things }) {
+  const { ti } = useTranslation()
+  const content = ti(
+    {
+    	one: '{{ name }}, you have one thing',
+    	other: '{{ name }}, you have {{ count }} things',
+    	count: things.length,
+    },
+    { name: user.name }
+  )
+
+  return <div>{content}</div>
+}
+```
 
 ### `useTranslation`
 
@@ -370,7 +397,7 @@ function MyComponent({ user, numAttemps }) {
 ### `withTranslation`
 
 ```js
-withTranslation = (Component: React.ElementType)) => React.ElementType
+withTranslation = (Component: React.ElementType) => React.ElementType
 ```
 
 A higher-order component that provides `Component` with the Lioness context variables as props. These are `locale`, `t` and `ti`.
