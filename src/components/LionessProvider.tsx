@@ -1,7 +1,7 @@
 import React, { type FC, type ReactNode, useCallback, useEffect } from 'react'
 
 import Context from '../Context.js'
-import interpolate from '../interpolate.js'
+import { interpolate } from '../interpolate.js'
 import type {
   Adapter,
   AdapterTranslateParams,
@@ -39,7 +39,7 @@ export function LionessProvider({
   // Pass on new locales
   useEffect(() => {
     adapter.setLocale(locale)
-  }, [locale])
+  }, [adapter, locale])
 
   // Create a simple translation function
   const t = useCallback(
@@ -66,7 +66,7 @@ export function LionessProvider({
       const interpolatedTranslation: ReactNode = interpolate(translation, scope)
       return interpolatedTranslation
     },
-    [adapter, locale, transformInput]
+    [adapter, transformInput]
   )
 
   const context: LionessContext = {

@@ -6,8 +6,8 @@ import type {
   RequireOnlyOne,
   TransformFunc,
 } from '../types.js'
-import useTranslation from '../useTranslation.js'
-import withTranslation from '../withTranslation.js'
+import { useTranslation } from '../useTranslation.js'
+import { withTranslation } from '../withTranslation.js'
 
 interface TPropsBase {
   one?: string
