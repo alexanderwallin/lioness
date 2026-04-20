@@ -21,7 +21,7 @@ const mockTi = vi.fn(
 )
 
 vi.mock('../../src/useTranslation.js', () => ({
-  default: () => ({
+  useTranslation: () => ({
     ti: mockTi,
   }),
 }))

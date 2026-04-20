@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { render } from 'vitest-browser-react'
 import React from 'react'
 
-import interpolate, { isTemplateVariable } from '../src/interpolate.js'
+import { interpolate, isTemplateVariable } from '../src/interpolate.js'
 
 describe('interpolate() - strings', () => {
   it('returns the input string as is if it does not contain any variables', () => {

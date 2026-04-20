@@ -2,7 +2,7 @@ import React from 'react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, type RenderResult } from 'vitest-browser-react'
 
-import LionessProvider from '../../src/components/LionessProvider.js'
+import { LionessProvider } from '../../src/components/LionessProvider.js'
 import adapter from '../fixtures/adapter.js'
 import messages from '../fixtures/messages.js'
 
